@@ -82,6 +82,47 @@ function initAntigravityCanvas() {
         if (cursorGlow) cursorGlow.style.opacity = '0';
     });
 
+    // Suporte Completo a Toque Touchscreen no Mobile (Celulares & Tablets)
+    window.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length > 0) {
+            const touch = e.touches[0];
+            mouse.x = touch.clientX;
+            mouse.y = touch.clientY;
+            mouse.active = true;
+            targetCursorX = touch.clientX;
+            targetCursorY = touch.clientY;
+            if (cursorGlow) cursorGlow.style.opacity = '1';
+
+            if (!e.target.closest('input') && !e.target.closest('select') && !e.target.closest('textarea') && !e.target.closest('button') && !e.target.closest('a')) {
+                shockwaves.push({
+                    x: touch.clientX,
+                    y: touch.clientY,
+                    radius: 4,
+                    maxRadius: 220,
+                    alpha: 0.85
+                });
+            }
+        }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches.length > 0) {
+            const touch = e.touches[0];
+            mouse.x = touch.clientX;
+            mouse.y = touch.clientY;
+            mouse.active = true;
+            targetCursorX = touch.clientX;
+            targetCursorY = touch.clientY;
+        }
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+        mouse.active = false;
+        mouse.x = -1000;
+        mouse.y = -1000;
+        if (cursorGlow) cursorGlow.style.opacity = '0';
+    }, { passive: true });
+
     // Pulso Gravitacional (Shockwave) ao clicar na página
     window.addEventListener('click', (e) => {
         if (e.target.closest('input') || e.target.closest('select') || e.target.closest('textarea')) return;
@@ -95,9 +136,9 @@ function initAntigravityCanvas() {
         });
     });
 
-    // Gera partículas com papéis distintos (Hubs Principais, Faíscas e Micro-poeira)
-    // DECLARADO ANTES DO EVENTO DE SCROLL PARA EVITAR ERRO DE TDZ
-    const particleCount = Math.min(Math.floor(width / 24), 68);
+    // Quantidade adaptativa de partículas (otimizada para alta fluidez em 60fps no celular)
+    const isMobile = width < 768;
+    const particleCount = isMobile ? Math.min(Math.floor(width / 14), 30) : Math.min(Math.floor(width / 24), 68);
     const particles = [];
 
     for (let i = 0; i < particleCount; i++) {
@@ -841,7 +882,7 @@ function renderPlans(isAnnual) {
         const isAtivo = plano.ativo;
 
         const card = document.createElement('div');
-        card.className = `reveal-on-scroll spotlight-card tilt-card rounded-3xl p-8 transition-all flex flex-col justify-between ${
+        card.className = `reveal-on-scroll spotlight-card tilt-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 transition-all flex flex-col justify-between ${
             isDestaque 
                 ? 'bg-white border-2 border-blue-600 shadow-2xl relative shadow-blue-500/15' 
                 : isAtivo
@@ -1105,14 +1146,35 @@ function initMobileMenu() {
     const mobileMenu = document.getElementById('mobileMenu');
 
     if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            }
+            if (window.lucide) window.lucide.createIcons();
         });
 
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+        // Fecha ao clicar em qualquer link ou botão dentro do menu
+        mobileMenu.querySelectorAll('a, button').forEach(item => {
+            item.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                if (window.lucide) window.lucide.createIcons();
             });
+        });
+
+        // Fecha ao clicar fora do menu no mobile
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                if (window.lucide) window.lucide.createIcons();
+            }
         });
     }
 }

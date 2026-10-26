@@ -172,7 +172,15 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             <!-- SIDEBAR LATERAL (NAVEGAÇÃO POR CATEGORIAS) -->
-            <aside class="lg:col-span-3 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2 space-y-6">
+            <aside class="lg:col-span-3 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] overflow-y-auto pr-0 lg:pr-2">
+                
+                <!-- Botão Toggle de Navegação no Mobile -->
+                <button type="button" id="toggleApiMobileNav" class="lg:hidden w-full py-2.5 px-4 bg-white border border-slate-200 rounded-xl font-bold text-xs text-slate-700 flex items-center justify-between shadow-xs mb-3">
+                    <span class="flex items-center gap-2"><i data-lucide="list" class="w-4 h-4 text-blue-600"></i> Navegação & Endpoints</span>
+                    <i data-lucide="chevron-down" id="apiMobileNavChevron" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                </button>
+
+                <div id="apiSidebarContent" class="hidden lg:block space-y-6">
                 
                 <!-- 1. Guia Rápido -->
                 <div>
@@ -351,6 +359,7 @@
                     </nav>
                 </div>
 
+                </div><!-- fim apiSidebarContent -->
             </aside>
 
             <!-- CONTEÚDO PRINCIPAL (DOCUMENTAÇÃO DOS ENDPOINTS) -->
@@ -1238,6 +1247,28 @@ curl -X POST "https://backcore.azun.com.br/api/v1/webhooks/settings" \
                         card.style.display = 'block';
                     } else {
                         card.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Toggle da Barra Lateral no Mobile
+        const toggleBtn = document.getElementById('toggleApiMobileNav');
+        const sidebarContent = document.getElementById('apiSidebarContent');
+        const chevron = document.getElementById('apiMobileNavChevron');
+        if (toggleBtn && sidebarContent) {
+            toggleBtn.addEventListener('click', () => {
+                sidebarContent.classList.toggle('hidden');
+                if (chevron) {
+                    chevron.style.transform = sidebarContent.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                }
+            });
+
+            sidebarContent.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 1024) {
+                        sidebarContent.classList.add('hidden');
+                        if (chevron) chevron.style.transform = 'rotate(0deg)';
                     }
                 });
             });
