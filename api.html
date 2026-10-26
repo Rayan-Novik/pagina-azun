@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação da API Azun - REST, Webhooks e Serviços Fiscais SEFAZ</title>
+    
+    <!-- Meta Tags SEO & Otimização para IAs -->
+    <meta name="description" content="Documentação técnica oficial das APIs REST da Azun Tecnologia. Endpoints livres para autoatendimento e cardápio digital, API pública v1 e v2 com x-api-key, sincronização offline de PDV e emissão fiscal NFC-e 65 e NF-e 55.">
+    <meta name="keywords" content="api pdv, api nfce, api nfe, api cardapio digital, api mesas, webhooks erp, api fiscal sefaz, azun api rest, integracao crm varejo">
+    <meta name="author" content="Azun Tecnologia">
+    <link rel="canonical" href="https://azuntecnologia.com.br/api.html">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        azun: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#0b1329'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Consolas', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .method-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6875rem;
+            font-weight: 800;
+            padding: 0.2rem 0.55rem;
+            border-radius: 0.375rem;
+            letter-spacing: 0.04em;
+            display: inline-flex;
+            align-items: center;
+        }
+        .method-get { background: rgba(14, 165, 233, 0.15); color: #0284c7; border: 1px solid rgba(14, 165, 233, 0.3); }
+        .method-post { background: rgba(37, 99, 235, 0.15); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.3); }
+        .method-put { background: rgba(245, 158, 11, 0.15); color: #d97706; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .method-delete { background: rgba(239, 68, 68, 0.15); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3); }
+        
+        .code-pre {
+            background-color: #0b1329;
+            border: 1px solid #1e293b;
+            color: #e2e8f0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8125rem;
+            line-height: 1.6;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        .sidebar-link {
+            transition: all 0.15s ease-in-out;
+            font-size: 0.8125rem;
+            padding: 0.45rem 0.75rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #64748b;
+        }
+        .sidebar-link:hover {
+            color: #2563eb;
+            background: #f1f5f9;
+        }
+        .sidebar-link.active {
+            color: #1d4ed8;
+            background: #dbeafe;
+            font-weight: 700;
+        }
+
+        .api-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            transition: all 0.2s ease-in-out;
+        }
+        .api-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 6px 20px -4px rgba(37, 99, 235, 0.08);
+        }
+
+        /* Scrollbar suave */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f8fafc; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- ==========================================================================
+         BARRA SUPERIOR (HEADER DOCS)
+         ========================================================================== -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Logo & Breadcrumb -->
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="flex items-center gap-2.5 group" title="Voltar ao Site Oficial">
+                        <img src="assets/images/logo.png" alt="Azun Tecnologia" class="w-8 h-8 object-contain rounded-lg shadow-sm group-hover:scale-105 transition-transform">
+                        <span class="text-xl font-extrabold tracking-tight text-slate-900 font-sans">
+                            AZUN <span class="text-blue-600 text-xs font-mono font-bold ml-1 px-2 py-0.5 rounded bg-blue-50 border border-blue-200">API v2</span>
+                        </span>
+                    </a>
+                    <span class="text-slate-300 hidden sm:inline">/</span>
+                    <span class="text-xs font-semibold text-slate-500 hidden sm:inline">Documentação para Desenvolvedores</span>
+                </div>
+
+                <!-- Campo de Pesquisa Rápida & Links -->
+                <div class="flex items-center gap-3">
+                    <div class="relative hidden md:block w-72">
+                        <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                        <input type="text" id="apiSearchInput" placeholder="Buscar endpoint, rota ou método..." class="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-slate-50 text-slate-900 placeholder-slate-400">
+                    </div>
+
+                    <a href="https://backcore.azun.com.br/api/pdv/health" target="_blank" class="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold font-mono" title="Testar Health Check no Servidor Principal">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>API Online</span>
+                    </a>
+
+                    <a href="index.html" class="px-4 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors flex items-center gap-1.5 border border-slate-200">
+                        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                        <span>Voltar ao Site</span>
+                    </a>
+
+                    <a href="index.html#downloads" class="px-4 py-1.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-all shadow-sm flex items-center gap-1.5">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                        <span>Instalador PDV</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         LAYOUT PRINCIPAL COM SIDEBAR LATERAL E ÁREA DE CONTEÚDO
+         ========================================================================== -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- SIDEBAR LATERAL (NAVEGAÇÃO POR CATEGORIAS) -->
+            <aside class="lg:col-span-3 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2 space-y-6">
+                
+                <!-- 1. Guia Rápido -->
+                <div>
+                    <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">Visão Geral</h4>
+                    <nav class="space-y-1">
+                        <a href="#intro" class="sidebar-link active">
+                            <span>Introdução & Arquitetura</span>
+                        </a>
+                        <a href="#autenticacao" class="sidebar-link">
+                            <span>Autenticação & Chaves</span>
+                        </a>
+                        <a href="#respostas" class="sidebar-link">
+                            <span>Status Codes & Erros</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- 2. APIs Livres & Públicas -->
+                <div>
+                    <div class="flex items-center justify-between mb-2 px-2">
+                        <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">APIs Livres & Abertas</h4>
+                        <span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">Sem Chave</span>
+                    </div>
+                    <nav class="space-y-1">
+                        <a href="#endpoint-health" class="sidebar-link">
+                            <span class="truncate">Health Check</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-produtos-livres" class="sidebar-link">
+                            <span class="truncate">Catálogo Aberto</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-busca-produtos" class="sidebar-link">
+                            <span class="truncate">Busca de Produtos</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-autoatendimento-produtos" class="sidebar-link">
+                            <span class="truncate">Cardápio Autoatendimento</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-autoatendimento-mesa" class="sidebar-link">
+                            <span class="truncate">Consumo Mesa QR Code</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-autoatendimento-pedir" class="sidebar-link">
+                            <span class="truncate">Pedido Cliente Mesa</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                        <a href="#endpoint-autoatendimento-pix" class="sidebar-link">
+                            <span class="truncate">PIX Autoatendimento</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                        <a href="#endpoint-driver-link" class="sidebar-link">
+                            <span class="truncate">Link do Motoboy</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-driver-confirm" class="sidebar-link">
+                            <span class="truncate">Confirmar com PIN</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                        <a href="#endpoint-driver-gps" class="sidebar-link">
+                            <span class="truncate">GPS do Entregador</span>
+                            <span class="method-badge method-put">PUT</span>
+                        </a>
+                        <a href="#endpoint-public-keys" class="sidebar-link">
+                            <span class="truncate">Chaves Públicas Gateways</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- 3. API Pública de Integração (v1 & v2) -->
+                <div>
+                    <div class="flex items-center justify-between mb-2 px-2">
+                        <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Integração Externa</h4>
+                        <span class="text-[9px] font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">x-api-key</span>
+                    </div>
+                    <nav class="space-y-1">
+                        <a href="#endpoint-v1-produtos-get" class="sidebar-link">
+                            <span class="truncate">Listar Produtos v1</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-v1-produtos-post" class="sidebar-link">
+                            <span class="truncate">Cadastrar Produto v1</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                        <a href="#endpoint-v1-estoque" class="sidebar-link">
+                            <span class="truncate">Sincronizar Estoque</span>
+                            <span class="method-badge method-put">PUT</span>
+                        </a>
+                        <a href="#endpoint-v1-pedidos-get" class="sidebar-link">
+                            <span class="truncate">Listar Pedidos v1</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-v1-rastreio" class="sidebar-link">
+                            <span class="truncate">Atualizar Rastreio</span>
+                            <span class="method-badge method-put">PUT</span>
+                        </a>
+                        <a href="#endpoint-v2-produtos" class="sidebar-link">
+                            <span class="truncate">Catálogo Integrado v2</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-v2-clientes" class="sidebar-link">
+                            <span class="truncate">Identificar Cliente v2</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                        <a href="#endpoint-v2-frete" class="sidebar-link">
+                            <span class="truncate">Calcular Frete v2</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                        <a href="#endpoint-v2-pedidos" class="sidebar-link">
+                            <span class="truncate">Gerar Pedido v2</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- 4. PDV & Sincronização Híbrida -->
+                <div>
+                    <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">PDV & Sincronização</h4>
+                    <nav class="space-y-1">
+                        <a href="#endpoint-pdv-sync" class="sidebar-link">
+                            <span class="truncate">Carga Sync Caixa</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-pdv-mesas" class="sidebar-link">
+                            <span class="truncate">Sincronizar Mesas</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-pdv-vincular" class="sidebar-link">
+                            <span class="truncate">Vincular Terminal</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- 5. Serviços Fiscais SEFAZ -->
+                <div>
+                    <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">Motor Fiscal SEFAZ</h4>
+                    <nav class="space-y-1">
+                        <a href="#endpoint-fiscal-nfce" class="sidebar-link">
+                            <span class="truncate">Emissão NFC-e 65</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                        <a href="#endpoint-fiscal-nfe" class="sidebar-link">
+                            <span class="truncate">Emissão NF-e 55</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                        <a href="#endpoint-fiscal-status" class="sidebar-link">
+                            <span class="truncate">Status SEFAZ</span>
+                            <span class="method-badge method-get">GET</span>
+                        </a>
+                        <a href="#endpoint-fiscal-certificado" class="sidebar-link">
+                            <span class="truncate">Inspeção Certificado A1</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                        <a href="#endpoint-fiscal-xml" class="sidebar-link">
+                            <span class="truncate">Importação XML</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- 6. Webhooks -->
+                <div>
+                    <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">Webhooks</h4>
+                    <nav class="space-y-1">
+                        <a href="#endpoint-webhooks-config" class="sidebar-link">
+                            <span class="truncate">Configurar Notificação</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                        <a href="#endpoint-webhooks-gateways" class="sidebar-link">
+                            <span class="truncate">Recebimento Gateways</span>
+                            <span class="method-badge method-post">POST</span>
+                        </a>
+                    </nav>
+                </div>
+
+            </aside>
+
+            <!-- CONTEÚDO PRINCIPAL (DOCUMENTAÇÃO DOS ENDPOINTS) -->
+            <main class="lg:col-span-9 space-y-12">
+                
+                <!-- ==========================================================
+                     SEÇÃO 1: INTRODUÇÃO & ARQUITETURA
+                     ========================================================== -->
+                <section id="intro" class="scroll-mt-24">
+                    <div class="mb-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold">
+                        <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                        <span>Azun REST API v2.0 • Verificada no Backend Principal</span>
+                    </div>
+                    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-3">
+                        Ecossistema de APIs & Serviços REST Azun
+                    </h1>
+                    <p class="text-slate-600 leading-relaxed text-sm mb-6">
+                        A plataforma Azun disponibiliza um conjunto abrangente de APIs RESTful estruturadas para conectar lojas virtuais, terminais de ponto de venda desktop em C++, totens de autoatendimento, cardápios digitais via QR Code, rastreadores de motoboys e motores fiscais da SEFAZ estadual.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                            <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Servidor Base Principal</div>
+                            <div class="text-sm font-mono font-bold text-blue-600">https://backcore.azun.com.br/api</div>
+                            <div class="text-xs text-slate-500 mt-1">Gateway unificado do ERP & PDV</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                            <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Formato Padrão</div>
+                            <div class="text-sm font-mono font-bold text-slate-900">JSON (application/json)</div>
+                            <div class="text-xs text-slate-500 mt-1">Respostas tipadas e seguras</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                            <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Ambientes</div>
+                            <div class="text-sm font-mono font-bold text-emerald-600">Produção & Sandbox</div>
+                            <div class="text-xs text-slate-500 mt-1">Header x-sandbox: true</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==========================================================
+                     SEÇÃO 2: AUTENTICAÇÃO & CABEÇALHOS
+                     ========================================================== -->
+                <section id="autenticacao" class="scroll-mt-24 pt-6 border-t border-slate-200">
+                    <h2 class="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <i data-lucide="key" class="w-5 h-5 text-blue-600"></i>
+                        <span>Autenticação e Cabeçalhos Obrigatórios</span>
+                    </h2>
+                    <p class="text-slate-600 text-sm mb-4">
+                        O backend da Azun opera em três camadas claras de acesso:
+                    </p>
+
+                    <div class="space-y-3 mb-6 text-sm">
+                        <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200">
+                            <div class="font-bold text-emerald-900 mb-1 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                                <span>1. APIs Livres & Abertas (Sem Chave)</span>
+                            </div>
+                            <p class="text-emerald-800 text-xs leading-relaxed">
+                                Endpoints de consulta de saúde, catálogo aberto para e-commerce, links de autoatendimento de mesas e rotas do motoboy. Não exigem <code class="font-mono font-bold">x-api-key</code> nem Token de Administrador. Para lojas específicas no multi-tenant, basta enviar o cabeçalho <code class="font-mono font-bold">x-tenant-id</code> ou o subdomínio da loja.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-200">
+                            <div class="font-bold text-blue-900 mb-1 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                                <span>2. API de Integração Externa (x-api-key)</span>
+                            </div>
+                            <p class="text-blue-800 text-xs leading-relaxed">
+                                As rotas <code class="font-mono font-bold">/api/v1/*</code> e <code class="font-mono font-bold">/api/v2/*</code> exigem a chave de API cadastrada no painel da loja enviada no cabeçalho <code class="font-mono font-bold">x-api-key</code>. Suportam chaves de produção (<code class="font-mono">sk_live_...</code>) e chaves de teste (<code class="font-mono">sk_test_...</code>).
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-100 border border-slate-200">
+                            <div class="font-bold text-slate-900 mb-1 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-slate-600"></span>
+                                <span>3. APIs de Caixa PDV & Serviços Fiscais (Token de Caixa)</span>
+                            </div>
+                            <p class="text-slate-700 text-xs leading-relaxed">
+                                Os executáveis locais (<code class="font-mono">AzunPDV.exe</code> e <code class="font-mono">AzunService.exe</code>) utilizam tokens de caixa individuais (<code class="font-mono">token=CX-XXXX-XXXX</code>) vinculados ao terminal e série fiscal correspondente.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Exemplo de Cabeçalhos em cURL -->
+                    <div class="code-pre">
+<span class="text-slate-400"># Exemplo de Cabeçalhos para API Pública com Chave:</span>
+curl -X GET "https://backcore.azun.com.br/api/v1/produtos?pagina=1&limite=50" \
+  -H "x-api-key: sk_live_9a8b7c6d5e4f3a2b1c" \
+  -H "Content-Type: application/json"
+
+<span class="text-slate-400"># Exemplo de Cabeçalhos para APIs Livres com Identificação de Loja:</span>
+curl -X GET "https://backcore.azun.com.br/api/produtos" \
+  -H "x-tenant-id: 1"
+                    </div>
+                </section>
+
+                <!-- ==========================================================
+                     SEÇÃO 3: APIS LIVRES & PÚBLICAS
+                     ========================================================== -->
+                <section id="apis-livres" class="scroll-mt-24 pt-6 border-t border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider font-mono">Categoria Especial</span>
+                            <h2 class="text-2xl font-extrabold text-slate-900">APIs Livres & Abertas</h2>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">
+                            Zero Chaves Obrigatórias
+                        </span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                        Estas rotas estão disponíveis publicamente no backend principal e podem ser chamadas por aplicativos móveis, cardápios online, monitores de status e clientes no restaurante sem necessidade de autenticação prévia de administrador.
+                    </p>
+
+                    <div class="space-y-6">
+
+                        <!-- 1. Health Check -->
+                        <div id="endpoint-health" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/pdv/health</span>
+                                </div>
+                                <span class="text-xs font-mono font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">200 OK • 0ms</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Health Check & Status do Servidor Principal</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Rota pública ultrarrápida usada pelo <code class="font-mono">AzunPDV.exe</code> e sistemas de monitoramento para testar conectividade e latência.
+                            </p>
+                            <div class="code-pre mb-3">curl -X GET "https://backcore.azun.com.br/api/pdv/health"</div>
+                            <div class="code-pre text-emerald-400">
+{
+  "status": "OK",
+  "online": true,
+  "timestamp": "2026-10-26T18:47:46.397Z"
+}
+                            </div>
+                        </div>
+
+                        <!-- 2. Catálogo Aberto de Produtos -->
+                        <div id="endpoint-produtos-livres" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/produtos</span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-mono">Header opcional: x-tenant-id</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Catálogo Livre de Produtos (E-commerce & Consulta Aberta)</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Retorna a lista completa de produtos ativos da loja, incluindo preços, saldo em estoque, imagens, categorias e marcas.
+                            </p>
+                            <div class="code-pre mb-3">curl -X GET "https://backcore.azun.com.br/api/produtos" -H "x-tenant-id: 1"</div>
+                            <div class="code-pre text-emerald-400">
+[
+  {
+    "id_produto": 265,
+    "nome": "Macarrão Santa Amália 500G Sêmola Parafuso",
+    "preco": 4.50,
+    "estoque": 142,
+    "ativo": true,
+    "categoria": "Alimentos",
+    "imagem_url": "https://azuntecnologia.com.br/uploads/macarrao.jpg"
+  }
+]
+                            </div>
+                        </div>
+
+                        <!-- 3. Busca Aberta de Produtos -->
+                        <div id="endpoint-busca-produtos" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/produtos/busca?keyword=termo</span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-mono">Query: keyword ou termo</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Pesquisa Rápida por Código de Barras EAN ou Nome</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Busca direta de itens por código de barras, SKU ou correspondência parcial de nome. Suporta leitura via scanner laser ou digitação.
+                            </p>
+                            <div class="code-pre mb-3">curl -X GET "https://backcore.azun.com.br/api/produtos/busca?keyword=7891234567890" -H "x-tenant-id: 1"</div>
+                        </div>
+
+                        <!-- 4. Cardápio Digital de Autoatendimento -->
+                        <div id="endpoint-autoatendimento-produtos" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/autoatendimento/produtos</span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-mono">Público para Mesas</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Cardápio Digital de Autoatendimento para Clientes</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Carrega itens disponíveis para consumo local em restaurantes, cafeterias e bares, organizados por grupos de produção (Cozinha / Bar / Sobremesas).
+                            </p>
+                            <div class="code-pre mb-3">curl -X GET "https://backcore.azun.com.br/api/autoatendimento/produtos" -H "x-tenant-id: 1"</div>
+                        </div>
+
+                        <!-- 5. Consumo e Status de Mesa via QR Code -->
+                        <div id="endpoint-autoatendimento-mesa" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/autoatendimento/m/:token</span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-mono">Token Único do QR Code</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Visualização da Comanda e Consumo da Mesa por QR Code</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Permite ao cliente escanear o QR Code fixado na mesa física e ver em tempo real todos os itens consumidos, valor parcial e status de preparo.
+                            </p>
+                            <div class="code-pre mb-3">curl -X GET "https://backcore.azun.com.br/api/autoatendimento/m/MS-TOKEN-MESA-05"</div>
+                            <div class="code-pre text-emerald-400">
+{
+  "sucesso": true,
+  "mesa": { "id_mesa": 5, "numero": "05", "status": "OCUPADA" },
+  "comanda": {
+    "id_pedido": 93,
+    "valor_total": 4.50,
+    "itens": [
+      { "id_produto": 265, "nome": "Macarrão Santa Amália", "quantidade": 1, "preco_unitario": 4.50 }
+    ]
+  }
+}
+                            </div>
+                        </div>
+
+                        <!-- 6. Envio de Pedido pelo Cliente na Mesa -->
+                        <div id="endpoint-autoatendimento-pedir" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-post">POST</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/autoatendimento/m/:token/pedir</span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-mono">Payload JSON</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Lançamento Direto de Pedido pelo Cliente na Mesa</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                O cliente adiciona itens ao carrinho no celular e dispara o pedido diretamente para a impressora ou tela KDS da cozinha.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X POST "https://backcore.azun.com.br/api/autoatendimento/m/MS-TOKEN-MESA-05/pedir" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "itens": [
+      { "id_produto": 265, "quantidade": 2, "observacao": "Sem cebola" }
+    ]
+  }'
+                            </div>
+                        </div>
+
+                        <!-- 7. Geração Livre de PIX para Pagamento na Mesa -->
+                        <div id="endpoint-autoatendimento-pix" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-post">POST</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/autoatendimento/m/:token/pagar-pix</span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-mono">PIX Dinâmico Instantâneo</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Auto-pagamento da Mesa via PIX</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Gera a chave Copia e Cola e o QR Code PIX para o cliente pagar a comanda sem precisar esperar o garçom com a maquininha.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X POST "https://backcore.azun.com.br/api/autoatendimento/m/MS-TOKEN-MESA-05/pagar-pix"
+                            </div>
+                        </div>
+
+                        <!-- 8. Link Livre de Entrega para Motoboys -->
+                        <div id="endpoint-driver-link" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/pedidos/driver-link/:token</span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-mono">Token Temporário de Entrega</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Painel do Entregador / Motoboy (Sem Login)</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Rota aberta que exibe ao motorista o endereço de entrega, trajeto no Google Maps/Waze, telefone do cliente e botão de ligar.
+                            </p>
+                            <div class="code-pre mb-3">curl -X GET "https://backcore.azun.com.br/api/pedidos/driver-link/DRV-TOKEN-789"</div>
+                        </div>
+
+                        <!-- 9. Confirmação de Entrega com PIN -->
+                        <div id="endpoint-driver-confirm" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-post">POST</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/pedidos/driver-confirm</span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-mono">Validação com PIN Seguro</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Confirmação de Entrega pelo Motoboy via PIN</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Valida o PIN de 4 dígitos informado pelo cliente no ato do recebimento e finaliza a corrida de entrega no ERP.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X POST "https://backcore.azun.com.br/api/pedidos/driver-confirm" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "driver_token": "DRV-TOKEN-789",
+    "delivery_pin": "4821"
+  }'
+                            </div>
+                        </div>
+
+                        <!-- 10. GPS do Entregador em Tempo Real -->
+                        <div id="endpoint-driver-gps" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-put">PUT</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/pedidos/driver-location/:token</span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-mono">Latitude & Longitude</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Atualização de Coordenadas GPS do Motoboy</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Recebe a latitude e longitude do navegador do motoboy a cada 10 segundos para desenhar o trajeto no mapa do cliente.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X PUT "https://backcore.azun.com.br/api/pedidos/driver-location/DRV-TOKEN-789" \
+  -H "Content-Type: application/json" \
+  -d '{ "lat": -3.119028, "lng": -60.021731 }'
+                            </div>
+                        </div>
+
+                        <!-- 11. Chaves Públicas para Checkout -->
+                        <div id="endpoint-public-keys" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/public-keys</span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-mono">Chaves Públicas de Gateway</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Chaves Públicas de Pagamento para Frontend</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Retorna com segurança as Public Keys (Mercado Pago, Stripe, etc.) para inicialização do checkout sem expor credenciais secretas.
+                            </p>
+                            <div class="code-pre mb-3">curl -X GET "https://backcore.azun.com.br/api/public-keys" -H "x-tenant-id: 1"</div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ==========================================================
+                     SEÇÃO 4: API V1 & V2 DE INTEGRAÇÃO (COM X-API-KEY)
+                     ========================================================== -->
+                <section id="api-integracao" class="scroll-mt-24 pt-6 border-t border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-blue-600 uppercase tracking-wider font-mono">Integração ERP / CRM</span>
+                            <h2 class="text-2xl font-extrabold text-slate-900">API Pública Externa (v1 & v2)</h2>
+                        </div>
+                        <span class="text-xs font-bold text-blue-800 bg-blue-100 px-3 py-1 rounded-full border border-blue-300">
+                            Requer Header x-api-key
+                        </span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                        Estas rotas operam diretamente sobre a tabela <code class="font-mono font-bold">api_keys</code> do banco de dados, com permissões granulares por chave (<code class="font-mono">ler_produtos</code>, <code class="font-mono">escrever_produtos</code>, <code class="font-mono">ler_pedidos</code>, <code class="font-mono">escrever_pedidos</code>).
+                    </p>
+
+                    <div class="space-y-6">
+
+                        <!-- GET /api/v1/produtos -->
+                        <div id="endpoint-v1-produtos-get" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/v1/produtos</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Permissão: ler_produtos</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Listagem Paginada do Estoque</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Busca paginada segura com limitador automático de até 100 itens para proteger o banco de dados. Suporta identificador externo (<code class="font-mono">id_externo</code>).
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X GET "https://backcore.azun.com.br/api/v1/produtos?pagina=1&limite=50" \
+  -H "x-api-key: sk_live_suachaveaqui"
+                            </div>
+                            <div class="code-pre text-emerald-400">
+{
+  "sucesso": true,
+  "sandbox": false,
+  "paginacao": {
+    "total_itens": 236,
+    "pagina_atual": 1,
+    "total_paginas": 5,
+    "itens_na_pagina": 50
+  },
+  "produtos": [
+    {
+      "id_produto": 265,
+      "nome": "Macarrão Santa Amália 500G",
+      "preco": 4.50,
+      "estoque": 142,
+      "ativo": true,
+      "id_externo": "EXT-PROD-998"
+    }
+  ]
+}
+                            </div>
+                        </div>
+
+                        <!-- POST /api/v1/produtos -->
+                        <div id="endpoint-v1-produtos-post" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-post">POST</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/v1/produtos</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Permissão: escrever_produtos</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Cadastro de Novo Produto</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Cadastra produtos vindos de outros sistemas. Suporta modo Sandbox (<code class="font-mono">x-sandbox: true</code>) que valida a regra de negócio sem gravar no banco de produção.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X POST "https://backcore.azun.com.br/api/v1/produtos" \
+  -H "x-api-key: sk_live_suachaveaqui" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nome": "Coca-Cola Lata 350ml",
+    "preco": 5.00,
+    "estoque": 80,
+    "descricao": "Refrigerante lata",
+    "peso": 0.35,
+    "ativo": true,
+    "id_externo": "CRM-BEB-01"
+  }'
+                            </div>
+                        </div>
+
+                        <!-- PUT /api/v1/produtos/:id/estoque -->
+                        <div id="endpoint-v1-estoque" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-put">PUT</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/v1/produtos/:id/estoque</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Permissão: escrever_produtos</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Sincronização Rápida de Saldo de Estoque</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Atualiza instantaneamente a quantidade em estoque de um produto no ERP e em todos os caixas PDV conectados.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X PUT "https://backcore.azun.com.br/api/v1/produtos/265/estoque" \
+  -H "x-api-key: sk_live_suachaveaqui" \
+  -H "Content-Type: application/json" \
+  -d '{ "estoque": 150 }'
+                            </div>
+                        </div>
+
+                        <!-- GET /api/v1/pedidos -->
+                        <div id="endpoint-v1-pedidos-get" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/v1/pedidos</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Permissão: ler_pedidos</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Listagem de Pedidos com Descriptografia de Dados</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Retorna os últimos 50 pedidos da loja com itens e endereço de entrega. Telefones e CPFs protegidos são descriptografados em tempo de execução para integrações autorizadas.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X GET "https://backcore.azun.com.br/api/v1/pedidos" \
+  -H "x-api-key: sk_live_suachaveaqui"
+                            </div>
+                        </div>
+
+                        <!-- PUT /api/v1/pedidos/:id/rastreio -->
+                        <div id="endpoint-v1-rastreio" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-put">PUT</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/v1/pedidos/:id/rastreio</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Permissão: escrever_pedidos</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Despacho de Pedido e Código de Rastreio</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Registra o código de rastreamento (Correios, Jadlog, Loggi, etc.), altera o status de entrega para 'Enviado' e dispara notificação automática no WhatsApp do cliente.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X PUT "https://backcore.azun.com.br/api/v1/pedidos/93/rastreio" \
+  -H "x-api-key: sk_live_suachaveaqui" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "codigo_rastreio": "BR987654321AA",
+    "metodo_envio": "Sedex"
+  }'
+                            </div>
+                        </div>
+
+                        <!-- ROTAS V2 (publicIntegrationRoutes.js) -->
+                        <div id="endpoint-v2-pedidos" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-post">POST</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/v2/pedidos</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Permissão: WRITE_PEDIDOS</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Geração de Pedido Oficial com Link / PIX Automático</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Rota da API v2 que recebe a lista de produtos, calcula frete e cria o pedido oficial gerando cobrança PIX imediata.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X POST "https://backcore.azun.com.br/api/v2/pedidos" \
+  -H "x-api-key: sk_live_suachaveaqui" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id_cliente": 42,
+    "itens": [{ "id_produto": 265, "quantidade": 2 }],
+    "metodo_pagamento": "PIX"
+  }'
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ==========================================================
+                     SEÇÃO 5: APIS DO PDV & SINCRONIZAÇÃO HÍBRIDA
+                     ========================================================== -->
+                <section id="api-pdv" class="scroll-mt-24 pt-6 border-t border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider font-mono">Arquitetura Offline C++</span>
+                            <h2 class="text-2xl font-extrabold text-slate-900">PDV Desktop & Sincronização Híbrida</h2>
+                        </div>
+                        <span class="text-xs font-bold text-indigo-800 bg-indigo-100 px-3 py-1 rounded-full border border-indigo-300">
+                            Token de Terminal CX
+                        </span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                        Estas APIs alimentam o motor nativo em C++ (<code class="font-mono font-bold">AzunPDV.exe</code>) e o serviço de sincronização (<code class="font-mono font-bold">AzunService.exe</code>), garantindo 0ms de latência no caixa mesmo sem conexão com a internet.
+                    </p>
+
+                    <div class="space-y-6">
+
+                        <!-- Carga Sync -->
+                        <div id="endpoint-pdv-sync" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/pdv/caixas/carga-sync?token=CX-XXXX-XXXX</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Token do Caixa</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Carga Completa para Operação Offline do Caixa</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Baixa em um único payload compactado todos os produtos com código de barras, tributação (NCM, CEST, CFOP, CSOSN), operadores com PIN criptografado, formas de pagamento e série fiscal NFC-e vinculada.
+                            </p>
+                            <div class="code-pre mb-3">curl -X GET "https://backcore.azun.com.br/api/pdv/caixas/carga-sync?token=CX-0304-EC8F"</div>
+                        </div>
+
+                        <!-- Sync Mesas -->
+                        <div id="endpoint-pdv-mesas" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/pdv/caixas/mesas?token=CX-XXXX-XXXX</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Sincronização em Tempo Real</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Mapa de Mesas e Comandas Abertas</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Rota de alta frequência utilizada pela tela de mesas do PDV para monitorar pedidos em aberto, comandas ativas, tempo de permanência e garçom responsável.
+                            </p>
+                            <div class="code-pre mb-3">curl -X GET "https://backcore.azun.com.br/api/pdv/caixas/mesas?token=CX-0304-EC8F"</div>
+                        </div>
+
+                        <!-- Vincular Terminal -->
+                        <div id="endpoint-pdv-vincular" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-post">POST</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/pdv/caixas/vincular</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Pareamento Seguro</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Pareamento de Novo Computador Caixa</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Registra a máquina física na nuvem usando o código de ativação fornecido no painel admin, gerando um token exclusivo permanente.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X POST "https://backcore.azun.com.br/api/pdv/caixas/vincular" \
+  -H "Content-Type: application/json" \
+  -d '{ "codigo_pareamento": "AZUN-7729-BR", "nome_maquina": "CAIXA-01-BALCAO" }'
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ==========================================================
+                     SEÇÃO 6: MOTOR FISCAL SEFAZ
+                     ========================================================== -->
+                <section id="api-fiscal" class="scroll-mt-24 pt-6 border-t border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-sky-600 uppercase tracking-wider font-mono">Automação Tributária</span>
+                            <h2 class="text-2xl font-extrabold text-slate-900">Motor Fiscal SEFAZ (NFC-e & NF-e)</h2>
+                        </div>
+                        <span class="text-xs font-bold text-sky-800 bg-sky-100 px-3 py-1 rounded-full border border-sky-300">
+                            Certificado Digital A1
+                        </span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                        Geração, assinatura com Certificado Digital A1 (.pfx) em memória, transmissão e autorização direta nos WebServices da SEFAZ de todos os estados brasileiros.
+                    </p>
+
+                    <div class="space-y-6">
+
+                        <!-- Emissão NFC-e 65 -->
+                        <div id="endpoint-fiscal-nfce" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-post">POST</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/fiscal/nfce/emitir</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Modelo 65 Varejo</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Emissão Instantânea de NFC-e (Modelo 65)</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Converte uma venda de balcão em cupom fiscal homologado pela SEFAZ, gerando o protocolo de autorização, chave de acesso de 44 dígitos, XML assinado e link do QR Code estadual.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X POST "https://backcore.azun.com.br/api/fiscal/nfce/emitir" \
+  -H "Authorization: Bearer seu_token_jwt" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id_pedido": 93,
+    "consumidor_cpf": "12345678900",
+    "forma_pagamento": "01"
+  }'
+                            </div>
+                        </div>
+
+                        <!-- Emissão NF-e 55 -->
+                        <div id="endpoint-fiscal-nfe" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-post">POST</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/fiscal/nfe/emitir</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Modelo 55 Geral</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Emissão de NF-e Comercial (Modelo 55)</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Emissão para vendas B2B, devoluções, transferências entre filiais e vendas para outros estados, gerando o DANFE em PDF e XML.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X POST "https://backcore.azun.com.br/api/fiscal/nfe/emitir" \
+  -H "Authorization: Bearer seu_token_jwt" \
+  -H "Content-Type: application/json" \
+  -d '{ "id_pedido": 93, "tipo_operacao": "saida" }'
+                            </div>
+                        </div>
+
+                        <!-- Testar SEFAZ -->
+                        <div id="endpoint-fiscal-status" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-get">GET</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/fiscal/testar-sefaz</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Status Operacional</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Consulta de Disponibilidade do WebService SEFAZ</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Testa a comunicação direta com os servidores da SEFAZ estadual e mede a latência em milissegundos.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X GET "https://backcore.azun.com.br/api/fiscal/testar-sefaz" \
+  -H "Authorization: Bearer seu_token_jwt"
+                            </div>
+                        </div>
+
+                        <!-- Importar XML Entrada -->
+                        <div id="endpoint-fiscal-xml" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-post">POST</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/fiscal/entrada/importar</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Multipart/form-data</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Importação Automática de XML de Compras (Fornecedor)</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Faz a leitura completa do XML da NF-e emitida pelo fornecedor, cadastra novos produtos automaticamente, atualiza o custo médio e alimenta o saldo em estoque.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X POST "https://backcore.azun.com.br/api/fiscal/entrada/importar" \
+  -H "Authorization: Bearer seu_token_jwt" \
+  -F "xml=@nota_fiscal_fornecedor.xml"
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ==========================================================
+                     SEÇÃO 7: WEBHOOKS & NOTIFICAÇÕES
+                     ========================================================== -->
+                <section id="webhooks" class="scroll-mt-24 pt-6 border-t border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-purple-600 uppercase tracking-wider font-mono">Eventos em Tempo Real</span>
+                            <h2 class="text-2xl font-extrabold text-slate-900">Webhooks de Pagamentos & Notificações</h2>
+                        </div>
+                        <span class="text-xs font-bold text-purple-800 bg-purple-100 px-3 py-1 rounded-full border border-purple-300">
+                            Push Assíncrono
+                        </span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                        Receba avisos instantâneos quando um pagamento for aprovado, quando um pedido for impresso ou quando uma NFC-e for autorizada.
+                    </p>
+
+                    <div class="space-y-6">
+
+                        <!-- Cadastro de Webhook -->
+                        <div id="endpoint-webhooks-config" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-post">POST</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/v1/webhooks/settings</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Header: x-api-key</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Cadastrar URL de Webhook</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                Configura o endereço HTTP da sua aplicação para receber eventos como <code class="font-mono font-bold">pedido.pago</code> ou <code class="font-mono font-bold">nfce.emitida</code>.
+                            </p>
+                            <div class="code-pre mb-3">
+curl -X POST "https://backcore.azun.com.br/api/v1/webhooks/settings" \
+  -H "x-api-key: sk_live_suachaveaqui" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://meucrm.com.br/api/azun-webhook",
+    "evento": "pedido.pago"
+  }'
+                            </div>
+                        </div>
+
+                        <!-- Webhooks Públicos de Gateways -->
+                        <div id="endpoint-webhooks-gateways" class="api-card p-6 scroll-mt-24">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="method-badge method-post">POST</span>
+                                    <span class="font-mono font-bold text-sm text-slate-900">/api/webhooks/:gateway</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">Mercado Pago / Asaas / Stripe / Cielo / AbacatePay</span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Endpoints Nativos para Recebimento de Notificações de Pagamento</h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                O backend processa automaticamente os callbacks e atualiza o pedido para 'Pago', liberando a impressão na cozinha ou despacho no estoque:
+                            </p>
+                            <ul class="text-xs space-y-1.5 font-mono text-slate-700 mb-4 pl-4 list-disc">
+                                <li>POST /api/webhooks/mercadopago</li>
+                                <li>POST /api/webhooks/asaas</li>
+                                <li>POST /api/webhooks/stripe</li>
+                                <li>POST /api/webhooks/cielo</li>
+                                <li>POST /api/webhooks/abacatepay</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ==========================================================
+                     SEÇÃO 8: CÓDIGOS DE RESPOSTA & STATUS
+                     ========================================================== -->
+                <section id="respostas" class="scroll-mt-24 pt-6 border-t border-slate-200">
+                    <h2 class="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600"></i>
+                        <span>Códigos de Status HTTP & Resoluções</span>
+                    </h2>
+                    <p class="text-slate-600 text-sm mb-4">
+                        Todas as respostas seguem os padrões universais da especificação HTTP:
+                    </p>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-3 font-mono">Código</th>
+                                    <th class="p-3">Significado</th>
+                                    <th class="p-3">Cenário Comum</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 font-sans">
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-emerald-600">200 OK</td>
+                                    <td class="p-3 font-medium text-slate-900">Sucesso na Requisição</td>
+                                    <td class="p-3 text-slate-500">Consulta de produtos, pedidos ou mesas realizada.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-emerald-600">201 Created</td>
+                                    <td class="p-3 font-medium text-slate-900">Recurso Criado</td>
+                                    <td class="p-3 text-slate-500">Novo produto ou pedido cadastrado com sucesso.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-amber-600">400 Bad Request</td>
+                                    <td class="p-3 font-medium text-slate-900">Campos Inválidos</td>
+                                    <td class="p-3 text-slate-500">Parâmetro obrigatório ausente ou JSON corrompido.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-red-600">401 Unauthorized</td>
+                                    <td class="p-3 font-medium text-slate-900">Não Autenticado</td>
+                                    <td class="p-3 text-slate-500">Header x-api-key ausente ou inválido.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-red-600">403 Forbidden</td>
+                                    <td class="p-3 font-medium text-slate-900">Permissão Negada</td>
+                                    <td class="p-3 text-slate-500">Chave não possui a permissão específica (ex: escrever_pedidos).</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-slate-600">404 Not Found</td>
+                                    <td class="p-3 font-medium text-slate-900">Não Encontrado</td>
+                                    <td class="p-3 text-slate-500">Produto, mesa ou pedido inexistente nesta loja.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-purple-600">500 Server Error</td>
+                                    <td class="p-3 font-medium text-slate-900">Erro Interno</td>
+                                    <td class="p-3 text-slate-500">Instabilidade temporária no banco ou SEFAZ offline.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         RODAPÉ DA PÁGINA DE DOCUMENTAÇÃO
+         ========================================================================== -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img src="assets/images/logo.png" alt="Azun Tecnologia" class="w-8 h-8 object-contain rounded-lg">
+                <span class="text-lg font-extrabold text-white">AZUN</span>
+                <span class="text-xs text-slate-500">| Portal de APIs & Desenvolvedores</span>
+            </div>
+            <div class="flex items-center gap-6 text-xs font-semibold">
+                <a href="index.html" class="hover:text-blue-400 transition-colors">Página Inicial</a>
+                <a href="index.html#downloads" class="hover:text-blue-400 transition-colors">Downloads do PDV</a>
+                <a href="index.html#planos" class="hover:text-blue-400 transition-colors">Planos & Preços</a>
+                <a href="http://localhost:3001/login" target="_blank" class="hover:text-blue-400 transition-colors">Acessar Painel Web</a>
+            </div>
+            <div class="text-xs text-slate-600">
+                &copy; 2026 Azun Tecnologia. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Busca & Interatividade -->
+    <script>
+        // Inicialização de Ícones Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // Busca em Tempo Real na Página de API
+        const searchInput = document.getElementById('apiSearchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase().trim();
+                const cards = document.querySelectorAll('.api-card');
+                
+                cards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    if (!term || text.includes(term)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Destaque de Link Ativo no Scroll
+        const sections = document.querySelectorAll('section[id], .api-card[id]');
+        const navLinks = document.querySelectorAll('.sidebar-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

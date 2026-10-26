@@ -678,10 +678,12 @@ def handle_webhook():
 };
 
 function initApiExplorer() {
+    const codeSnippetEl = document.getElementById('apiCodeSnippet');
+    const tabButtons = document.querySelectorAll('.api-tab-btn');
+    if (!codeSnippetEl && tabButtons.length === 0) return;
+
     let currentEndpoint = 'pedidos';
     let currentLang = 'curl';
-
-    const tabButtons = document.querySelectorAll('.api-tab-btn');
     const langButtons = document.querySelectorAll('.api-lang-btn');
     const codeSnippetEl = document.getElementById('apiCodeSnippet');
     const responseSnippetEl = document.getElementById('apiResponseSnippet');

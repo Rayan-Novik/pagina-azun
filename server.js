@@ -313,6 +313,9 @@ const server = http.createServer((req, res) => {
   // SERVIR ARQUIVOS ESTÁTICOS & DOWNLOADS
   // =========================================================================
   let requestFile = cleanUrl === '/' || cleanUrl === '' ? '/index.html' : cleanUrl;
+  if (cleanUrl === '/api' || cleanUrl === '/docs' || cleanUrl === '/api-docs' || cleanUrl === '/desenvolvedores') {
+    requestFile = '/api.html';
+  }
   const filePath = path.join(__dirname, requestFile);
 
   fs.stat(filePath, (err, stats) => {

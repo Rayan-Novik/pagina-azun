@@ -207,7 +207,7 @@
                     <a href="#modulos" class="hover:text-blue-600 transition-colors">Módulos</a>
                     <a href="#tecnologia" class="hover:text-blue-600 transition-colors">Tecnologia Híbrida</a>
                     <a href="#comparativo" class="hover:text-blue-600 transition-colors">Por que a Azun?</a>
-                    <a href="#api-docs" class="hover:text-blue-600 transition-colors flex items-center gap-1">
+                    <a href="api.html" class="hover:text-blue-600 transition-colors flex items-center gap-1">
                         <i data-lucide="code" class="w-3.5 h-3.5 text-blue-500"></i>
                         <span>API & Docs</span>
                     </a>
@@ -253,7 +253,7 @@
                     <span>Comparativo Técnico</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
                 </a>
-                <a href="#api-docs" class="hover:text-blue-600 py-2 border-b border-slate-100 flex items-center justify-between">
+                <a href="api.html" class="hover:text-blue-600 py-2 border-b border-slate-100 flex items-center justify-between">
                     <span class="flex items-center gap-2"><i data-lucide="code" class="w-4 h-4 text-blue-500"></i> API & Desenvolvedores</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
                 </a>
@@ -824,7 +824,7 @@
     </section>
 
     <!-- ==========================================================================
-         7. DOCUMENTAÇÃO DA API AZUN & CONECTORES DE INTEGRAÇÃO
+         7. ECOSSISTEMA DE APIS & INTEGRAÇÕES PARA DESENVOLVEDORES
          ========================================================================== -->
     <section id="api-docs" class="py-24 bg-slate-950 text-white relative overflow-hidden">
         
@@ -833,137 +833,125 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
-            <div class="text-center max-w-3xl mx-auto mb-14">
+            <div class="text-center max-w-3xl mx-auto mb-16">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-wider uppercase mb-4">
                     <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
-                    <span>Documentação de API REST & WebSocket v2.0</span>
+                    <span>Portal Oficial para Desenvolvedores & Integradores</span>
                 </div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-5 font-sans">
-                    Integrações abertas e API de alta performance.
+                    Arquitetura aberta para conectar seu negócio ao mundo.
                 </h2>
-                <p class="text-slate-400 text-base sm:text-lg">
-                    Conecte totens de autoatendimento, cardápios digitais, e-commerces e plataformas de terceiros diretamente ao ecossistema Azun. Arquitetura orientada a microsserviços, autenticação Bearer Token e webhooks em tempo real.
+                <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+                    A plataforma Azun conta com documentação técnica dedicada e separada, abrangendo APIs livres sem chave para autoatendimento e cardápio QR Code, API pública de integração v1/v2 com autenticação <code class="text-blue-400 font-mono">x-api-key</code>, sincronização híbrida de PDV e emissão fiscal SEFAZ.
                 </p>
+                <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+                    <a href="api.html" class="px-8 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 hover:-translate-y-0.5 transition-all flex items-center gap-2.5">
+                        <span>Acessar Documentação Completa da API</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="https://backcore.azun.com.br/api/pdv/health" target="_blank" class="px-6 py-3.5 rounded-full bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-bold text-sm border border-slate-800 transition-colors flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Testar Health Check no Servidor</span>
+                    </a>
+                </div>
             </div>
 
-            <!-- Navegação de Endpoints da API -->
-            <div class="flex flex-wrap items-center justify-center gap-2 p-2 bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-800 max-w-4xl mx-auto mb-8 shadow-2xl">
-                <button type="button" class="api-tab-btn tab-btn-active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all" data-endpoint="pedidos">
-                    <span class="api-method-badge api-method-post">POST</span>
-                    <span>/pedidos</span>
-                </button>
-                <button type="button" class="api-tab-btn tab-btn-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all" data-endpoint="fiscal">
-                    <span class="api-method-badge api-method-post">POST</span>
-                    <span>/fiscal/emitir</span>
-                </button>
-                <button type="button" class="api-tab-btn tab-btn-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all" data-endpoint="mesas">
-                    <span class="api-method-badge api-method-get">GET</span>
-                    <span>/mesas/status</span>
-                </button>
-                <button type="button" class="api-tab-btn tab-btn-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all" data-endpoint="sync">
-                    <span class="api-method-badge api-method-post">POST</span>
-                    <span>/carga-sync</span>
-                </button>
-                <button type="button" class="api-tab-btn tab-btn-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all" data-endpoint="webhooks">
-                    <span class="api-method-badge api-method-ws">EVENT</span>
-                    <span>Webhooks HMAC</span>
-                </button>
-            </div>
-
-            <!-- Terminal Mockup da Documentação Interativa -->
-            <div class="reveal-scale api-terminal-screen rounded-3xl overflow-hidden max-w-5xl mx-auto border border-slate-800 shadow-2xl">
+            <!-- Grade dos 4 Pilares de APIs Verificadas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
                 
-                <!-- Barra Superior do Terminal -->
-                <div class="px-6 py-4 bg-slate-900 border-b border-slate-800 flex flex-wrap items-center justify-between gap-4">
-                    <div class="flex items-center gap-3">
-                        <span id="apiEndpointBadge" class="api-method-badge api-method-post">POST</span>
-                        <span id="apiEndpointUrl" class="font-mono text-xs sm:text-sm text-slate-200 font-bold">/api/v1/pedidos</span>
-                        <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-slate-600"></span>
-                        <span id="apiEndpointTitle" class="text-xs text-slate-400 font-medium hidden sm:inline">Criar Pedido Integrado</span>
-                    </div>
-
-                    <!-- Seletor de Linguagens (cURL, JS, Python) & Copiar -->
-                    <div class="flex items-center gap-2">
-                        <div class="flex items-center bg-slate-950 p-1 rounded-lg border border-slate-800 text-[11px] font-mono">
-                            <button type="button" class="api-lang-btn px-2.5 py-1 rounded bg-blue-600 text-white font-bold transition-all" data-lang="curl">cURL</button>
-                            <button type="button" class="api-lang-btn px-2.5 py-1 rounded text-slate-400 hover:text-white transition-all" data-lang="js">Node.js</button>
-                            <button type="button" class="api-lang-btn px-2.5 py-1 rounded text-slate-400 hover:text-white transition-all" data-lang="py">Python</button>
+                <!-- Pilar 1: APIs Livres & Abertas -->
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 transition-colors flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-400">
+                                <i data-lucide="unlock" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Sem Chave</span>
                         </div>
-
-                        <button type="button" id="btnCopyApiCode" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700 text-xs flex items-center gap-1.5" title="Copiar Exemplo">
-                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                            <span class="hidden sm:inline">Copiar</span>
-                        </button>
+                        <h3 class="text-base font-bold text-white mb-2">APIs Livres & Abertas</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Endpoints públicos para catálogo de e-commerce, busca de produtos, autoatendimento de mesas via QR Code, link do motoboy e health check.
+                        </p>
                     </div>
+                    <a href="api.html#apis-livres" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 transition-colors">
+                        <span>Ver Endpoints Livres</span>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    </a>
                 </div>
 
-                <!-- Descrição do Endpoint Selecionado -->
-                <div class="px-6 py-3 bg-slate-900/40 border-b border-slate-800/80 text-xs text-slate-400 flex items-center gap-2">
-                    <i data-lucide="info" class="w-3.5 h-3.5 text-blue-400 shrink-0"></i>
-                    <span id="apiEndpointDesc">Cria pedidos originados de cardápios digitais, e-commerces, totens ou balcão, calculando taxas fiscais e acionando impressão na cozinha.</span>
+                <!-- Pilar 2: API v1 & v2 de Integração -->
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 transition-colors flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-2.5 rounded-xl bg-blue-500/20 text-blue-400">
+                                <i data-lucide="key" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[10px] font-mono font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">x-api-key</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">Integração ERP / CRM</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Sincronização de catálogo, atualização instantânea de saldo de estoque, consulta de pedidos com dados descriptografados e modo sandbox.
+                        </p>
+                    </div>
+                    <a href="api.html#api-integracao" class="text-xs font-bold text-blue-400 hover:text-blue-300 flex items-center gap-1.5 transition-colors">
+                        <span>Ver Rotas de Integração</span>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    </a>
                 </div>
 
-                <!-- Corpo: Grid com Requisição e Resposta -->
-                <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-950/60">
-                    
-                    <!-- Coluna da Requisição -->
-                    <div class="lg:col-span-7 flex flex-col justify-between">
-                        <div class="flex items-center justify-between pb-2 mb-2 text-xs font-mono text-slate-400">
-                            <span class="flex items-center gap-1.5 text-blue-400 font-bold">
-                                <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                                <span>Requisição (Payload)</span>
-                            </span>
-                            <span class="text-[11px] text-slate-500">Header: Bearer Token</span>
+                <!-- Pilar 3: PDV Híbrido & Sincronização -->
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/40 transition-colors flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-2.5 rounded-xl bg-indigo-500/20 text-indigo-400">
+                                <i data-lucide="monitor" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[10px] font-mono font-bold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">Token CX</span>
                         </div>
-                        <pre id="apiCodeSnippet" class="code-block p-4 overflow-x-auto text-xs font-mono text-slate-200 leading-relaxed max-h-80 select-all"></pre>
+                        <h3 class="text-base font-bold text-white mb-2">PDV Híbrido C++</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Carga completa para operação 100% offline, sincronização de mesas em tempo real e pareamento seguro de novos terminais de caixa.
+                        </p>
                     </div>
+                    <a href="api.html#api-pdv" class="text-xs font-bold text-indigo-400 hover:text-indigo-300 flex items-center gap-1.5 transition-colors">
+                        <span>Ver Sincronização PDV</span>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
 
-                    <!-- Coluna da Resposta -->
-                    <div class="lg:col-span-5 flex flex-col justify-between">
-                        <div class="flex items-center justify-between pb-2 mb-2 text-xs font-mono text-slate-400">
-                            <span class="flex items-center gap-1.5 text-emerald-400 font-bold">
-                                <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
-                                <span>Resposta SEFAZ / Servidor</span>
-                            </span>
-                            <span class="text-[11px] text-emerald-400 font-mono font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">200 OK • 7.4ms</span>
+                <!-- Pilar 4: Motor Fiscal SEFAZ -->
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-sky-500/40 transition-colors flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-2.5 rounded-xl bg-sky-500/20 text-sky-400">
+                                <i data-lucide="receipt" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[10px] font-mono font-bold text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20">A1 Digital</span>
                         </div>
-                        <pre id="apiResponseSnippet" class="code-block p-4 overflow-x-auto text-xs font-mono text-emerald-300 leading-relaxed max-h-80 select-all"></pre>
+                        <h3 class="text-base font-bold text-white mb-2">Motor Fiscal SEFAZ</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Emissão instantânea de NFC-e 65 e NF-e 55, validação de certificados digitais A1, importação de XML e monitoramento de WebServices estaduais.
+                        </p>
                     </div>
-
+                    <a href="api.html#api-fiscal" class="text-xs font-bold text-sky-400 hover:text-sky-300 flex items-center gap-1.5 transition-colors">
+                        <span>Ver Serviços Fiscais</span>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    </a>
                 </div>
 
             </div>
 
-            <!-- 4 Pilares de Engenharia de Integração -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 max-w-5xl mx-auto text-xs">
-                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
-                    <div class="p-2 rounded-xl bg-blue-500/20 text-blue-400 w-fit mb-3">
-                        <i data-lucide="key" class="w-5 h-5"></i>
+            <!-- Banner Informativo -->
+            <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="book-open" class="w-4 h-4"></i>
                     </div>
-                    <h3 class="text-sm font-bold text-white mb-1">Autenticação JWT Segura</h3>
-                    <p class="text-slate-400 leading-relaxed">Tokens Bearer rotacionáveis por filial com permissões granulares de leitura, escrita e emissão fiscal.</p>
+                    <span>Deseja conectar seu aplicativo ao ecossistema Azun? Consulte os exemplos de código em cURL, Node.js e Python na página de documentação.</span>
                 </div>
-                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
-                    <div class="p-2 rounded-xl bg-emerald-500/20 text-emerald-400 w-fit mb-3">
-                        <i data-lucide="activity" class="w-5 h-5"></i>
-                    </div>
-                    <h3 class="text-sm font-bold text-white mb-1">SLA 99.99% & Cache Local</h3>
-                    <p class="text-slate-400 leading-relaxed">Operação tolerante a falhas: o serviço <code class="text-emerald-400 font-mono">AzunService.exe</code> retém dados em contingência se a internet cair.</p>
-                </div>
-                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
-                    <div class="p-2 rounded-xl bg-purple-500/20 text-purple-400 w-fit mb-3">
-                        <i data-lucide="webhook" class="w-5 h-5"></i>
-                    </div>
-                    <h3 class="text-sm font-bold text-white mb-1">Webhooks com Assinatura</h3>
-                    <p class="text-slate-400 leading-relaxed">Notificações em tempo real com hash HMAC SHA-256 e política de retry com backoff exponencial.</p>
-                </div>
-                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
-                    <div class="p-2 rounded-xl bg-amber-500/20 text-amber-400 w-fit mb-3">
-                        <i data-lucide="gauge" class="w-5 h-5"></i>
-                    </div>
-                    <h3 class="text-sm font-bold text-white mb-1">Rate Limit de 5.000 req/min</h3>
-                    <p class="text-slate-400 leading-relaxed">Projetado para franquias, redes de comércio e operações com pico intenso de pedidos simultâneos.</p>
-                </div>
+                <a href="api.html" class="px-5 py-2 rounded-lg bg-white text-slate-900 hover:bg-slate-100 font-bold shrink-0 transition-colors">
+                    Abrir Portal
+                </a>
             </div>
 
         </div>
@@ -1291,6 +1279,7 @@
                     <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Empresa & Acesso</h5>
                     <ul class="space-y-2.5 text-xs">
                         <li><a href="http://localhost:3001/login" target="_blank" class="hover:text-blue-400 transition-colors">Acessar Painel Web</a></li>
+                        <li><a href="api.html" class="hover:text-blue-400 transition-colors font-semibold text-blue-400">Documentação da API</a></li>
                         <li><a href="#planos" class="hover:text-blue-400 transition-colors">Tabela de Preços</a></li>
                         <li><a href="#tecnologia" class="hover:text-blue-400 transition-colors">Arquitetura de Segurança</a></li>
                         <li><a href="#" class="open-demo-modal hover:text-blue-400 transition-colors">Agendar Treinamento</a></li>
