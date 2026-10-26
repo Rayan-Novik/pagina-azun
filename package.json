@@ -10,9 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "express": "^4.19.2"
-  },
-  "devDependencies": {
+    "express": "^4.19.2",
     "vite": "^5.2.0"
   },
   "keywords": [
