@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1792889413812,
+    "nome": "Carlos Teste",
+    "telefone": "92988389730",
+    "empresa": "Restaurante Teste",
+    "segmento": "restaurante",
+    "email": "carlos@teste.com",
+    "mensagem": "Gostaria de agendar demonstração",
+    "dataHora": "24/10/2026, 20:50:13",
+    "ip": "::1"
+  }
+]

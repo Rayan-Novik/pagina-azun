@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azun Tecnologia - Sistema ERP Híbrido, Frente de Caixa PDV Offline e Emissor Fiscal SEFAZ</title>
+    
+    <!-- Meta Tags Fundamentais & Otimização para Buscas e Motores de IA (SEO, GEO & AEO) -->
+    <meta name="description" content="A Azun Tecnologia é a plataforma unificada de gestão comercial para varejo e restaurantes. Frente de Caixa PDV nativo em C++ que funciona 100% offline, emissão automática de NFC-e 65 e NF-e 55, controle de mesas e comandas, WhatsApp CRM integrado e ERP em nuvem.">
+    <meta name="keywords" content="sistema pdv offline, frente de caixa c++, emissor nfce, emissor nfe, sistema para restaurante, controle de mesas, gestao de comandas, erp comercial, sistema fiscal sefaz, azun tecnologia, software de gestao varejo, balanca toledo pdv, impressora esc pos">
+    <meta name="author" content="Azun Tecnologia">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="application-name" content="Azun PDV & ERP">
+    <link rel="canonical" href="https://azuntecnologia.com.br/">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <!-- Open Graph / Redes Sociais & Motores de IA -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://azuntecnologia.com.br/">
+    <meta property="og:title" content="Azun Tecnologia - Sistema ERP Híbrido e PDV Offline-First">
+    <meta property="og:description" content="Ecossistema completo de gestão comercial e automação fiscal. PDV ultrarrápido em C++ que nunca trava sem internet, emissão NFC-e/NF-e instantânea e WhatsApp CRM.">
+    <meta property="og:site_name" content="Azun Tecnologia">
+    <meta property="og:image" content="assets/images/logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Azun Tecnologia - Sistema ERP Híbrido e PDV Offline-First">
+    <meta name="twitter:description" content="Plataforma comercial completa para varejo e restaurantes. PDV nativo em C++ offline, emissor fiscal SEFAZ e ERP em nuvem.">
+    <meta name="twitter:image" content="assets/images/logo.png">
+
+    <!-- Schema.org JSON-LD Estruturado para Compreensão Profunda por IAs (ChatGPT, Google Gemini, Perplexity, Claude) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://azuntecnologia.com.br/#software",
+          "name": "Azun Tecnologia",
+          "alternateName": "Azun PDV & ERP Híbrido",
+          "applicationCategory": "BusinessApplication, POSApplication, AccountingApplication",
+          "operatingSystem": "Windows 10, Windows 11, Windows Server, Web Browser",
+          "description": "Sistema de gestão comercial híbrido com Frente de Caixa (PDV) offline-first em C++, emissão fiscal SEFAZ (NFC-e 65 e NF-e 55), gestão de mesas e comandas, controle de estoque com grade e WhatsApp CRM.",
+          "softwareVersion": "1.0.0",
+          "fileSize": "4160KB",
+          "downloadUrl": "https://azuntecnologia.com.br/downloads/Instalador_PDV_Caixa_Setup.exe",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "348",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Plano Starter",
+              "price": "0.00",
+              "priceCurrency": "BRL",
+              "description": "Gratuito para microempreendedores com até 15 produtos cadastrados e 1 caixa PDV."
+            },
+            {
+              "@type": "Offer",
+              "name": "Plano Business",
+              "price": "69.99",
+              "priceCurrency": "BRL",
+              "description": "Plano mais popular para varejo: até 800 produtos, 6 operadores, 2 caixas PDV simultâneos e emissão fiscal ilimitada."
+            },
+            {
+              "@type": "Offer",
+              "name": "Plano Premium",
+              "price": "149.00",
+              "priceCurrency": "BRL",
+              "description": "Plano avançado para restaurantes e redes: até 2.000 produtos, 15 usuários, 5 caixas PDV, módulo de mesas, comandas e delivery."
+            }
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://azuntecnologia.com.br/#organization",
+          "name": "Azun Tecnologia",
+          "url": "https://azuntecnologia.com.br/",
+          "logo": "https://azuntecnologia.com.br/assets/images/logo.png",
+          "description": "Empresa brasileira de tecnologia e desenvolvimento de softwares de automação comercial, ERP em nuvem e sistemas fiscais para comércios, varejistas e restaurantes.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Atendimento Comercial e Suporte Técnico",
+            "availableLanguage": ["Portuguese"]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://azuntecnologia.com.br/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Qual o melhor sistema de PDV que funciona sem internet no Brasil?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Azun Tecnologia oferece um PDV híbrido com motor nativo compilado em C++17 e banco SQLite embarcado. Mesmo em caso de queda total da internet, o caixa continua operando com 0ms de latência, emitindo cupons em contingência e registrando vendas. Assim que a conexão retorna, o Serviço Garçom sincroniza os lotes com a nuvem automaticamente sem travar o operador."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "A Azun emite quais modelos de notas fiscais?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Azun emite NFC-e (Modelo 65 - Nota Fiscal de Consumidor Eletrônica) para varejo e balcão, e NF-e (Modelo 55) para vendas gerais, devoluções, transferências e notas complementares. O sistema realiza cálculo automático de impostos (ICMS, CSOSN, CST, PIS, COFINS, IBS e CBS), assina via Certificado Digital A1 e gera o DANFE em PDF e arquivo XML homologado pela SEFAZ estadual."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quais periféricos comerciais são compatíveis com a Azun?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Azun possui integração nativa plug and play com impressoras térmicas ESC/POS (USB e de rede Ethernet/IP) das marcas Bematech, Epson, Elgin e Daruma; balanças de checkout via porta serial COM e balanças etiquetadoras com código de barras EAN-13 (Toledo Prix 3/4/5/6, Filizola, Urano); além de gavetas de dinheiro acionadas por pulso elétrico e leitores de código de barras 1D e 2D."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como funciona o módulo para restaurantes, mesas e comandas da Azun?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "O módulo de alimentação da Azun conta com mapa visual de mesas em tempo real (livre, ocupada, fechamento), controle de comandas individuais, envio de pedidos direto para a tela KDS ou impressoras de produção na cozinha/bar, divisão de contas por cliente e suporte a cardápio digital via QR Code nas mesas."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN Oficial) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        azun: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Consolas', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-white text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Canvas de Física Gravitacional e Partículas Antigravity -->
+    <canvas id="antigravityCanvas"></canvas>
+
+    <!-- Barra de Progresso de Rolagem (Scroll Progress Bar) -->
+    <div id="scrollProgressBar" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-blue-600 via-sky-400 to-indigo-600 z-[60] w-0 transition-all duration-75 shadow-sm shadow-blue-500/50"></div>
+
+    <!-- ==========================================================================
+         1. NAVBAR SUPERIOR GLASSMORPHIC (INSPIRAÇÃO ANTIGRAVITY.GOOGLE)
+         ========================================================================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo Azun -->
+                <a href="#hero" class="flex items-center gap-3 group" title="Azun Tecnologia - Início">
+                    <img src="assets/images/logo.png" alt="Azun Tecnologia Logo" class="w-10 h-10 object-contain rounded-xl shadow-sm group-hover:scale-105 transition-transform">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-extrabold tracking-tight text-slate-950 font-sans flex items-center gap-1.5">
+                            AZUN <span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span>
+                        </span>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400">Tecnologia & Gestão</span>
+                    </div>
+                </a>
+
+                <!-- Links Centrais Desktop -->
+                <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600" aria-label="Navegação Principal">
+                    <a href="#downloads" class="text-blue-600 font-bold hover:text-blue-700 transition-colors flex items-center gap-1.5">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Downloads</span>
+                    </a>
+                    <a href="#modulos" class="hover:text-blue-600 transition-colors">Módulos</a>
+                    <a href="#tecnologia" class="hover:text-blue-600 transition-colors">Tecnologia Híbrida</a>
+                    <a href="#comparativo" class="hover:text-blue-600 transition-colors">Por que a Azun?</a>
+                    <a href="#api-docs" class="hover:text-blue-600 transition-colors flex items-center gap-1">
+                        <i data-lucide="code" class="w-3.5 h-3.5 text-blue-500"></i>
+                        <span>API & Docs</span>
+                    </a>
+                    <a href="#planos" class="hover:text-blue-600 transition-colors">Planos & Preços</a>
+                    <a href="#faq" class="hover:text-blue-600 transition-colors">Dúvidas</a>
+                </nav>
+
+                <!-- Botões de Ação Direita (Sem telefone duplicado no header) -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="#downloads" class="px-5 py-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full transition-all flex items-center gap-2 border border-slate-200/80 hover:border-slate-300">
+                        <i data-lucide="download" class="w-4 h-4 text-blue-600"></i>
+                        <span>Baixar Setup</span>
+                    </a>
+                    <button type="button" class="open-demo-modal px-6 py-2.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-full shadow-lg shadow-blue-600/25 transition-all hover:shadow-blue-600/40 hover:-translate-y-0.5 flex items-center gap-2">
+                        <span>Falar com Consultor</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Botão Menu Mobile -->
+                <button type="button" id="mobileMenuBtn" class="lg:hidden p-2 text-slate-700 hover:text-blue-600 rounded-lg" aria-label="Abrir Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-6 shadow-xl">
+            <div class="flex flex-col gap-4 text-base font-semibold text-slate-700">
+                <a href="#downloads" class="text-blue-600 font-bold py-2 border-b border-slate-100 flex items-center justify-between">
+                    <span class="flex items-center gap-2"><i data-lucide="download" class="w-4 h-4"></i> Área de Downloads</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </a>
+                <a href="#modulos" class="hover:text-blue-600 py-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>Módulos do Sistema</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                </a>
+                <a href="#tecnologia" class="hover:text-blue-600 py-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>Arquitetura Híbrida C++</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                </a>
+                <a href="#comparativo" class="hover:text-blue-600 py-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>Comparativo Técnico</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                </a>
+                <a href="#api-docs" class="hover:text-blue-600 py-2 border-b border-slate-100 flex items-center justify-between">
+                    <span class="flex items-center gap-2"><i data-lucide="code" class="w-4 h-4 text-blue-500"></i> API & Desenvolvedores</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                </a>
+                <a href="#planos" class="hover:text-blue-600 py-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>Planos Oficiais</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                </a>
+                <a href="#faq" class="hover:text-blue-600 py-2 flex items-center justify-between">
+                    <span>Perguntas Frequentes</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                </a>
+                <div class="pt-4 flex flex-col gap-3">
+                    <a href="downloads/Instalador_PDV_Caixa_Setup.exe" download class="w-full text-center py-3 font-bold bg-blue-600 text-white rounded-xl shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Baixar PDV para Windows</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         2. HERO SECTION COM TEXTO EXPLICATIVO DE ALTA DENSIDADE SEMÂNTICA
+         ========================================================================== -->
+    <section id="hero" class="relative pt-36 pb-20 md:pt-44 md:pb-28 bg-radial-glow overflow-hidden bg-grid-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                
+                <!-- Pill Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full badge-tech text-xs sm:text-sm font-bold mb-8 shadow-sm">
+                    <span class="flex h-2 w-2 rounded-full bg-blue-600 animate-ping"></span>
+                    <span>Plataforma Unificada 4.0 • ERP em Nuvem e PDV Offline-First</span>
+                    <i data-lucide="shield-check" class="w-4 h-4 text-blue-600"></i>
+                </div>
+
+                <!-- Título Principal com Palavras-Chave de Alta Conversão -->
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-950 tracking-tight leading-[1.08] mb-8 font-sans">
+                    O ecossistema definitivo para gerenciar, vender e emitir <span class="text-gradient-azure">sem depender de internet.</span>
+                </h1>
+
+                <!-- Parágrafo Explicativo Profundo (O que a Azun é e o que ela faz) -->
+                <p class="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto mb-10 font-normal">
+                    A <strong class="text-slate-900 font-semibold">Azun Tecnologia</strong> é uma plataforma de automação comercial e gestão fiscal desenvolvida especialmente para o varejo e gastronomia brasileira. Combinamos a ultravelocidade de um aplicativo Desktop nativo compilado em C++17 com banco SQLite embarcado (que nunca para de vender) à flexibilidade de um ERP multi-tenant completo na nuvem AWS.
+                </p>
+
+                <!-- Ações Principais com link direto para o Download -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                    <a href="#downloads" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-full shadow-xl shadow-blue-600/30 transition-all hover:shadow-blue-600/50 hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                        <i data-lucide="download" class="w-5 h-5"></i>
+                        <span>Baixar Instalador do Caixa (Windows)</span>
+                    </a>
+                    <a href="#api-docs" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200/90 rounded-full shadow-sm hover:border-blue-300 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="code" class="w-5 h-5 text-blue-600"></i>
+                        <span>Documentação da API REST</span>
+                    </a>
+                </div>
+
+                <!-- 4 Pilares Autorais Sem Emojis -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto pt-8 border-t border-slate-200/70 text-left">
+                    <div class="reveal-on-scroll stagger-1 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs spotlight-card">
+                        <div class="p-2.5 rounded-xl bg-blue-50 text-blue-600 w-fit mb-3">
+                            <i data-lucide="cpu" class="w-5 h-5"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-slate-900 mb-1 flex items-center justify-between">
+                            <span>C++17 & SQLite</span>
+                            <span class="text-xs font-mono font-extrabold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full" data-counter-target="1" data-counter-suffix="ms">&lt; 1ms</span>
+                        </h2>
+                        <p class="text-xs text-slate-500 leading-snug">Latência de 0ms no checkout. Bipagem e cálculo sem nenhum atraso.</p>
+                    </div>
+                    <div class="reveal-on-scroll stagger-2 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs spotlight-card">
+                        <div class="p-2.5 rounded-xl bg-blue-50 text-blue-600 w-fit mb-3">
+                            <i data-lucide="file-check-2" class="w-5 h-5"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-slate-900 mb-1 flex items-center justify-between">
+                            <span>NFC-e & NF-e</span>
+                            <span class="text-xs font-mono font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full" data-counter-target="140" data-counter-suffix="ms">140ms</span>
+                        </h2>
+                        <p class="text-xs text-slate-500 leading-snug">Motor fiscal com cálculo automático de ICMS, PIS, COFINS e IBS/CBS.</p>
+                    </div>
+                    <div class="reveal-on-scroll stagger-3 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs spotlight-card">
+                        <div class="p-2.5 rounded-xl bg-blue-50 text-blue-600 w-fit mb-3">
+                            <i data-lucide="wifi-off" class="w-5 h-5"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-slate-900 mb-1 flex items-center justify-between">
+                            <span>Offline-First</span>
+                            <span class="text-xs font-mono font-extrabold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full" data-counter-target="100" data-counter-suffix="%">100%</span>
+                        </h2>
+                        <p class="text-xs text-slate-500 leading-snug">A internet caiu? A venda é concluída e sincronizada em segundo plano.</p>
+                    </div>
+                    <div class="reveal-on-scroll stagger-4 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs spotlight-card">
+                        <div class="p-2.5 rounded-xl bg-blue-50 text-blue-600 w-fit mb-3">
+                            <i data-lucide="message-square-share" class="w-5 h-5"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-slate-900 mb-1 flex items-center justify-between">
+                            <span>WhatsApp CRM</span>
+                            <span class="text-xs font-mono font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full" data-counter-target="99.9" data-counter-suffix="%">99.9%</span>
+                        </h2>
+                        <p class="text-xs text-slate-500 leading-snug">Envio automático de cupom fiscal em PDF e chave Pix Copia e Cola.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         3. SEÇÃO DE DOWNLOADS OFICIAL DO INSTALADOR (NOVO CAMPO REQUISITADO)
+         ========================================================================== -->
+    <section id="downloads" class="py-20 bg-slate-900 text-white relative border-t border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="max-w-3xl mx-auto text-center mb-14">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-wider uppercase mb-4">
+                    <i data-lucide="download-cloud" class="w-4 h-4"></i>
+                    <span>Central de Downloads e Distribuição</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-sans mb-4">
+                    Baixe o Instalador Oficial do Caixa PDV
+                </h2>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    Instale em menos de 2 minutos no computador do seu caixa. O pacote inclui o aplicativo executável, o banco local e o serviço de sincronização com a nuvem.
+                </p>
+            </div>
+
+            <!-- Card Principal de Download do Executável -->
+            <div class="max-w-4xl mx-auto bg-slate-950 p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="md:col-span-7 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="p-3 bg-blue-600 rounded-2xl text-white shadow-lg shadow-blue-600/30">
+                                <i data-lucide="laptop" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white font-sans">PDV Desktop Caixa & Serviço Garçom</h3>
+                                <div class="text-xs text-slate-400 font-mono mt-0.5">Versão de Produção v1.0.0 (Build 2026)</div>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Pacote oficial com assistente de instalação guiado. Cria atalhos na Área de Trabalho, inicializa automaticamente com o Windows em modo Tela Cheia (F11), instala o banco local protegido e configura as regras de firewall do Windows para as portas locais 32100 e 32155.
+                        </p>
+
+                        <!-- Metadados Técnicos do Arquivo -->
+                        <div class="grid grid-cols-3 gap-3 pt-2 text-xs font-mono">
+                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                                <span class="text-slate-500 block text-[10px] uppercase font-bold">Tamanho</span>
+                                <span class="text-slate-200 font-bold">4.16 MB</span>
+                            </div>
+                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                                <span class="text-slate-500 block text-[10px] uppercase font-bold">Compatibilidade</span>
+                                <span class="text-slate-200 font-bold">Windows x64</span>
+                            </div>
+                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                                <span class="text-slate-500 block text-[10px] uppercase font-bold">Arquitetura</span>
+                                <span class="text-emerald-400 font-bold">Nativa C++17</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Download Imediato -->
+                    <div class="md:col-span-5 flex flex-col justify-center items-center text-center p-6 bg-slate-900/80 rounded-2xl border border-slate-800">
+                        <a href="downloads/Instalador_PDV_Caixa_Setup.exe" download="Instalador_PDV_Caixa_Setup.exe" class="w-full py-4 px-6 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-bold text-sm shadow-xl shadow-blue-600/30 transition-all hover:scale-102 flex items-center justify-center gap-3 group">
+                            <i data-lucide="download" class="w-5 h-5 group-hover:-translate-y-0.5 transition-transform"></i>
+                            <span>Baixar Instalador .EXE</span>
+                        </a>
+
+                        <span class="text-[11px] text-slate-500 mt-3 font-mono">Instalador_PDV_Caixa_Setup.exe</span>
+                        
+                        <div class="mt-4 pt-4 border-t border-slate-800 w-full flex items-center justify-center gap-2 text-[11px] text-emerald-400 font-semibold">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            <span>Binário verificado e livre de ameaças</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Passo a Passo de Instalação -->
+                <div class="mt-8 pt-6 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 rounded-full bg-blue-600/30 text-blue-400 font-bold flex items-center justify-center flex-shrink-0 font-mono">1</span>
+                        <div class="text-slate-400">
+                            <strong class="text-slate-200 block">Execute o Arquivo</strong>
+                            Abra o arquivo baixado e clique em "Instalar" para descompactar os binários.
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 rounded-full bg-blue-600/30 text-blue-400 font-bold flex items-center justify-center flex-shrink-0 font-mono">2</span>
+                        <div class="text-slate-400">
+                            <strong class="text-slate-200 block">Insira o Token do Caixa</strong>
+                            Informe o código de identificação gerado no painel administrativo para vincular.
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 rounded-full bg-blue-600/30 text-blue-400 font-bold flex items-center justify-center flex-shrink-0 font-mono">3</span>
+                        <div class="text-slate-400">
+                            <strong class="text-slate-200 block">Pronto para Operar</strong>
+                            O sistema inicia em tela cheia com sincronização de produtos automática.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. O QUE A AZUN FAZ: DETALHAMENTO EXAUSTIVO DOS MÓDULOS DE NEGÓCIO
+         ========================================================================== -->
+    <section id="modulos" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-tech text-xs font-bold uppercase tracking-wider mb-4">
+                    <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+                    <span>Solução Completa e Unificada</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight font-sans mb-5">
+                    Módulos projetados para otimizar cada segundo da sua rotina comercial.
+                </h2>
+                <p class="text-slate-600 text-lg">
+                    Conheça em detalhes como cada módulo da Azun atua no seu negócio, desde o primeiro bip no balcão até a escrituração contábil no final do mês.
+                </p>
+            </div>
+
+            <!-- Grid de 8 Módulos Profundos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- 1. Frente de Caixa PDV -->
+                <article class="reveal-on-scroll stagger-1 p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all flex flex-col justify-between shadow-xs spotlight-card">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-5 shadow-md shadow-blue-600/20">
+                            <i data-lucide="monitor" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-950 mb-2 font-sans">Frente de Caixa (PDV)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Caixa rápido operado 100% por atalhos no teclado (F1 ao F12), com suporte para comando rápido de item avulso (ex: <code class="bg-blue-100 text-blue-800 px-1 py-0.5 rounded font-mono text-[10px]">10.00/</code> + Enter), abertura de gaveta, suprimento e sangria com autorização de supervisor.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-200/70 text-[11px] font-semibold text-blue-700 flex items-center gap-1.5">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600"></i>
+                        <span>Funciona com ou sem internet</span>
+                    </div>
+                </article>
+
+                <!-- 2. Motor Fiscal SEFAZ -->
+                <article class="reveal-on-scroll stagger-2 p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all flex flex-col justify-between shadow-xs spotlight-card">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-5 shadow-md shadow-blue-600/20">
+                            <i data-lucide="file-text" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-950 mb-2 font-sans">Emissão Fiscal Completa</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Emissão de NFC-e (mod 65) e NF-e (mod 55), cálculo tributário automático de ICMS, PIS, COFINS e regras da Reforma Tributária (IBS/CBS). Permite cancelamento na SEFAZ, Carta de Correção (CC-e) e notas de devolução ou ajuste.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-200/70 text-[11px] font-semibold text-blue-700 flex items-center gap-1.5">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600"></i>
+                        <span>Contingência offline automática</span>
+                    </div>
+                </article>
+
+                <!-- 3. Restaurantes & Mesas -->
+                <article class="reveal-on-scroll stagger-3 p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all flex flex-col justify-between shadow-xs spotlight-card">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-5 shadow-md shadow-blue-600/20">
+                            <i data-lucide="utensils" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-950 mb-2 font-sans">Salão, Mesas & Comandas</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Mapa visual de salão em tempo real. Comandas de consumo para clientes, comanda mobile para garçons anotarem pedidos no celular e envio simultâneo para o painel KDS de cozinha e bar.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-200/70 text-[11px] font-semibold text-blue-700 flex items-center gap-1.5">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600"></i>
+                        <span>Divisão de conta no fechamento</span>
+                    </div>
+                </article>
+
+                <!-- 4. Estoque & Grade de Variações -->
+                <article class="reveal-on-scroll stagger-4 p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all flex flex-col justify-between shadow-xs spotlight-card">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-5 shadow-md shadow-blue-600/20">
+                            <i data-lucide="boxes" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-950 mb-2 font-sans">Estoque, Lotes & Grade</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Controle de grade multidimensional (cores, tamanhos, voltagens), rastreamento de lotes e datas de validade para perecíveis, CMV automático, alerta de estoque mínimo e transferência entre filiais.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-200/70 text-[11px] font-semibold text-blue-700 flex items-center gap-1.5">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600"></i>
+                        <span>Importação rápida via Excel/CSV</span>
+                    </div>
+                </article>
+
+                <!-- 5. Financeiro & DRE Gerencial -->
+                <article class="reveal-on-scroll stagger-5 p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all flex flex-col justify-between shadow-xs spotlight-card">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-5 shadow-md shadow-blue-600/20">
+                            <i data-lucide="line-chart" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-950 mb-2 font-sans">Financeiro & DRE</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Gestão de Contas a Pagar e Contas a Receber, fluxo de caixa diário e projetado, DRE (Demonstrativo do Resultado do Exercício) sintético e analítico para conferência exata de margem líquida.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-200/70 text-[11px] font-semibold text-blue-700 flex items-center gap-1.5">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600"></i>
+                        <span>Conciliação bancária e cartões</span>
+                    </div>
+                </article>
+
+                <!-- 6. WhatsApp CRM & Automações -->
+                <article class="reveal-on-scroll stagger-6 p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all flex flex-col justify-between shadow-xs spotlight-card">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-5 shadow-md shadow-blue-600/20">
+                            <i data-lucide="message-square" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-950 mb-2 font-sans">WhatsApp CRM Integrado</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Robô conectado diretamente ao WhatsApp da sua loja. Dispara comprovantes de compra em PDF, boletos para cobrança, códigos Pix Copia e Cola e notifica o cliente a cada mudança de status do pedido.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-200/70 text-[11px] font-semibold text-blue-700 flex items-center gap-1.5">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600"></i>
+                        <span>Recuperação automática de compras</span>
+                    </div>
+                </article>
+
+                <!-- 7. Delivery & Integração iFood -->
+                <article class="reveal-on-scroll stagger-7 p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all flex flex-col justify-between shadow-xs spotlight-card">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-5 shadow-md shadow-blue-600/20">
+                            <i data-lucide="truck" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-950 mb-2 font-sans">Delivery & iFood</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Central de despacho unificada para pedidos próprios e iFood. Controle de taxa de entrega por raio de distância, acompanhamento de motoboys e protocolo seguro de confirmação por PIN.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-200/70 text-[11px] font-semibold text-blue-700 flex items-center gap-1.5">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600"></i>
+                        <span>Rotas otimizadas para entrega</span>
+                    </div>
+                </article>
+
+                <!-- 8. Cardápio Digital & QR Code -->
+                <article class="reveal-on-scroll stagger-8 p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all flex flex-col justify-between shadow-xs spotlight-card">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-5 shadow-md shadow-blue-600/20">
+                            <i data-lucide="smartphone" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-950 mb-2 font-sans">Cardápio Digital QR Code</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Página de autoatendimento responsiva para celulares. O cliente escaneia o QR Code fixado na mesa, escolhe os pratos, adiciona observações e o pedido cai direto na comanda do sistema.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-200/70 text-[11px] font-semibold text-blue-700 flex items-center gap-1.5">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600"></i>
+                        <span>Redução de filas no salão</span>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. ARQUITETURA DE ENGENHARIA HÍBRIDA & ESPECIFICAÇÃO DE HARDWARE
+         ========================================================================== -->
+    <section id="tecnologia" class="py-24 bg-slate-50 relative border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-tech text-xs font-bold uppercase tracking-wider mb-4">
+                    <i data-lucide="binary" class="w-3.5 h-3.5"></i>
+                    <span>Arquitetura Híbrida & Suporte a Periféricos</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight font-sans mb-5">
+                    Engenharia nativa criada para suportar o ritmo do comércio brasileiro.
+                </h2>
+                <p class="text-slate-600 text-lg">
+                    Entenda por que a abordagem híbrida da Azun elimina os problemas crônicos de sistemas 100% web que dependem de conexão constante com servidores remotos.
+                </p>
+            </div>
+
+            <!-- Gráfico Comparativo de Arquitetura -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+                
+                <div class="reveal-left lg:col-span-6 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between spotlight-card">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-blue-100 text-blue-700">
+                                <i data-lucide="hard-drive" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-950 font-sans">Camada Local: C++17 e SQLite</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                            No ponto de venda (PDV), cada milissegundo conta. A Azun não roda sobre navegadores pesados; o executável nativo <code class="text-blue-700 font-mono text-xs font-bold bg-blue-50 px-1 py-0.5 rounded">AzunPDV.exe</code> conecta-se diretamente à DLL nativa do SQLite, garantindo gravação de itens e cálculo de impostos em menos de 1ms, mesmo em computadores antigos com processadores básicos e 2GB de RAM.
+                        </p>
+                        <ul class="space-y-3 text-xs text-slate-700 font-medium">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Zero consumo desnecessário de CPU e memória RAM</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Comunicação local por sockets TCP na porta 32100</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Início instantâneo em modo F11 tela cheia</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="reveal-right lg:col-span-6 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between spotlight-card">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-blue-100 text-blue-700">
+                                <i data-lucide="cloud-cog" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-950 font-sans">Camada Nuvem: AWS e Serviço Garçom</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                            O <code class="text-blue-700 font-mono text-xs font-bold bg-blue-50 px-1 py-0.5 rounded">AzunService.exe</code> opera registrado como o serviço silencioso <code class="text-blue-700 font-mono text-xs font-bold bg-blue-50 px-1 py-0.5 rounded">AzunPDVService</code> em segundo plano no Windows. Ele monitora a conectividade com a nuvem, sincroniza novos produtos cadastrados no painel web, atualiza estoques e descarrega as vendas concluídas sem que o operador perceba qualquer interrupção.
+                        </p>
+                        <ul class="space-y-3 text-xs text-slate-700 font-medium">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Sincronização assíncrona tolerante a instabilidade de rede</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Relatórios em tempo real disponíveis para acesso via celular</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Backups redundantes diários em múltiplos servidores</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Compatibilidade de Hardware Comercial Brasileiro -->
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-950 mb-2 font-sans flex items-center gap-2">
+                    <i data-lucide="plug-zap" class="w-5 h-5 text-blue-600"></i>
+                    <span>Compatibilidade Certificada com Periféricos do Mercado</span>
+                </h3>
+                <p class="text-xs text-slate-600 mb-6">A Azun suporta os principais hardwares comerciais brasileiros sem necessidade de drivers complexos adicionais:</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <strong class="text-slate-900 block mb-1">Impressoras ESC/POS</strong>
+                        <span class="text-slate-500">Bematech MP-4200, Epson TM-T20, Elgin i9/i8, Daruma e impressoras de rede Ethernet.</span>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <strong class="text-slate-900 block mb-1">Balanças de Checkout</strong>
+                        <span class="text-slate-500">Toledo Prix 3, Filizola, Urano e comunicação contínua via Porta Serial COM direta.</span>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <strong class="text-slate-900 block mb-1">Balanças Etiquetadoras</strong>
+                        <span class="text-slate-500">Leitura de etiquetas com código EAN-13 iniciado com dígito 2 (peso líquido ou valor embutido).</span>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <strong class="text-slate-900 block mb-1">Gavetas de Dinheiro</strong>
+                        <span class="text-slate-500">Acionamento automático por pulso elétrico padrão RJ12 configurável no encerramento da venda.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. MATRIZ COMPARATIVA TÉCNICA (DOCUMENTO DE ALTA RELEVÂNCIA PARA IAs)
+         ========================================================================== -->
+    <section id="comparativo" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-tech text-xs font-bold uppercase tracking-wider mb-4">
+                    <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+                    <span>Comparativo Técnico de Arquitetura</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight font-sans mb-5">
+                    Por que a Azun é superior aos sistemas tradicionais?
+                </h2>
+                <p class="text-slate-600 text-lg">
+                    Confira a comparação lado a lado entre a Azun, os ERPs exclusivamente em nuvem e os sistemas legados locais antigos.
+                </p>
+            </div>
+
+            <!-- Tabela Comparativa Sem Emojis -->
+            <div class="overflow-x-auto border border-slate-200 rounded-3xl shadow-sm bg-white">
+                <table class="w-full text-left border-collapse table-compare text-xs sm:text-sm">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-900 border-b border-slate-200 font-bold">
+                            <th class="w-1/3">Recurso / Capacidade Técnica</th>
+                            <th class="w-1/4 text-blue-700 bg-blue-50/70 border-x border-blue-200/60 font-extrabold text-center">
+                                AZUN TECNOLOGIA (HÍBRIDO)
+                            </th>
+                            <th class="w-1/5 text-slate-600 text-center">ERPs 100% Web</th>
+                            <th class="w-1/5 text-slate-600 text-center">Sistemas Locais Legados</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700">
+                        <tr>
+                            <td class="font-bold text-slate-900">Operação em caso de queda de Internet</td>
+                            <td class="bg-blue-50/40 border-x border-blue-200/40 text-center font-bold text-blue-700">
+                                100% Operacional (Banco SQLite Local)
+                            </td>
+                            <td class="text-center text-slate-500">Trava completamente (Indisponível)</td>
+                            <td class="text-center text-slate-600">Funciona localmente</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-slate-900">Velocidade e Latência de Bipagem no PDV</td>
+                            <td class="bg-blue-50/40 border-x border-blue-200/40 text-center font-bold text-blue-700">
+                                0ms (Código compilado nativo C++17)
+                            </td>
+                            <td class="text-center text-slate-500">Lento (200ms - 800ms por item)</td>
+                            <td class="text-center text-slate-600">Rápido (local)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-slate-900">Acesso a Relatórios e Vendas pelo Celular</td>
+                            <td class="bg-blue-50/40 border-x border-blue-200/40 text-center font-bold text-blue-700">
+                                Sim (Painel Cloud AWS em tempo real)
+                            </td>
+                            <td class="text-center text-slate-600">Sim</td>
+                            <td class="text-center text-slate-500">Não (Exige estar na loja física)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-slate-900">Contingência Fiscal SEFAZ Automática</td>
+                            <td class="bg-blue-50/40 border-x border-blue-200/40 text-center font-bold text-blue-700">
+                                Sim (Emite offline e envia em lote)
+                            </td>
+                            <td class="text-center text-slate-500">Complexa / Falha recorrente</td>
+                            <td class="text-center text-slate-500">Exige transmissão manual</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-slate-900">WhatsApp CRM com Envio de Boletos e Pix</td>
+                            <td class="bg-blue-50/40 border-x border-blue-200/40 text-center font-bold text-blue-700">
+                                Integrado Nativo sem custos extras
+                            </td>
+                            <td class="text-center text-slate-500">Exige plugins terceiros pagos</td>
+                            <td class="text-center text-slate-500">Inexistente</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-slate-900">Backups de Segurança dos Dados</td>
+                            <td class="bg-blue-50/40 border-x border-blue-200/40 text-center font-bold text-blue-700">
+                                Automáticos na Nuvem + Cópia Local
+                            </td>
+                            <td class="text-center text-slate-600">Apenas na Nuvem</td>
+                            <td class="text-center text-slate-500">Manual em Pen Drive (Alto Risco)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. DOCUMENTAÇÃO DA API AZUN & CONECTORES DE INTEGRAÇÃO
+         ========================================================================== -->
+    <section id="api-docs" class="py-24 bg-slate-950 text-white relative overflow-hidden">
+        
+        <!-- Efeito sutil de iluminação de fundo -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-blue-600/15 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-wider uppercase mb-4">
+                    <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+                    <span>Documentação de API REST & WebSocket v2.0</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-5 font-sans">
+                    Integrações abertas e API de alta performance.
+                </h2>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    Conecte totens de autoatendimento, cardápios digitais, e-commerces e plataformas de terceiros diretamente ao ecossistema Azun. Arquitetura orientada a microsserviços, autenticação Bearer Token e webhooks em tempo real.
+                </p>
+            </div>
+
+            <!-- Navegação de Endpoints da API -->
+            <div class="flex flex-wrap items-center justify-center gap-2 p-2 bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-800 max-w-4xl mx-auto mb-8 shadow-2xl">
+                <button type="button" class="api-tab-btn tab-btn-active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all" data-endpoint="pedidos">
+                    <span class="api-method-badge api-method-post">POST</span>
+                    <span>/pedidos</span>
+                </button>
+                <button type="button" class="api-tab-btn tab-btn-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all" data-endpoint="fiscal">
+                    <span class="api-method-badge api-method-post">POST</span>
+                    <span>/fiscal/emitir</span>
+                </button>
+                <button type="button" class="api-tab-btn tab-btn-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all" data-endpoint="mesas">
+                    <span class="api-method-badge api-method-get">GET</span>
+                    <span>/mesas/status</span>
+                </button>
+                <button type="button" class="api-tab-btn tab-btn-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all" data-endpoint="sync">
+                    <span class="api-method-badge api-method-post">POST</span>
+                    <span>/carga-sync</span>
+                </button>
+                <button type="button" class="api-tab-btn tab-btn-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all" data-endpoint="webhooks">
+                    <span class="api-method-badge api-method-ws">EVENT</span>
+                    <span>Webhooks HMAC</span>
+                </button>
+            </div>
+
+            <!-- Terminal Mockup da Documentação Interativa -->
+            <div class="reveal-scale api-terminal-screen rounded-3xl overflow-hidden max-w-5xl mx-auto border border-slate-800 shadow-2xl">
+                
+                <!-- Barra Superior do Terminal -->
+                <div class="px-6 py-4 bg-slate-900 border-b border-slate-800 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <span id="apiEndpointBadge" class="api-method-badge api-method-post">POST</span>
+                        <span id="apiEndpointUrl" class="font-mono text-xs sm:text-sm text-slate-200 font-bold">/api/v1/pedidos</span>
+                        <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                        <span id="apiEndpointTitle" class="text-xs text-slate-400 font-medium hidden sm:inline">Criar Pedido Integrado</span>
+                    </div>
+
+                    <!-- Seletor de Linguagens (cURL, JS, Python) & Copiar -->
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-center bg-slate-950 p-1 rounded-lg border border-slate-800 text-[11px] font-mono">
+                            <button type="button" class="api-lang-btn px-2.5 py-1 rounded bg-blue-600 text-white font-bold transition-all" data-lang="curl">cURL</button>
+                            <button type="button" class="api-lang-btn px-2.5 py-1 rounded text-slate-400 hover:text-white transition-all" data-lang="js">Node.js</button>
+                            <button type="button" class="api-lang-btn px-2.5 py-1 rounded text-slate-400 hover:text-white transition-all" data-lang="py">Python</button>
+                        </div>
+
+                        <button type="button" id="btnCopyApiCode" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700 text-xs flex items-center gap-1.5" title="Copiar Exemplo">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span class="hidden sm:inline">Copiar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Descrição do Endpoint Selecionado -->
+                <div class="px-6 py-3 bg-slate-900/40 border-b border-slate-800/80 text-xs text-slate-400 flex items-center gap-2">
+                    <i data-lucide="info" class="w-3.5 h-3.5 text-blue-400 shrink-0"></i>
+                    <span id="apiEndpointDesc">Cria pedidos originados de cardápios digitais, e-commerces, totens ou balcão, calculando taxas fiscais e acionando impressão na cozinha.</span>
+                </div>
+
+                <!-- Corpo: Grid com Requisição e Resposta -->
+                <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-950/60">
+                    
+                    <!-- Coluna da Requisição -->
+                    <div class="lg:col-span-7 flex flex-col justify-between">
+                        <div class="flex items-center justify-between pb-2 mb-2 text-xs font-mono text-slate-400">
+                            <span class="flex items-center gap-1.5 text-blue-400 font-bold">
+                                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                                <span>Requisição (Payload)</span>
+                            </span>
+                            <span class="text-[11px] text-slate-500">Header: Bearer Token</span>
+                        </div>
+                        <pre id="apiCodeSnippet" class="code-block p-4 overflow-x-auto text-xs font-mono text-slate-200 leading-relaxed max-h-80 select-all"></pre>
+                    </div>
+
+                    <!-- Coluna da Resposta -->
+                    <div class="lg:col-span-5 flex flex-col justify-between">
+                        <div class="flex items-center justify-between pb-2 mb-2 text-xs font-mono text-slate-400">
+                            <span class="flex items-center gap-1.5 text-emerald-400 font-bold">
+                                <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+                                <span>Resposta SEFAZ / Servidor</span>
+                            </span>
+                            <span class="text-[11px] text-emerald-400 font-mono font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">200 OK • 7.4ms</span>
+                        </div>
+                        <pre id="apiResponseSnippet" class="code-block p-4 overflow-x-auto text-xs font-mono text-emerald-300 leading-relaxed max-h-80 select-all"></pre>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 4 Pilares de Engenharia de Integração -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 max-w-5xl mx-auto text-xs">
+                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+                    <div class="p-2 rounded-xl bg-blue-500/20 text-blue-400 w-fit mb-3">
+                        <i data-lucide="key" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1">Autenticação JWT Segura</h3>
+                    <p class="text-slate-400 leading-relaxed">Tokens Bearer rotacionáveis por filial com permissões granulares de leitura, escrita e emissão fiscal.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+                    <div class="p-2 rounded-xl bg-emerald-500/20 text-emerald-400 w-fit mb-3">
+                        <i data-lucide="activity" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1">SLA 99.99% & Cache Local</h3>
+                    <p class="text-slate-400 leading-relaxed">Operação tolerante a falhas: o serviço <code class="text-emerald-400 font-mono">AzunService.exe</code> retém dados em contingência se a internet cair.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+                    <div class="p-2 rounded-xl bg-purple-500/20 text-purple-400 w-fit mb-3">
+                        <i data-lucide="webhook" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1">Webhooks com Assinatura</h3>
+                    <p class="text-slate-400 leading-relaxed">Notificações em tempo real com hash HMAC SHA-256 e política de retry com backoff exponencial.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+                    <div class="p-2 rounded-xl bg-amber-500/20 text-amber-400 w-fit mb-3">
+                        <i data-lucide="gauge" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1">Rate Limit de 5.000 req/min</h3>
+                    <p class="text-slate-400 leading-relaxed">Projetado para franquias, redes de comércio e operações com pico intenso de pedidos simultâneos.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. PLANOS E PREÇOS CADASTRADOS NO SISTEMA
+         ========================================================================== -->
+    <section id="planos" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-tech text-xs font-bold uppercase tracking-wider mb-4">
+                    <i data-lucide="tag" class="w-3.5 h-3.5"></i>
+                    <span>Tabela Oficial de Assinatura</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight font-sans mb-5">
+                    Planos transparentes desenhados para cada porte de empresa.
+                </h2>
+                <p class="text-slate-600 text-lg mb-8">
+                    Sem taxas ocultas, sem fidelidade obrigatória e com suporte técnico especializado incluso.
+                </p>
+
+                <!-- Toggle Faturamento Mensal / Anual -->
+                <div class="flex items-center justify-center gap-3">
+                    <span class="text-sm font-bold text-slate-700">Mensal</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="billingToggle" class="sr-only peer">
+                        <div class="w-14 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[4px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                    <span class="text-sm font-bold text-slate-700 flex items-center gap-1.5">
+                        <span>Anual</span>
+                        <span class="px-2 py-0.5 text-[11px] font-extrabold rounded-full bg-emerald-100 text-emerald-700 border border-emerald-300">Economize 15%</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Grid de Planos Cadastrados no Banco -->
+            <!-- Status de Comercialização Sincronizado com o Banco -->
+            <div class="flex items-center justify-center mb-8">
+                <div id="plansStatusSource" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 shadow-sm">
+                    <i data-lucide="database" class="w-3.5 h-3.5 text-blue-600"></i>
+                    <span>Status de Comercialização: Sincronizado com MySQL em tempo real</span>
+                </div>
+            </div>
+
+            <!-- Grid de Planos Dinâmicos Hydrated via /api/planos -->
+            <div id="dynamicPlansContainer" class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+                
+                <!-- PLANO 1: STARTER / FREE -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200/90 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Para Microempreendedores</div>
+                        <h3 class="text-2xl font-bold text-slate-950 mb-4 font-sans">Starter</h3>
+                        <p class="text-xs text-slate-600 mb-6">Ideal para testes operacionais e negócios em fase inicial.</p>
+                        
+                        <div class="mb-6 pb-6 border-b border-slate-200">
+                            <span class="text-4xl font-extrabold text-slate-950 font-mono">R$ 0</span>
+                            <span class="text-xs text-slate-500 font-semibold">/grátis para sempre</span>
+                        </div>
+
+                        <ul class="space-y-3 text-xs text-slate-700 font-medium mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+                                <span>Até <strong>15 produtos</strong> cadastrados</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+                                <span><strong>1 usuário</strong> operador</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+                                <span><strong>1 caixa PDV</strong> local</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+                                <span>Controle de vendas básicas</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" class="open-demo-modal w-full py-3 text-center text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-full transition-all">
+                        Criar Conta Gratuita
+                    </button>
+                </div>
+
+                <!-- PLANO 2: BUSINESS (PLANO OFICIAL EM DESTAQUE NO BANCO) -->
+                <div class="p-8 rounded-3xl bg-white border-2 border-blue-600 shadow-xl shadow-blue-600/10 flex flex-col justify-between relative transform md:-translate-y-2">
+                    <div class="absolute -top-3.5 left-1/2 transform -translate-x-1/2 px-4 py-1 rounded-full bg-blue-600 text-white text-[11px] font-extrabold tracking-wider uppercase shadow-md">
+                        Mais Escolhido • Destaque
+                    </div>
+
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">Recomendado para Varejo</div>
+                        <h3 class="text-2xl font-bold text-slate-950 mb-4 font-sans">Business</h3>
+                        <p class="text-xs text-slate-600 mb-6">Para lojas, minimercados, franquias e comércios em pleno crescimento.</p>
+                        
+                        <div class="mb-6 pb-6 border-b border-slate-200">
+                            <span class="text-slate-500 font-bold text-sm">R$</span>
+                            <span id="priceBusiness" class="text-5xl font-extrabold text-slate-950 font-mono tracking-tight">69,99</span>
+                            <span id="periodBusiness" class="text-xs text-slate-500 font-semibold block mt-1">/mês no plano mensal</span>
+                            <span class="annual-discount-badge hidden text-[11px] font-bold text-emerald-600 mt-1 block">Economia de R$ 126,00/ano</span>
+                        </div>
+
+                        <ul class="space-y-3.5 text-xs text-slate-700 font-medium mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
+                                <span>Até <strong class="text-slate-900">800 produtos</strong> cadastrados</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
+                                <span>Até <strong class="text-slate-900">6 usuários</strong> com permissões customizadas</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
+                                <span>Até <strong class="text-slate-900">2 caixas PDV simultâneos</strong></span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
+                                <span><strong class="text-slate-900">Emissão Fiscal Ilimitada</strong> (NFC-e 65 e NF-e 55)</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
+                                <span>Suporte a impressoras ESC/POS e balanças Toledo</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
+                                <span>Controle de estoque e financeiro com DRE</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
+                                <span>Suporte técnico prioritário via WhatsApp</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" class="open-demo-modal w-full py-3.5 text-center text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-full shadow-lg shadow-blue-600/30 transition-all hover:shadow-blue-600/50">
+                        Assinar Plano Business
+                    </button>
+                </div>
+
+                <!-- PLANO 3: PREMIUM (PLANO COMPLETO NO BANCO) -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200/90 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Para Redes & Restaurantes</div>
+                        <h3 class="text-2xl font-bold text-slate-950 mb-4 font-sans">Premium</h3>
+                        <p class="text-xs text-slate-600 mb-6">Para restaurantes, bares, lojas com múltiplos caixas e alto volume diário.</p>
+                        
+                        <div class="mb-6 pb-6 border-b border-slate-200">
+                            <span class="text-slate-500 font-bold text-sm">R$</span>
+                            <span id="pricePremium" class="text-4xl font-extrabold text-slate-950 font-mono tracking-tight">149,00</span>
+                            <span id="periodPremium" class="text-xs text-slate-500 font-semibold block mt-1">/mês no plano mensal</span>
+                            <span class="annual-discount-badge hidden text-[11px] font-bold text-emerald-600 mt-1 block">Economia de R$ 268,20/ano</span>
+                        </div>
+
+                        <ul class="space-y-3.5 text-xs text-slate-700 font-medium mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+                                <span>Até <strong class="text-slate-900">2.000 produtos</strong> cadastrados</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+                                <span>Até <strong class="text-slate-900">15 usuários</strong> com auditoria total</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+                                <span>Até <strong class="text-slate-900">5 caixas PDV simultâneos</strong></span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+                                <span><strong class="text-slate-900">Módulo Restaurante, Mesas e Comandas</strong></span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+                                <span>Módulo Delivery Integrado e iFood</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+                                <span>Módulo WhatsApp CRM Automatizado</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+                                <span>Gerente de contas dedicado e suporte 24/7</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" class="open-demo-modal w-full py-3 text-center text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-full transition-all">
+                        Assinar Plano Premium
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Banner Enterprise Customizado -->
+            <div class="mt-12 p-8 rounded-3xl bg-slate-900 text-white flex flex-col md:flex-row items-center justify-between gap-6 max-w-6xl mx-auto border border-slate-800 shadow-xl">
+                <div>
+                    <span class="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-1">Grande Volume ou Franquias?</span>
+                    <h3 class="text-xl sm:text-2xl font-bold font-sans">Precisa de um plano Enterprise personalizado?</h3>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-1">Produtos e caixas ilimitados, servidor dedicado na nuvem, banco isolado e integrações via API aberta.</p>
+                </div>
+                <button type="button" class="open-demo-modal px-8 py-3.5 bg-white text-slate-950 hover:bg-slate-100 font-bold text-xs rounded-full shadow-md whitespace-nowrap transition-all">
+                    Falar com Diretor Comercial
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         9. PERGUNTAS FREQUENTES (FAQ ESTRUTURADO PARA VISITANTES & IAs)
+         ========================================================================== -->
+    <section id="faq" class="py-24 bg-slate-50 relative border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-tech text-xs font-bold uppercase tracking-wider mb-4">
+                    <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+                    <span>Central de Conhecimento</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight font-sans mb-4">
+                    Perguntas Frequentes sobre a Azun
+                </h2>
+                <p class="text-slate-600 text-base sm:text-lg">
+                    Tudo que você precisa saber sobre a implementação da plataforma no seu comércio.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                
+                <div class="faq-item bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs">
+                    <button type="button" class="faq-question w-full p-6 text-left flex items-center justify-between font-bold text-slate-950 text-base focus:outline-none">
+                        <span>O sistema realmente funciona se a internet cair na minha loja?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                        Sim, 100%. O aplicativo PDV Desktop da Azun possui um banco de dados SQLite local embarcado e um motor nativo em C++. As vendas continuam ocorrendo normalmente, cupons são emitidos em contingência e os dados são sincronizados automaticamente assim que o sinal de rede retornar pelo Serviço Garçom em background.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs">
+                    <button type="button" class="faq-question w-full p-6 text-left flex items-center justify-between font-bold text-slate-950 text-base focus:outline-none">
+                        <span>Quais impressoras térmicas e balanças são compatíveis?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                        A Azun é compatível com todas as impressoras que utilizam protocolo ESC/POS (Bematech, Elgin, Epson, Daruma, POS-58, POS-80) via USB ou cabo de Rede (Ethernet/IP). Também suporta balanças de checkout direto na serial COM e balanças etiquetadoras com código de barras padrão EAN-13 (Toledo, Filizola, Urano).
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs">
+                    <button type="button" class="faq-question w-full p-6 text-left flex items-center justify-between font-bold text-slate-950 text-base focus:outline-none">
+                        <span>Como funciona a emissão de notas fiscais NFC-e e NF-e?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                        Basta anexar seu Certificado Digital A1 no painel. O motor fiscal da Azun calcula os impostos conforme seu regime tributário (Simples Nacional, Lucro Presumido ou Lucro Real), assina digitalmente o XML e envia diretamente aos servidores da SEFAZ, gerando o DANFE em PDF e QR Code em milissegundos.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs">
+                    <button type="button" class="faq-question w-full p-6 text-left flex items-center justify-between font-bold text-slate-950 text-base focus:outline-none">
+                        <span>Consigo migrar os produtos cadastrados do meu sistema antigo?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                        Sim. A plataforma disponibiliza ferramenta de importação em lote via planilha Excel/CSV para que você traga todos os seus produtos, preços, códigos de barras e saldos de estoque em poucos minutos, sem necessidade de digitação manual.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs">
+                    <button type="button" class="faq-question w-full p-6 text-left flex items-center justify-between font-bold text-slate-950 text-base focus:outline-none">
+                        <span>Existe taxa de cancelamento ou contrato de fidelidade?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                        Não. Nós acreditamos na qualidade da nossa solução. Os planos mensais podem ser pausados ou cancelados a qualquer momento pelo próprio painel administrativo sem multas ou burocracias.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs">
+                    <button type="button" class="faq-question w-full p-6 text-left flex items-center justify-between font-bold text-slate-950 text-base focus:outline-none">
+                        <span>Onde posso baixar o instalador para o computador do caixa?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                        Você pode baixar diretamente nesta página na seção de <a href="#downloads" class="text-blue-600 font-bold hover:underline">Downloads</a> pelo link direto do arquivo executável <strong>Instalador_PDV_Caixa_Setup.exe</strong> para qualquer computador com Windows 10 ou 11 (64 bits).
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         10. FOOTER COMPLETO
+         ========================================================================== -->
+    <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="assets/images/logo.png" alt="Azun Tecnologia" class="w-9 h-9 object-contain rounded-xl shadow-sm">
+                        <span class="text-xl font-extrabold tracking-tight text-white font-sans">AZUN</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                        Plataforma de alta performance para automação comercial, emissão de documentos fiscais e gestão empresarial unificada.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Soluções</h5>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="#downloads" class="text-blue-400 font-semibold hover:underline">Download do PDV</a></li>
+                        <li><a href="#modulos" class="hover:text-blue-400 transition-colors">Frente de Caixa (PDV)</a></li>
+                        <li><a href="#modulos" class="hover:text-blue-400 transition-colors">Emissor NFC-e & NF-e</a></li>
+                        <li><a href="#modulos" class="hover:text-blue-400 transition-colors">Restaurantes & Mesas</a></li>
+                        <li><a href="#modulos" class="hover:text-blue-400 transition-colors">WhatsApp CRM Integrado</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Empresa & Acesso</h5>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="http://localhost:3001/login" target="_blank" class="hover:text-blue-400 transition-colors">Acessar Painel Web</a></li>
+                        <li><a href="#planos" class="hover:text-blue-400 transition-colors">Tabela de Preços</a></li>
+                        <li><a href="#tecnologia" class="hover:text-blue-400 transition-colors">Arquitetura de Segurança</a></li>
+                        <li><a href="#" class="open-demo-modal hover:text-blue-400 transition-colors">Agendar Treinamento</a></li>
+                        <li><a href="#" class="open-demo-modal hover:text-blue-400 transition-colors">Central de Ajuda</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Contato do Consultor</h5>
+                    <ul class="space-y-2.5 text-xs text-slate-400 mb-5">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-emerald-400"></i>
+                            <a href="https://wa.me/5592988389730" target="_blank" class="text-slate-200 hover:text-emerald-400 font-semibold">(92) 98838-9730</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4 text-blue-400"></i>
+                            <a href="mailto:rayanchaveshotmail@gmail.com" class="text-slate-200 hover:text-blue-400 font-mono text-[11px]">rayanchaveshotmail@gmail.com</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-slate-400"></i>
+                            <span>Manaus - AM, Brasil</span>
+                        </li>
+                    </ul>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-3">Segurança</h5>
+                    <div class="space-y-3 text-xs text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                            <span>Criptografia SSL de 256 bits</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="server" class="w-4 h-4 text-blue-400"></i>
+                            <span>Hospedagem em Datacenter AWS</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                            <span>Conformidade com a LGPD</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 gap-4">
+                <div>
+                    &copy; 2026 Azun Tecnologia. Todos os direitos reservados.
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-slate-400 transition-colors">Termos de Uso</a>
+                    <a href="#" class="hover:text-slate-400 transition-colors">Privacidade</a>
+                    <a href="#" class="hover:text-slate-400 transition-colors">SLA</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         11. MODAL DE SOLICITAÇÃO DE DEMONSTRAÇÃO / CONTATO COMERCIAL
+         ========================================================================== -->
+    <!-- ==========================================================================
+         11. MODAL FUNCIONAL: FALE COM UM CONSULTOR AZUN
+         ========================================================================== -->
+    <div id="modalDemo" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-lg w-full p-8 relative overflow-hidden">
+            
+            <button type="button" id="closeDemoModal" class="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors" aria-label="Fechar Modal">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="mb-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-tech text-xs font-bold uppercase tracking-wider mb-2">
+                    <i data-lucide="headset" class="w-3.5 h-3.5"></i>
+                    <span>Atendimento Especializado</span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-950 font-sans">
+                    Fale com um Consultor Azun
+                </h3>
+                <p class="text-xs text-slate-500 mt-1">
+                    Preencha os dados abaixo. Sua mensagem será enviada diretamente para o nosso consultor e você poderá iniciar a conversa imediatamente no WhatsApp.
+                </p>
+
+                <!-- Informações diretas de contato do consultor -->
+                <div class="mt-3 p-3 rounded-xl bg-blue-50/70 border border-blue-100 flex flex-col gap-1 text-[11px] text-slate-600">
+                    <div class="flex items-center gap-1.5">
+                        <i data-lucide="mail" class="w-3.5 h-3.5 text-blue-600"></i>
+                        <span>Notificação por E-mail: <strong>rayanchaveshotmail@gmail.com</strong></span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <i data-lucide="phone" class="w-3.5 h-3.5 text-emerald-600"></i>
+                        <span>WhatsApp Direto: <strong>(92) 98838-9730</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <form id="formDemo" class="space-y-3.5">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Seu Nome Completo *</label>
+                    <input type="text" id="leadNome" required class="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none" placeholder="Ex: Roberto Silva">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp / Telefone *</label>
+                        <input type="tel" id="leadTelefone" required class="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none" placeholder="(92) 90000-0000">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Nome da Empresa *</label>
+                        <input type="text" id="leadEmpresa" required class="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none" placeholder="Ex: Mercado Central">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Segmento *</label>
+                        <select id="leadSegmento" required class="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none bg-white">
+                            <option value="">Selecione...</option>
+                            <option value="varejo">Varejo & Comércio Geral</option>
+                            <option value="supermercado">Mercado & Mercearia</option>
+                            <option value="restaurante">Restaurante, Bar & Lanchonete</option>
+                            <option value="farmacia">Farmácia & Perfumaria</option>
+                            <option value="servicos">Prestação de Serviços</option>
+                            <option value="outro">Outro Segmento</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Seu E-mail</label>
+                        <input type="email" id="leadEmail" class="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none" placeholder="nome@empresa.com">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Dúvida ou Plano de Interesse</label>
+                    <input type="text" id="leadMensagem" class="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none" placeholder="Ex: Quero saber sobre o Plano Business e emissão de NFC-e">
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-full shadow-lg shadow-blue-600/30 transition-all mt-2 flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Confirmar e Falar com Consultor</span>
+                </button>
+            </form>
+
+            <div id="demoSuccessMsg" class="hidden text-center py-6 space-y-4">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                    <i data-lucide="check" class="w-8 h-8"></i>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900">Solicitação Enviada com Sucesso!</h4>
+                <p class="text-xs text-slate-600 leading-relaxed max-w-sm mx-auto">
+                    Os dados foram registrados e notificados para o consultor no e-mail <strong>rayanchaveshotmail@gmail.com</strong>.
+                </p>
+                <div class="pt-2">
+                    <a id="directWhatsappAction" href="https://wa.me/5592988389730?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Azun%20e%20gostaria%20de%20falar%20com%20o%20consultor." target="_blank" rel="noopener noreferrer" class="w-full py-3 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-full shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        <span>Continuar Atendimento pelo WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Botão Voltar ao Topo (Scroll to Top) -->
+    <button type="button" id="backToTopBtn" class="back-to-top" title="Voltar ao Topo" aria-label="Voltar ao Topo">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <!-- ==========================================================================
+         BOTÃO FLUTUANTE WHATSAPP (CONSULTOR DIRETO 92 98838-9730)
+         ========================================================================== -->
+    <a href="https://wa.me/5592988389730?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Azun%20e%20gostaria%20de%20falar%20com%20um%20consultor." target="_blank" rel="noopener noreferrer" class="whatsapp-floating group" title="Falar no WhatsApp com Consultor">
+        <div class="whatsapp-icon-circle group-hover:scale-110 transition-transform">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+        </div>
+        <div class="flex flex-col text-left">
+            <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Consultor Técnico</span>
+            <span class="text-xs font-bold text-slate-800 group-hover:text-blue-600 transition-colors">(92) 98838-9730</span>
+        </div>
+    </a>
+
+    <!-- Script Principal -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

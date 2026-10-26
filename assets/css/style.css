@@ -1,0 +1,466 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   AZUN TECNOLOGIA - IDENTITY & ANTIGRAVITY-INSPIRED STYLES
+   PALETA: BRANCO & AZUL (WHITE & BLUE TECH)
+   REGRA ABSOLUTA: ZERO EMOJIS! APENAS ÍCONES VETORIAIS E TIPOGRAFIA DE PRECISÃO.
+   ========================================================================== */
+
+:root {
+  --primary-blue: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-deep: #0f172a;
+  --accent-cyan: #0ea5e9;
+  --accent-sky: #38bdf8;
+  --bg-pure: #ffffff;
+  --bg-slate: #f8fafc;
+  --bg-blue-tint: #f0f7ff;
+  --border-light: rgba(226, 232, 240, 0.9);
+  --border-blue-subtle: rgba(191, 219, 254, 0.7);
+  --font-main: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-main);
+  background-color: var(--bg-pure);
+  color: var(--primary-deep);
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #ffffff;
+  position: relative;
+}
+
+/* ==========================================================================
+   ANTIGRAVITY FLUID CANVAS (NÍTIDO, VÍVIDO E REATIVO AO SCROLL)
+   ========================================================================== */
+#antigravityCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* Barra de Progresso de Rolagem (Scroll Progress Indicator) */
+#scrollProgressBar {
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.8), 0 0 4px rgba(56, 189, 248, 0.9);
+}
+
+/* Tech Grid Pattern (Antigravity Style) */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-radial-glow {
+  background: radial-gradient(circle 900px at 50% -120px, rgba(219, 234, 254, 0.85), rgba(255, 255, 255, 0) 80%);
+}
+
+.bg-radial-accent {
+  background: radial-gradient(circle 700px at 80% 300px, rgba(191, 219, 254, 0.4), transparent 70%);
+}
+
+/* ==========================================================================
+   GLASSMORPHISM & SPOTLIGHT CARDS
+   ========================================================================== */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.card-interactive {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: #ffffff;
+}
+
+.card-interactive:hover {
+  transform: translateY(-5px);
+  border-color: rgba(147, 197, 253, 0.95);
+  box-shadow: 0 24px 48px -12px rgba(37, 99, 235, 0.16);
+}
+
+/* Antigravity Spotlight Glow Effect on Cards */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: radial-gradient(
+    480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(37, 99, 235, 0.6),
+    rgba(56, 189, 248, 0.3) 40%,
+    transparent 70%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   ANIMAÇÕES DE ROLAGEM / SCROLL REVEAL (ANTIGRAVITY FLUIDITY)
+   ========================================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.93) translateY(24px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.is-revealed {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-left.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-right.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Cascata escalonada (Stagger) */
+.stagger-1 { transition-delay: 60ms; }
+.stagger-2 { transition-delay: 120ms; }
+.stagger-3 { transition-delay: 180ms; }
+.stagger-4 { transition-delay: 240ms; }
+.stagger-5 { transition-delay: 300ms; }
+.stagger-6 { transition-delay: 360ms; }
+.stagger-7 { transition-delay: 420ms; }
+.stagger-8 { transition-delay: 480ms; }
+
+/* Navbar Active Section Indicator */
+.nav-active {
+  color: #2563eb !important;
+  font-weight: 800 !important;
+  position: relative;
+}
+
+.nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #2563eb;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.6);
+}
+
+/* Botão Voltar ao Topo (Back to Top) */
+.back-to-top {
+  position: fixed;
+  bottom: 86px;
+  right: 24px;
+  z-index: 40;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2563eb;
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #2563eb;
+  color: #ffffff;
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 14px 30px -5px rgba(37, 99, 235, 0.45);
+}
+
+/* ==========================================================================
+   CUSTOM GRADIENTS & TYPOGRAPHY
+   ========================================================================== */
+.text-gradient-blue {
+  background: linear-gradient(135deg, #0f172a 20%, #1e40af 60%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-azure {
+  background: linear-gradient(135deg, #1d4ed8 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.bg-gradient-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+/* ==========================================================================
+   DOCUMENTAÇÃO DE API & TERMINAL
+   ========================================================================== */
+.api-terminal-screen {
+  background: #090d16;
+  color: #f8fafc;
+  box-shadow: 0 30px 70px -15px rgba(2, 6, 23, 0.5);
+  border: 1px solid #1e293b;
+  position: relative;
+}
+
+.api-method-badge {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.api-method-post {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.api-method-get {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.api-method-ws {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+.code-block {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  background: #060911;
+  color: #e2e8f0;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+}
+
+.tab-btn-active {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.35);
+}
+
+.tab-btn-inactive {
+  background-color: transparent;
+  color: #94a3b8;
+}
+
+.tab-btn-inactive:hover {
+  background-color: rgba(30, 41, 59, 0.8);
+  color: #f8fafc;
+}
+
+/* Badge Glow */
+.badge-tech {
+  background: rgba(239, 246, 255, 0.95);
+  border: 1px solid rgba(191, 219, 254, 0.9);
+  color: #1d4ed8;
+}
+
+/* Badges de Status Comercial dos Planos */
+.badge-status-active {
+  background: rgba(236, 253, 245, 0.95);
+  border: 1px solid rgba(167, 243, 208, 0.9);
+  color: #047857;
+}
+
+.badge-status-inactive {
+  background: rgba(248, 250, 252, 0.95);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  color: #64748b;
+}
+
+/* ==========================================================================
+   WHATSAPP FLOATING WIDGET
+   ========================================================================== */
+.whatsapp-floating {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  padding: 10px 18px;
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px -5px rgba(37, 99, 235, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.whatsapp-floating:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 38px -5px rgba(37, 99, 235, 0.35);
+  border-color: #2563eb;
+}
+
+.whatsapp-icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+/* ==========================================================================
+   SCROLLBAR
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ==========================================================================
+   ANTIGRAVITY ANIMATIONS & KEYFRAMES
+   ========================================================================== */
+@keyframes antigravityFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+.animate-antigravity-float {
+  animation: antigravityFloat 5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(37, 99, 235, 0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Comparison Table */
+.table-compare th, .table-compare td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+.table-compare tr:last-child td {
+  border-bottom: none;
+}
