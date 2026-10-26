@@ -62,34 +62,63 @@ function initAntigravityCanvas() {
 
     const mouse = { x: -1000, y: -1000, active: false };
     const shockwaves = [];
+    const cursorGlow = document.getElementById('antigravityCursorGlow');
+    let targetCursorX = -1000, targetCursorY = -1000;
+    let currentCursorX = -1000, currentCursorY = -1000;
 
     window.addEventListener('mousemove', (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
         mouse.active = true;
+        targetCursorX = e.clientX;
+        targetCursorY = e.clientY;
+        if (cursorGlow) cursorGlow.style.opacity = '1';
     });
 
     window.addEventListener('mouseleave', () => {
         mouse.active = false;
         mouse.x = -1000;
         mouse.y = -1000;
+        if (cursorGlow) cursorGlow.style.opacity = '0';
     });
 
     // Pulso Gravitacional (Shockwave) ao clicar na página
     window.addEventListener('click', (e) => {
-        // Ignora cliques dentro de inputs ou botões do modal para manter usabilidade
         if (e.target.closest('input') || e.target.closest('select') || e.target.closest('textarea')) return;
         
         shockwaves.push({
             x: e.clientX,
             y: e.clientY,
             radius: 4,
-            maxRadius: 320,
-            alpha: 0.85
+            maxRadius: 360,
+            alpha: 0.95
         });
     });
 
-    // Momentum de Rolagem: partículas flutuam no sentido inverso do scroll
+    // Gera partículas com papéis distintos (Hubs Principais, Faíscas e Micro-poeira)
+    // DECLARADO ANTES DO EVENTO DE SCROLL PARA EVITAR ERRO DE TDZ
+    const particleCount = Math.min(Math.floor(width / 24), 68);
+    const particles = [];
+
+    for (let i = 0; i < particleCount; i++) {
+        const isHub = i % 5 === 0; // Nós principais maiores
+        const isSpark = i % 3 === 1;
+
+        particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * (isHub ? 0.38 : 0.65),
+            vy: (Math.random() - 0.5) * (isHub ? 0.38 : 0.65),
+            baseRadius: isHub ? (Math.random() * 2 + 5.0) : (isSpark ? 2.2 : 3.5),
+            radius: isHub ? 5.5 : 3.2,
+            alpha: isHub ? 0.98 : (isSpark ? 0.75 : 0.88),
+            isHub: isHub,
+            phase: Math.random() * Math.PI * 2,
+            pulseSpeed: Math.random() * 0.025 + 0.015
+        });
+    }
+
+    // Momentum de Rolagem: partículas reagem dinamicamente à rolagem para baixo E para cima!
     let lastScrollY = window.scrollY;
     let scrollVelocity = 0;
 
@@ -98,33 +127,13 @@ function initAntigravityCanvas() {
         scrollVelocity = (currentScrollY - lastScrollY);
         lastScrollY = currentScrollY;
 
-        // Aplica impulso vertical instantâneo a todas as partículas
+        // Se rolar PARA BAIXO (scrollVelocity > 0): partículas sobem!
+        // Se rolar PARA CIMA (scrollVelocity < 0): partículas descem!
         for (let i = 0; i < particles.length; i++) {
-            particles[i].vy -= scrollVelocity * 0.045;
+            particles[i].vy -= scrollVelocity * 0.075;
+            particles[i].vx += (Math.random() - 0.5) * Math.abs(scrollVelocity) * 0.02;
         }
     }, { passive: true });
-
-    // Gera 60 partículas com papéis distintos (Nós Principais, Conectores e Micro-poeira)
-    const particleCount = Math.min(Math.floor(width / 26), 64);
-    const particles = [];
-
-    for (let i = 0; i < particleCount; i++) {
-        const isHub = i % 6 === 0; // 1 a cada 6 partículas é um nó principal maior
-        const isSpark = i % 4 === 1;
-
-        particles.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * (isHub ? 0.35 : 0.55),
-            vy: (Math.random() - 0.5) * (isHub ? 0.35 : 0.55),
-            baseRadius: isHub ? (Math.random() * 2 + 4.5) : (isSpark ? 2.0 : 3.2),
-            radius: isHub ? 5.2 : 3.0,
-            alpha: isHub ? 0.95 : (isSpark ? 0.65 : 0.85),
-            isHub: isHub,
-            phase: Math.random() * Math.PI * 2,
-            pulseSpeed: Math.random() * 0.025 + 0.015
-        });
-    }
 
     let isVisible = true;
     document.addEventListener('visibilitychange', () => {
@@ -143,20 +152,27 @@ function initAntigravityCanvas() {
         time += 0.02;
 
         // Amortecimento suave da velocidade de scroll
-        scrollVelocity *= 0.94;
+        scrollVelocity *= 0.93;
+
+        // Atualiza a posição suave do cursor glow
+        if (cursorGlow && mouse.active) {
+            currentCursorX += (targetCursorX - currentCursorX) * 0.18;
+            currentCursorY += (targetCursorY - currentCursorY) * 0.18;
+            cursorGlow.style.transform = `translate3d(${currentCursorX}px, ${currentCursorY}px, 0)`;
+        }
 
         // 1. Processa e desenha shockwaves ativas
         for (let s = shockwaves.length - 1; s >= 0; s--) {
             const sw = shockwaves[s];
-            sw.radius += 9;
-            sw.alpha *= 0.94;
+            sw.radius += 10;
+            sw.alpha *= 0.93;
 
             ctx.beginPath();
             ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(37, 99, 235, ${sw.alpha * 0.75})`;
-            ctx.lineWidth = 2.2;
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = 'rgba(56, 189, 248, 0.8)';
+            ctx.strokeStyle = `rgba(37, 99, 235, ${sw.alpha * 0.8})`;
+            ctx.lineWidth = 2.5;
+            ctx.shadowBlur = 12;
+            ctx.shadowColor = 'rgba(56, 189, 248, 0.9)';
             ctx.stroke();
             ctx.shadowBlur = 0;
 
@@ -177,8 +193,8 @@ function initAntigravityCanvas() {
             p.vy *= 0.992;
 
             // Mantém velocidade mínima de flutuação cósmica
-            if (Math.abs(p.vx) < 0.15) p.vx += (Math.random() - 0.5) * 0.1;
-            if (Math.abs(p.vy) < 0.15) p.vy += (Math.random() - 0.5) * 0.1;
+            if (Math.abs(p.vx) < 0.18) p.vx += (Math.random() - 0.5) * 0.12;
+            if (Math.abs(p.vy) < 0.18) p.vy += (Math.random() - 0.5) * 0.12;
 
             // Rebate com amortecimento suave nas bordas
             if (p.x < 10) { p.x = 10; p.vx = Math.abs(p.vx) * 0.8; }
@@ -192,8 +208,8 @@ function initAntigravityCanvas() {
                 const dx = p.x - sw.x;
                 const dy = p.y - sw.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (Math.abs(dist - sw.radius) < 40 && dist > 1) {
-                    const push = (40 - Math.abs(dist - sw.radius)) * 0.25;
+                if (Math.abs(dist - sw.radius) < 45 && dist > 1) {
+                    const push = (45 - Math.abs(dist - sw.radius)) * 0.3;
                     p.x += (dx / dist) * push;
                     p.y += (dy / dist) * push;
                 }
@@ -205,16 +221,15 @@ function initAntigravityCanvas() {
                 const dy = mouse.y - p.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (dist < 240 && dist > 5) {
-                    const force = (240 - dist) / 240;
-                    // Gravidade atraente com órbita suave
-                    p.x += (dx / dist) * force * 1.35;
-                    p.y += (dy / dist) * force * 1.35;
+                if (dist < 260 && dist > 5) {
+                    const force = (260 - dist) / 260;
+                    p.x += (dx / dist) * force * 1.6;
+                    p.y += (dy / dist) * force * 1.6;
                 }
             }
 
             // Pulsação suave do raio
-            p.radius = p.baseRadius + Math.sin(time + p.phase) * (p.isHub ? 1.4 : 0.6);
+            p.radius = p.baseRadius + Math.sin(time + p.phase) * (p.isHub ? 1.5 : 0.7);
 
             // Desenha Partícula com Glow Nítido
             ctx.beginPath();
@@ -222,8 +237,8 @@ function initAntigravityCanvas() {
 
             if (p.isHub) {
                 // Nó Principal: Anel de Aura + Núcleo Brilhante
-                ctx.shadowBlur = 14;
-                ctx.shadowColor = 'rgba(37, 99, 235, 0.85)';
+                ctx.shadowBlur = 16;
+                ctx.shadowColor = 'rgba(37, 99, 235, 0.9)';
                 ctx.fillStyle = '#2563eb';
                 ctx.fill();
 
@@ -235,14 +250,14 @@ function initAntigravityCanvas() {
 
                 // Anel externo sutil
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius * 1.8, 0, Math.PI * 2);
-                ctx.strokeStyle = `rgba(56, 189, 248, ${0.45 + Math.sin(time + p.phase) * 0.25})`;
-                ctx.lineWidth = 1;
+                ctx.arc(p.x, p.y, p.radius * 1.9, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(56, 189, 248, ${0.5 + Math.sin(time + p.phase) * 0.3})`;
+                ctx.lineWidth = 1.2;
                 ctx.stroke();
             } else {
                 // Nó Médio / Faísca
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = 'rgba(2, 132, 199, 0.65)';
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = 'rgba(2, 132, 199, 0.75)';
                 ctx.fillStyle = `rgba(37, 99, 235, ${p.alpha})`;
                 ctx.fill();
             }
@@ -256,17 +271,17 @@ function initAntigravityCanvas() {
                 const dy = p.y - p2.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (dist < 145) {
-                    const lineAlpha = (1 - dist / 145);
+                if (dist < 155) {
+                    const lineAlpha = (1 - dist / 155);
                     const isHubConnection = p.isHub || p2.isHub;
 
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
                     ctx.strokeStyle = isHubConnection 
-                        ? `rgba(37, 99, 235, ${lineAlpha * 0.55})` 
-                        : `rgba(2, 132, 199, ${lineAlpha * 0.35})`;
-                    ctx.lineWidth = isHubConnection ? 1.3 : 0.9;
+                        ? `rgba(37, 99, 235, ${lineAlpha * 0.65})` 
+                        : `rgba(2, 132, 199, ${lineAlpha * 0.42})`;
+                    ctx.lineWidth = isHubConnection ? 1.4 : 1.0;
                     ctx.stroke();
                 }
             }
@@ -279,15 +294,18 @@ function initAntigravityCanvas() {
 }
 
 // ==========================================================================
-// 2. SISTEMA COMPLETO DE ANIMAÇÕES DE ROLAGEM / SCROLL
+// 2. SISTEMA COMPLETO DE ANIMAÇÕES DE ROLAGEM / SCROLL (PARA BAIXO E PARA CIMA)
 // ==========================================================================
 function initScrollAnimations() {
     const scrollProgressBar = document.getElementById('scrollProgressBar');
     const backToTopBtn = document.getElementById('backToTopBtn');
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
     const sections = document.querySelectorAll('section[id]');
+    const header = document.querySelector('header');
 
-    // 2.1. Barra de Progresso e Botão Voltar ao Topo no Scroll
+    let lastScrollTop = window.scrollY;
+
+    // 2.1. Barra de Progresso, Elevação de Navbar e Botão Voltar ao Topo no Scroll
     window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -298,17 +316,27 @@ function initScrollAnimations() {
         }
 
         if (backToTopBtn) {
-            if (scrollTop > 420) {
+            if (scrollTop > 380) {
                 backToTopBtn.classList.add('visible');
             } else {
                 backToTopBtn.classList.remove('visible');
             }
         }
 
+        // Transição dinâmica da Navbar ao rolar para baixo e para cima
+        if (header) {
+            if (scrollTop > 50) {
+                header.classList.add('shadow-lg', 'bg-white/95');
+                header.classList.remove('bg-white/70');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        }
+
         // 2.2. Scroll Spy: Ativa link correspondente na navbar
         let currentSectionId = '';
         sections.forEach(sec => {
-            const secTop = sec.offsetTop - 120;
+            const secTop = sec.offsetTop - 130;
             const secHeight = sec.offsetHeight;
             if (scrollTop >= secTop && scrollTop < secTop + secHeight) {
                 currentSectionId = sec.getAttribute('id');
@@ -321,6 +349,8 @@ function initScrollAnimations() {
                 link.classList.add('nav-active');
             }
         });
+
+        lastScrollTop = scrollTop;
     }, { passive: true });
 
     // Ação do Botão Voltar ao Topo
@@ -330,10 +360,11 @@ function initScrollAnimations() {
         });
     }
 
-    // 2.3. IntersectionObserver para Revelação Suave de Elementos
+    // 2.3. IntersectionObserver BIDIRECIONAL:
+    // Anima a revelação ao entrar em foco (tanto descendo quanto subindo a página)
     const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-scale, .reveal-left, .reveal-right');
 
-    const revealObserver = new IntersectionObserver((entries, observer) => {
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-revealed');
@@ -344,16 +375,27 @@ function initScrollAnimations() {
                     animateCounter(counter);
                 });
 
-                // Se o próprio elemento for um contador
                 if (entry.target.hasAttribute('data-counter-target')) {
                     animateCounter(entry.target);
                 }
-
-                observer.unobserve(entry.target);
+            } else {
+                // Ao sair da tela (seja rolando para cima ou para baixo), desarma para permitir a reanimação suave
+                const rect = entry.target.getBoundingClientRect();
+                if (rect.top > window.innerHeight || rect.bottom < 0) {
+                    entry.target.classList.remove('is-revealed');
+                    
+                    const counters = entry.target.querySelectorAll('[data-counter-target]');
+                    counters.forEach(counter => {
+                        counter.dataset.counterDone = 'false';
+                    });
+                    if (entry.target.hasAttribute('data-counter-target')) {
+                        entry.target.dataset.counterDone = 'false';
+                    }
+                }
             }
         });
     }, {
-        threshold: 0.1,
+        threshold: 0.12,
         rootMargin: '0px 0px -40px 0px'
     });
 
@@ -432,110 +474,201 @@ function initSpotlightAndTilt() {
 // 4. EXPLORER DA DOCUMENTAÇÃO DA API (REST & WEBSOCKET)
 // ==========================================================================
 const API_DATA = {
+    'health': {
+        method: 'GET',
+        methodClass: 'api-method-get',
+        endpoint: 'https://backcore.azun.com.br/api/pdv/health',
+        title: 'Health Check & Status do Servidor Principal',
+        desc: 'Verifica latência, status de conectividade e sincronização em tempo real do ecossistema Azun.',
+        curl: `curl -X GET "https://backcore.azun.com.br/api/pdv/health"`,
+        js: `const res = await fetch('https://backcore.azun.com.br/api/pdv/health');
+const status = await res.json();
+console.log('Servidor Azun Online:', status.online);`,
+        py: `import requests
+resp = requests.get('https://backcore.azun.com.br/api/pdv/health')
+print(resp.json())`,
+        response: `{
+  "status": "OK",
+  "online": true,
+  "timestamp": "2026-10-26T18:47:46.397Z",
+  "latencia_ms": 2.4
+}`
+    },
+    'produtos_livres': {
+        method: 'GET',
+        methodClass: 'api-method-get',
+        endpoint: 'https://backcore.azun.com.br/api/produtos',
+        title: 'Catálogo Aberto de Produtos (Sem Chave)',
+        desc: 'Consulta aberta de produtos, preços, estoque e fotos para e-commerce e cardápio online.',
+        curl: `curl -X GET "https://backcore.azun.com.br/api/produtos" \\
+  -H "x-tenant-id: 1"`,
+        js: `const res = await fetch('https://backcore.azun.com.br/api/produtos', {
+  headers: { 'x-tenant-id': '1' }
+});
+const produtos = await res.json();
+console.log('Total Produtos:', produtos.length);`,
+        py: `import requests
+resp = requests.get('https://backcore.azun.com.br/api/produtos', headers={'x-tenant-id': '1'})
+print(resp.json())`,
+        response: `[
+  {
+    "id_produto": 265,
+    "nome": "Macarrão Santa Amália 500G Sêmola Parafuso",
+    "preco": 4.50,
+    "estoque": 142,
+    "ativo": true
+  }
+]`
+    },
+    'mesa_qr': {
+        method: 'GET',
+        methodClass: 'api-method-get',
+        endpoint: 'https://backcore.azun.com.br/api/autoatendimento/m/:token',
+        title: 'Consulta de Comanda e Mesa via QR Code',
+        desc: 'Carrega os itens e consumo da mesa em tempo real quando o cliente escaneia o QR Code físico na mesa.',
+        curl: `curl -X GET "https://backcore.azun.com.br/api/autoatendimento/m/MS-TOKEN-MESA-05"`,
+        js: `const res = await fetch('https://backcore.azun.com.br/api/autoatendimento/m/MS-TOKEN-MESA-05');
+const mesa = await res.json();
+console.log('Mesa:', mesa);`,
+        py: `import requests
+resp = requests.get('https://backcore.azun.com.br/api/autoatendimento/m/MS-TOKEN-MESA-05')
+print(resp.json())`,
+        response: `{
+  "sucesso": true,
+  "mesa": { "id_mesa": 5, "numero": "05", "status": "OCUPADA" },
+  "comanda": { "id_pedido": 93, "valor_total": 4.50 }
+}`
+    },
     'pedidos': {
         method: 'POST',
         methodClass: 'api-method-post',
-        endpoint: '/api/v1/pedidos',
-        title: 'Criar Pedido Integrado',
+        endpoint: 'https://backcore.azun.com.br/api/v1/pedidos',
+        title: 'Criar Pedido Integrado (x-api-key)',
         desc: 'Cria pedidos originados de cardápios digitais, e-commerces, totens ou balcão, calculando taxas fiscais e acionando impressão na cozinha.',
-        curl: `curl -X POST https://api.azun.com.br/api/v1/pedidos \\
-  -H "Authorization: Bearer azun_live_89a42f..." \\
+        curl: `curl -X POST "https://backcore.azun.com.br/api/v1/pedidos" \\
+  -H "x-api-key: sk_live_suachaveaqui" \\
   -H "Content-Type: application/json" \\
   -d '{
     "canal": "TOTEM_AUTOATENDIMENTO",
     "cliente": { "nome": "Carlos Mendes", "cpf": "123.456.789-00" },
     "itens": [
-      { "id_produto": 104, "quantidade": 2, "preco_unitario": 28.50 }
+      { "id_produto": 265, "quantidade": 2, "preco_unitario": 4.50 }
     ],
-    "pagamento": { "metodo": "PIX", "valor": 57.00 }
+    "pagamento": { "metodo": "PIX", "valor": 9.00 }
   }'`,
-        js: `const response = await fetch('https://api.azun.com.br/api/v1/pedidos', {
+        js: `const response = await fetch('https://backcore.azun.com.br/api/v1/pedidos', {
   method: 'POST',
   headers: {
-    'Authorization': 'Bearer azun_live_89a42f...',
+    'x-api-key': 'sk_live_suachaveaqui',
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
     canal: 'TOTEM_AUTOATENDIMENTO',
-    cliente: { nome: 'Carlos Mendes', cpf: '123.456.789-00' },
-    itens: [{ id_produto: 104, quantidade: 2, preco_unitario: 28.50 }],
-    pagamento: { metodo: 'PIX', valor: 57.00 }
+    itens: [{ id_produto: 265, quantidade: 2, preco_unitario: 4.50 }],
+    pagamento: { metodo: 'PIX', valor: 9.00 }
   })
 });
-
 const data = await response.json();
 console.log('Pedido Criado:', data.id_pedido);`,
         py: `import requests
 
-url = "https://api.azun.com.br/api/v1/pedidos"
+url = "https://backcore.azun.com.br/api/v1/pedidos"
 headers = {
-    "Authorization": "Bearer azun_live_89a42f...",
+    "x-api-key": "sk_live_suachaveaqui",
     "Content-Type": "application/json"
 }
 payload = {
     "canal": "TOTEM_AUTOATENDIMENTO",
-    "cliente": {"nome": "Carlos Mendes", "cpf": "123.456.789-00"},
-    "itens": [{"id_produto": 104, "quantidade": 2, "preco_unitario": 28.50}],
-    "pagamento": {"metodo": "PIX", "valor": 57.00}
+    "itens": [{"id_produto": 265, "quantidade": 2, "preco_unitario": 4.50}],
+    "pagamento": {"metodo": "PIX", "valor": 9.00}
 }
-
-response = requests.post(url, json=payload, headers=headers)
-print(response.json())`,
+resp = requests.post(url, json=payload, headers=headers)
+print(resp.json())`,
         response: `{
   "success": true,
   "status": "CRIADO",
   "id_pedido": 48201,
-  "sync_id": "ped_sync_8a29b4",
-  "total": 57.00,
-  "latencia_ms": 7.4,
+  "total": 9.00,
+  "latencia_ms": 6.8,
   "cozinha_impressao": "ENVIADA_SPOOL"
+}`
+    },
+    'estoque': {
+        method: 'PUT',
+        methodClass: 'api-method-put',
+        endpoint: 'https://backcore.azun.com.br/api/v1/produtos/:id/estoque',
+        title: 'Sincronização Imediata de Saldo de Estoque',
+        desc: 'Atualiza instantaneamente a quantidade física do produto no ERP e em todos os caixas PDV conectados simultaneamente.',
+        curl: `curl -X PUT "https://backcore.azun.com.br/api/v1/produtos/265/estoque" \\
+  -H "x-api-key: sk_live_suachaveaqui" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "estoque": 150 }'`,
+        js: `const res = await fetch('https://backcore.azun.com.br/api/v1/produtos/265/estoque', {
+  method: 'PUT',
+  headers: {
+    'x-api-key': 'sk_live_suachaveaqui',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ estoque: 150 })
+});
+console.log(await res.json());`,
+        py: `import requests
+resp = requests.put("https://backcore.azun.com.br/api/v1/produtos/265/estoque", json={"estoque": 150}, headers={"x-api-key": "sk_live_suachaveaqui"})
+print(resp.json())`,
+        response: `{
+  "sucesso": true,
+  "mensagem": "Estoque sincronizado com sucesso!",
+  "produto": { "id_produto": 265, "nome": "Macarrão Santa Amália", "estoque": 150 }
+}`
+    },
+    'sync': {
+        method: 'GET',
+        methodClass: 'api-method-get',
+        endpoint: 'https://backcore.azun.com.br/api/pdv/caixas/carga-sync',
+        title: 'Carga Compactada & Sincronização Caixa Offline (AzunService.exe)',
+        desc: 'Endpoint consumido nativamente pelo serviço em background AzunService.exe para sincronização delta de produtos e descarrego de lotes fiscais em segundo plano.',
+        curl: `curl -X GET "https://backcore.azun.com.br/api/pdv/caixas/carga-sync?token=CX-0304-EC8F"`,
+        js: `const res = await fetch('https://backcore.azun.com.br/api/pdv/caixas/carga-sync?token=CX-0304-EC8F');
+const carga = await res.json();
+console.log('Versão da carga:', carga.versao_carga);`,
+        py: `import requests
+resp = requests.get('https://backcore.azun.com.br/api/pdv/caixas/carga-sync?token=CX-0304-EC8F')
+print(resp.json())`,
+        response: `{
+  "sucesso": true,
+  "caixa": { "id_caixa": 1, "nome": "CAIXA_01", "serie_nfce": 1 },
+  "total_produtos": 236,
+  "versao_carga": "2026.10.26.01"
 }`
     },
     'fiscal': {
         method: 'POST',
         methodClass: 'api-method-post',
-        endpoint: '/api/v1/fiscal/emitir',
-        title: 'Emissão Expressa NFC-e (Mod 65) e NF-e (Mod 55)',
+        endpoint: 'https://backcore.azun.com.br/api/fiscal/nfce/emitir',
+        title: 'Emissão Expressa NFC-e 65 e NF-e 55 SEFAZ',
         desc: 'Assinatura digital automática com Certificado A1, cálculo de tributos e envio síncrono para a SEFAZ Estadual com retorno do XML e QR Code.',
-        curl: `curl -X POST https://api.azun.com.br/api/v1/fiscal/emitir \\
-  -H "Authorization: Bearer azun_live_89a42f..." \\
+        curl: `curl -X POST "https://backcore.azun.com.br/api/fiscal/nfce/emitir" \\
+  -H "Authorization: Bearer seu_token_jwt" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "modelo": 65,
-    "ambiente": 1,
-    "serie": 1,
     "id_pedido": 48201,
-    "itens": [
-      { "ncm": "22021000", "cfop": "5102", "cst_icms": "102", "valor": 57.00 }
-    ]
+    "consumidor_cpf": "12345678900",
+    "forma_pagamento": "01"
   }'`,
-        js: `const response = await fetch('https://api.azun.com.br/api/v1/fiscal/emitir', {
+        js: `const response = await fetch('https://backcore.azun.com.br/api/fiscal/nfce/emitir', {
   method: 'POST',
   headers: {
-    'Authorization': 'Bearer azun_live_89a42f...',
+    'Authorization': 'Bearer seu_token_jwt',
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({
-    modelo: 65,
-    ambiente: 1,
-    serie: 1,
-    id_pedido: 48201,
-    itens: [{ ncm: '22021000', cfop: '5102', cst_icms: '102', valor: 57.00 }]
-  })
+  body: JSON.stringify({ id_pedido: 48201, consumidor_cpf: '12345678900' })
 });
 const fiscal = await response.json();
 console.log('Chave de Acesso:', fiscal.chave_acesso);`,
         py: `import requests
-
-url = "https://api.azun.com.br/api/v1/fiscal/emitir"
-headers = {"Authorization": "Bearer azun_live_89a42f..."}
-payload = {
-    "modelo": 65,
-    "ambiente": 1,
-    "serie": 1,
-    "id_pedido": 48201
-}
-resp = requests.post(url, json=payload, headers=headers)
+url = "https://backcore.azun.com.br/api/fiscal/nfce/emitir"
+headers = {"Authorization": "Bearer seu_token_jwt"}
+resp = requests.post(url, json={"id_pedido": 48201}, headers=headers)
 print("Protocolo SEFAZ:", resp.json()["protocolo"])`,
         response: `{
   "success": true,
@@ -543,136 +676,37 @@ print("Protocolo SEFAZ:", resp.json()["protocolo"])`,
   "status_sefaz": "100_AUTORIZADO",
   "chave_acesso": "13261004123456000199650010000482011987654321",
   "protocolo": "113260049281723",
-  "qr_code_url": "https://sefaz.am.gov.br/nfce/qrcode?p=...",
   "tempo_processamento_ms": 118
 }`
     },
-    'mesas': {
-        method: 'GET',
-        methodClass: 'api-method-get',
-        endpoint: '/api/v1/mesas/status',
-        title: 'Consulta em Tempo Real de Mesas e Comandas',
-        desc: 'Retorna a ocupação de todas as mesas cadastradas, consumo acumulado por comanda, taxa de serviço e garçom responsável.',
-        curl: `curl -X GET "https://api.azun.com.br/api/v1/mesas/status?id_tenant=1" \\
-  -H "Authorization: Bearer azun_live_89a42f..."`,
-        js: `const response = await fetch('https://api.azun.com.br/api/v1/mesas/status?id_tenant=1', {
-  headers: { 'Authorization': 'Bearer azun_live_89a42f...' }
-});
-const mesas = await response.json();
-console.log('Total Mesas Ocupadas:', mesas.ocupadas);`,
-        py: `import requests
-
-url = "https://api.azun.com.br/api/v1/mesas/status?id_tenant=1"
-headers = {"Authorization": "Bearer azun_live_89a42f..."}
-data = requests.get(url, headers=headers).json()
-print("Ocupadas:", data["ocupadas"])`,
-        response: `{
-  "success": true,
-  "total_mesas": 24,
-  "ocupadas": 9,
-  "livres": 15,
-  "mesas": [
-    {
-      "numero": 4,
-      "status": "OCUPADA",
-      "garcom": "Marcos",
-      "abertura": "2026-10-24T20:15:00Z",
-      "subtotal": 142.50,
-      "taxa_servico": 14.25,
-      "total": 156.75
-    }
-  ]
-}`
-    },
-    'sync': {
+    'webhooks': {
         method: 'POST',
         methodClass: 'api-method-post',
-        endpoint: '/api/pdv/caixas/carga-sync',
-        title: 'Carga Compactada & Sincronização Caixa Offline (AzunService.exe)',
-        desc: 'Endpoint consumido nativamente pelo serviço em background AzunService.exe para sincronização delta de produtos e descarrego de lotes fiscais em segundo plano.',
-        curl: `curl -X POST "https://api.azun.com.br/api/pdv/caixas/carga-sync?token=CX-0304-EC8F" \\
-  -H "X-Hardware-Id: HWID_AZUN_9921_B8" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "versao_carga_local": 142,
-    "movimentos_pendentes": []
-  }'`,
-        js: `const res = await fetch('https://api.azun.com.br/api/pdv/caixas/carga-sync?token=CX-0304-EC8F', {
-  method: 'POST',
-  headers: {
-    'X-Hardware-Id': 'HWID_AZUN_9921_B8',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({ versao_carga_local: 142, movimentos_pendentes: [] })
-});
-const syncData = await res.json();`,
-        py: `import requests
-
-url = "https://api.azun.com.br/api/pdv/caixas/carga-sync?token=CX-0304-EC8F"
-headers = {"X-Hardware-Id": "HWID_AZUN_9921_B8"}
-resp = requests.post(url, json={"versao_carga_local": 142}, headers=headers)
-print(resp.json())`,
-        response: `{
-  "success": true,
-  "terminal": "CAIXA_01",
-  "status_pareamento": "PAREADO",
-  "versao_carga_atual": 145,
-  "novos_produtos_delta": 4,
-  "carga_binaria_sqlite_gz": "https://cdn.azun.com.br/cargas/delta_145.bin"
-}`
-    },
-    'webhooks': {
-        method: 'EVENT',
-        methodClass: 'api-method-ws',
-        endpoint: 'Webhooks Event-Driven',
-        title: 'Webhooks em Tempo Real com Assinatura HMAC SHA-256',
-        desc: 'Receba notificações instantâneas no seu servidor sempre que um pedido for confirmado, um cupom fiscal for emitido ou uma mesa for fechada.',
-        curl: `// Payload enviado pelo servidor da Azun para a sua URL configurada:
-POST /seu-webhook-endpoint HTTP/1.1
-Host: api.seusistema.com.br
-X-Azun-Signature: t=1792873400,v1=9e82c1b72a4f...
+        endpoint: 'https://backcore.azun.com.br/api/webhooks/:gateway',
+        title: 'Webhooks de Notificação de Pagamento em Tempo Real',
+        desc: 'Receba notificações instantâneas no seu servidor sempre que um pagamento PIX, Cartão ou Boleto for confirmado.',
+        curl: `POST /api/webhooks/mercadopago HTTP/1.1
+Host: backcore.azun.com.br
 Content-Type: application/json
 
 {
-  "event": "pedido.pagamento_confirmado",
-  "created_at": 1792873400,
-  "data": {
-    "id_pedido": 48201,
-    "status": "PAGO",
-    "metodo": "PIX",
-    "valor": 57.00
-  }
+  "event": "payment.created",
+  "data": { "id": "9988776655", "status": "approved" }
 }`,
-        js: `// Exemplo de verificação de assinatura em Node.js (Express)
-const crypto = require('crypto');
-
-app.post('/webhook', (req, res) => {
-  const signature = req.headers['x-azun-signature'];
-  const hmac = crypto.createHmac('sha256', process.env.AZUN_WEBHOOK_SECRET);
-  const digest = hmac.update(JSON.stringify(req.body)).digest('hex');
-
-  if (signature.includes(digest)) {
-    console.log('Evento Válido:', req.body.event);
-    return res.status(200).send('OK');
-  }
-  res.status(401).send('Assinatura Inválida');
+        js: `// Webhook Receiver em Node.js
+app.post('/api/webhooks/mercadopago', (req, res) => {
+  console.log('Notificação recebida:', req.body);
+  res.status(200).send('OK');
 });`,
-        py: `# Exemplo de verificação em Python (Flask)
-import hmac, hashlib
-from flask import request
-
-@app.route('/webhook', methods=['POST'])
-def handle_webhook():
-    sig = request.headers.get('X-Azun-Signature')
-    computed = hmac.new(SECRET.encode(), request.data, hashlib.sha256).hexdigest()
-    if sig and computed in sig:
-        event = request.json['event']
-        return "OK", 200
-    return "Invalid signature", 401`,
+        py: `# Webhook Receiver em Python
+@app.route('/api/webhooks/mercadopago', methods=['POST'])
+def webhook():
+    print(request.json)
+    return "OK", 200`,
         response: `{
   "received": true,
-  "event_id": "evt_99182ab3",
-  "acknowledged_at": "2026-10-24T20:44:00Z"
+  "status": "PROCESSED",
+  "order_status": "PAGO"
 }`
     }
 };
@@ -684,8 +718,8 @@ function initApiExplorer() {
 
     let currentEndpoint = 'pedidos';
     let currentLang = 'curl';
+
     const langButtons = document.querySelectorAll('.api-lang-btn');
-    const codeSnippetEl = document.getElementById('apiCodeSnippet');
     const responseSnippetEl = document.getElementById('apiResponseSnippet');
     const endpointBadge = document.getElementById('apiEndpointBadge');
     const endpointUrl = document.getElementById('apiEndpointUrl');
@@ -742,17 +776,20 @@ function initApiExplorer() {
     if (copyBtn) {
         copyBtn.addEventListener('click', () => {
             const data = API_DATA[currentEndpoint];
-            const textToCopy = data[currentLang] || data.curl;
+            const textToCopy = data ? (data[currentLang] || data.curl) : '';
             navigator.clipboard.writeText(textToCopy).then(() => {
-                const originalText = copyBtn.innerHTML;
-                copyBtn.innerHTML = '<span class="text-emerald-400 font-bold">Copiado!</span>';
+                const originalHtml = copyBtn.innerHTML;
+                copyBtn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span class="text-emerald-400 font-bold hidden sm:inline">Copiado!</span>`;
+                if (window.lucide) window.lucide.createIcons();
                 setTimeout(() => {
-                    copyBtn.innerHTML = originalText;
+                    copyBtn.innerHTML = originalHtml;
+                    if (window.lucide) window.lucide.createIcons();
                 }, 2000);
             });
         });
     }
 
+    // Render inicial
     renderApiView();
 }
 
