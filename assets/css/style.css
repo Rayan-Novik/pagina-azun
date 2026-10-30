@@ -223,9 +223,12 @@ header, section, footer, main, article, .glass-panel, .spotlight-card {
   font-weight: 700 !important;
 }
 
+.nav-link.nav-active svg,
+.nav-active svg,
 .nav-link.nav-active i,
 .nav-active i {
   color: #2563eb !important;
+  stroke: #2563eb !important;
 }
 
 .nav-active::after {
@@ -492,7 +495,7 @@ header, section, footer, main, article, .glass-panel, .spotlight-card {
 html, body {
   width: 100%;
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @media (max-width: 768px) {
