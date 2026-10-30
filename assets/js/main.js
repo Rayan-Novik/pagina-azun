@@ -10,10 +10,13 @@ function renderAllLucideIcons() {
     try {
         createIcons({ icons });
     } catch (e) {
-        if (typeof window !== 'undefined' && window.lucide && window.lucide.createIcons) {
+        // Fallback para lucide global
+    }
+    try {
+        if (typeof window !== 'undefined' && window.lucide && typeof window.lucide.createIcons === 'function') {
             window.lucide.createIcons();
         }
-    }
+    } catch (e) {}
 }
 
 // Renderiza ícones imediatamente para não ter atraso visual
@@ -24,31 +27,32 @@ if (typeof document !== 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
     // 0. Inicialização Robusta de Ícones Lucide
     renderAllLucideIcons();
-    setTimeout(renderAllLucideIcons, 200);
+    setTimeout(renderAllLucideIcons, 100);
+    setTimeout(renderAllLucideIcons, 500);
 
     // 1. Efeitos de Cursor e Canvas Fluido Antigravity (Aura de luz, Shockwaves e Físicas)
-    initAntigravityCanvas();
+    try { initAntigravityCanvas(); } catch (err) { console.warn('AntigravityCanvas error:', err); }
 
     // 2. Sistema Completo de Animações de Scroll (Progress Bar, Reveal, Counters, Nav Spy)
-    initScrollAnimations();
+    try { initScrollAnimations(); } catch (err) { console.warn('ScrollAnimations error:', err); }
 
     // 3. Efeito Spotlight & 3D Tilt nos Cards
-    initSpotlightAndTilt();
+    try { initSpotlightAndTilt(); } catch (err) { console.warn('Spotlight error:', err); }
 
-    // 4. Documentação Interativa da API (Substituindo o antigo simulador)
-    initApiExplorer();
+    // 4. Documentação Interativa da API
+    try { initApiExplorer(); } catch (err) { console.warn('ApiExplorer error:', err); }
 
     // 5. Carregamento Dinâmico de Planos via API (/api/planos) com Status Real
-    initDynamicPlans();
+    try { initDynamicPlans(); } catch (err) { console.warn('DynamicPlans error:', err); }
 
     // 6. Formulário Funcional "Fale com um Consultor Azun" (E-mail + WhatsApp)
-    initContactAndConsultor();
+    try { initContactAndConsultor(); } catch (err) { console.warn('Contact error:', err); }
 
     // 7. Accordion de Perguntas Frequentes (FAQ)
-    initFaqAccordion();
+    try { initFaqAccordion(); } catch (err) { console.warn('Faq error:', err); }
 
     // 8. Menu Mobile
-    initMobileMenu();
+    try { initMobileMenu(); } catch (err) { console.warn('MobileMenu error:', err); }
 });
 
 // ==========================================================================

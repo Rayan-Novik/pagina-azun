@@ -179,53 +179,25 @@ header, section, footer, main, article, .glass-panel, .spotlight-card {
 
 /* ==========================================================================
    ANIMAÇÕES DE ROLAGEM / SCROLL REVEAL (ANTIGRAVITY FLUIDITY)
+   GARANTIA ABSOLUTA: Opacidade 1 por padrão para NUNCA gerar espaços em branco!
    ========================================================================== */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(34px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.reveal-on-scroll.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.93) translateY(24px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.reveal-scale.is-revealed {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.reveal-left.is-revealed {
-  opacity: 1;
-  transform: translateX(0);
-}
-
+.reveal-on-scroll,
+.reveal-scale,
+.reveal-left,
 .reveal-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.reveal-on-scroll.is-revealed,
+.reveal-scale.is-revealed,
+.reveal-left.is-revealed,
 .reveal-right.is-revealed {
-  opacity: 1;
-  transform: translateX(0);
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
 }
 
 /* Cascata escalonada (Stagger) */

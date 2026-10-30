@@ -166,8 +166,25 @@
         }
     </script>
     
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons com Ativação Imediata e Automática -->
+    <script src="https://unpkg.com/lucide@latest" onload="window.lucide && window.lucide.createIcons()"></script>
+    <script>
+        // Dispara renderização contínua para garantir 100% dos ícones visíveis sem atraso
+        function triggerLucide() {
+            if (typeof window !== 'undefined' && window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons();
+            }
+        }
+        document.addEventListener('DOMContentLoaded', triggerLucide);
+        window.addEventListener('load', triggerLucide);
+        var _lucideInterval = setInterval(function() {
+            triggerLucide();
+            if (document.querySelectorAll('svg.lucide').length >= 100) {
+                clearInterval(_lucideInterval);
+            }
+        }, 150);
+        setTimeout(function() { clearInterval(_lucideInterval); }, 5000);
+    </script>
     
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -1931,6 +1948,18 @@
         </div>
         <span class="sm:hidden text-xs font-bold text-slate-800 pr-1">WhatsApp</span>
     </a>
+
+    <!-- Script de Inicialização Imediata de Ícones Lucide -->
+    <script>
+        if (typeof window !== 'undefined' && window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof window !== 'undefined' && window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons();
+            }
+        });
+    </script>
 
     <!-- Script Principal -->
     <script type="module" src="./assets/js/main.js"></script>
