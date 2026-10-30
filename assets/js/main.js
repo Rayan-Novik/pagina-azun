@@ -368,12 +368,20 @@ function initScrollAnimations() {
 
         // Transição dinâmica da Navbar ao rolar para baixo e para cima
         if (header) {
-            if (scrollTop > 50) {
-                header.classList.add('shadow-lg', 'bg-white/95');
-                header.classList.remove('bg-white/70');
+            if (scrollTop > 40) {
+                header.classList.add('shadow-md', 'bg-white/95');
+                header.classList.remove('bg-white/85');
             } else {
-                header.classList.remove('shadow-lg');
+                header.classList.remove('shadow-md', 'bg-white/95');
+                header.classList.add('bg-white/85');
             }
+        }
+
+        // Parallax Suave e Profundidade no Scroll do Hero (reage ao subir e descer)
+        const heroContent = document.querySelector('#hero .max-w-7xl');
+        if (heroContent && scrollTop < 750) {
+            heroContent.style.transform = `translate3d(0, ${scrollTop * 0.12}px, 0)`;
+            heroContent.style.opacity = `${Math.max(0, 1 - (scrollTop / 850))}`;
         }
 
         // 2.2. Scroll Spy: Ativa link correspondente na navbar

@@ -184,55 +184,52 @@
     <!-- ==========================================================================
          1. NAVBAR SUPERIOR GLASSMORPHIC (INSPIRAÇÃO ANTIGRAVITY.GOOGLE)
          ========================================================================== -->
-    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/85 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 sm:h-20">
+            <div class="flex items-center justify-between h-16 sm:h-18">
                 
                 <!-- Logo Azun -->
-                <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group" title="Azun Tecnologia - Início">
-                    <img src="assets/images/logo.png" alt="Azun Tecnologia Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain rounded-xl shadow-sm group-hover:scale-105 transition-transform">
-                    <div class="flex flex-col">
-                        <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-950 font-sans flex items-center gap-1.5">
-                            AZUN <span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span>
+                <a href="#hero" class="flex items-center gap-3 shrink-0 group py-1" title="Azun Tecnologia - Início">
+                    <img src="assets/images/logo.png" alt="Azun Tecnologia Logo" class="w-8 h-8 sm:w-9 sm:h-9 object-contain rounded-xl shadow-xs group-hover:scale-105 transition-transform">
+                    <div class="flex flex-col text-left">
+                        <span class="text-base sm:text-lg font-black tracking-tight text-slate-950 font-sans flex items-center gap-1.5 leading-none">
+                            AZUN <span class="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block"></span>
                         </span>
-                        <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-slate-400">Tecnologia & Gestão</span>
+                        <span class="text-[8.5px] uppercase font-bold tracking-widest text-slate-400 leading-none mt-1">Tecnologia & Gestão</span>
                     </div>
                 </a>
 
-                <!-- Links Centrais Desktop -->
-                <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600" aria-label="Navegação Principal">
-                    <a href="#downloads" class="text-blue-600 font-bold hover:text-blue-700 transition-colors flex items-center gap-1.5">
-                        <i data-lucide="download" class="w-4 h-4"></i>
-                        <span>Downloads</span>
-                    </a>
-                    <a href="#beneficios" class="hover:text-blue-600 transition-colors">Vantagens</a>
-                    <a href="#modulos" class="hover:text-blue-600 transition-colors">Módulos</a>
-                    <a href="#equipamentos" class="hover:text-blue-600 transition-colors">Equipamentos</a>
-                    <a href="#segmentos" class="hover:text-blue-600 transition-colors">Seu Comércio</a>
-                    <a href="#comparativo" class="hover:text-blue-600 transition-colors">Comparativo</a>
-                    <a href="#planos" class="hover:text-blue-600 transition-colors">Planos & Preços</a>
-                    <a href="#faq" class="hover:text-blue-600 transition-colors">Dúvidas</a>
-                    <a href="api.html" class="hover:text-blue-600 transition-colors text-xs text-slate-400 hover:text-slate-600 flex items-center gap-1 ml-1" title="Portal para Desenvolvedores e Integrações">
+                <!-- Links Centrais Desktop (Pill Segmentada Moderna com Alinhamento Perfeito) -->
+                <nav class="hidden lg:flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100/80 border border-slate-200/70 text-xs font-semibold text-slate-600 shadow-2xs" aria-label="Navegação Principal">
+                    <a href="#beneficios" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Vantagens</a>
+                    <a href="#modulos" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Módulos</a>
+                    <a href="#equipamentos" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Equipamentos</a>
+                    <a href="#segmentos" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Segmentos</a>
+                    <a href="#comparativo" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Comparativo</a>
+                    <a href="#planos" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Planos</a>
+                    <a href="#faq" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">FAQ</a>
+                    <span class="w-[1px] h-3.5 bg-slate-300/80 mx-0.5"></span>
+                    <a href="api.html" class="nav-link px-2.5 py-1.5 rounded-full text-slate-500 hover:text-blue-600 transition-all flex items-center gap-1 whitespace-nowrap" title="Documentação da API REST">
                         <i data-lucide="code" class="w-3.5 h-3.5 text-blue-500"></i>
                         <span>API</span>
                     </a>
                 </nav>
 
                 <!-- Botões de Ação Direita (Desktop) -->
-                <div class="hidden sm:flex items-center gap-2.5 sm:gap-3">
-                    <a href="#downloads" class="px-4 sm:px-5 py-2 sm:py-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full transition-all flex items-center gap-2 border border-slate-200/80 hover:border-slate-300">
-                        <i data-lucide="download" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600"></i>
-                        <span>Baixar Setup</span>
+                <div class="hidden sm:flex items-center gap-2.5 shrink-0">
+                    <a href="#downloads" class="px-3.5 py-2 text-xs font-bold text-slate-700 bg-slate-100/90 hover:bg-slate-200/90 rounded-full transition-all flex items-center gap-1.5 border border-slate-200/90 whitespace-nowrap hover:text-blue-600" title="Baixar PDV para Windows">
+                        <i data-lucide="download" class="w-3.5 h-3.5 text-blue-600"></i>
+                        <span>Baixar PDV</span>
                     </a>
-                    <button type="button" class="open-demo-modal px-4 sm:px-6 py-2 sm:py-2.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-full shadow-lg shadow-blue-600/25 transition-all hover:shadow-blue-600/40 hover:-translate-y-0.5 flex items-center gap-1.5 sm:gap-2">
+                    <button type="button" class="open-demo-modal px-4 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 rounded-full shadow-md shadow-blue-600/25 transition-all hover:shadow-blue-600/40 hover:-translate-y-0.5 flex items-center gap-1.5 whitespace-nowrap">
                         <span>Falar com Consultor</span>
-                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
 
                 <!-- Botão Menu Mobile -->
-                <button type="button" id="mobileMenuBtn" class="lg:hidden p-2 text-slate-700 hover:text-blue-600 hover:bg-slate-100 rounded-xl transition-colors" aria-label="Abrir Menu">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                <button type="button" id="mobileMenuBtn" class="lg:hidden p-2 text-slate-700 hover:text-blue-600 hover:bg-slate-100 rounded-xl transition-colors ml-2" aria-label="Abrir Menu">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
             </div>
         </div>

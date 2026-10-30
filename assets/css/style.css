@@ -229,23 +229,21 @@ header, section, footer, main, article, .glass-panel, .spotlight-card {
 .stagger-7 { transition-delay: 420ms; }
 .stagger-8 { transition-delay: 480ms; }
 
-/* Navbar Active Section Indicator */
+/* Navbar Active Section Indicator - Pill Flutuante e Alinhamento Preciso */
+.nav-link {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link.nav-active,
 .nav-active {
   color: #2563eb !important;
-  font-weight: 800 !important;
-  position: relative;
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  font-weight: 700 !important;
 }
 
 .nav-active::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #2563eb;
-  border-radius: 2px;
-  box-shadow: 0 0 8px rgba(37, 99, 235, 0.6);
+  display: none !important;
 }
 
 /* Botão Voltar ao Topo (Back to Top) */
