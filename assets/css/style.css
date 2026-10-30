@@ -60,7 +60,15 @@ body {
 }
 
 #antigravityCanvas {
-  display: none; /* Desativa a antiga constelação com linhas em favor do anel vortex oficial Google Antigravity */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0; /* Em segundo plano: fica estritamente ATRÁS de todos os textos e cards */
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
 }
 
 /* Cursor Glow Antigravity (Aura de luz suave que segue o cursor em segundo plano) */
@@ -70,11 +78,12 @@ body {
   left: 0;
   width: 380px;
   height: 380px;
+  margin-left: -190px;
+  margin-top: -190px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0; /* Também em segundo plano, atrás do texto */
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(14, 165, 233, 0.05) 50%, transparent 70%);
-  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(14, 165, 233, 0.08) 50%, transparent 70%);
   opacity: 0;
   transition: opacity 0.35s ease;
   will-change: transform;
@@ -240,6 +249,11 @@ header, section, footer, main, article, .glass-panel, .spotlight-card {
   background-color: #ffffff !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
   font-weight: 700 !important;
+}
+
+.nav-link.nav-active i,
+.nav-active i {
+  color: #2563eb !important;
 }
 
 .nav-active::after {

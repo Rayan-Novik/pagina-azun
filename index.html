@@ -182,14 +182,14 @@
     <div id="scrollProgressBar" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-blue-600 via-sky-400 to-indigo-600 z-[60] w-0 transition-all duration-75 shadow-sm shadow-blue-500/50"></div>
 
     <!-- ==========================================================================
-         1. NAVBAR SUPERIOR GLASSMORPHIC (INSPIRAÇÃO ANTIGRAVITY.GOOGLE)
+         1. NAVBAR SUPERIOR GLASSMORPHIC (ALINHAMENTO PRECISO COM ÍCONES E SEM QUEBRA DE LINHA)
          ========================================================================== -->
-    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/85 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/92 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 sm:h-18">
                 
                 <!-- Logo Azun -->
-                <a href="#hero" class="flex items-center gap-3 shrink-0 group py-1" title="Azun Tecnologia - Início">
+                <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group shrink-0 py-1" title="Azun Tecnologia - Início">
                     <img src="assets/images/logo.png" alt="Azun Tecnologia Logo" class="w-8 h-8 sm:w-9 sm:h-9 object-contain rounded-xl shadow-xs group-hover:scale-105 transition-transform">
                     <div class="flex flex-col text-left">
                         <span class="text-base sm:text-lg font-black tracking-tight text-slate-950 font-sans flex items-center gap-1.5 leading-none">
@@ -199,78 +199,110 @@
                     </div>
                 </a>
 
-                <!-- Links Centrais Desktop (Pill Segmentada Moderna com Alinhamento Perfeito) -->
-                <nav class="hidden lg:flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100/80 border border-slate-200/70 text-xs font-semibold text-slate-600 shadow-2xs" aria-label="Navegação Principal">
-                    <a href="#beneficios" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Vantagens</a>
-                    <a href="#modulos" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Módulos</a>
-                    <a href="#equipamentos" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Equipamentos</a>
-                    <a href="#segmentos" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Segmentos</a>
-                    <a href="#comparativo" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Comparativo</a>
-                    <a href="#planos" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">Planos</a>
-                    <a href="#faq" class="nav-link px-3 py-1.5 rounded-full hover:text-blue-600 transition-all whitespace-nowrap">FAQ</a>
-                    <span class="w-[1px] h-3.5 bg-slate-300/80 mx-0.5"></span>
-                    <a href="api.html" class="nav-link px-2.5 py-1.5 rounded-full text-slate-500 hover:text-blue-600 transition-all flex items-center gap-1 whitespace-nowrap" title="Documentação da API REST">
-                        <i data-lucide="code" class="w-3.5 h-3.5 text-blue-500"></i>
+                <!-- Links Centrais Desktop (Pill Segmentada com Ícones Lucide e Zero Quebra de Linha) -->
+                <nav class="hidden xl:flex items-center gap-0.5 p-1 rounded-full bg-slate-100/90 border border-slate-200/80 text-xs font-medium text-slate-600 shadow-2xs whitespace-nowrap" aria-label="Navegação Principal">
+                    <a href="#downloads" class="nav-link px-2.5 py-1.5 rounded-full hover:text-blue-600 hover:bg-white/70 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 text-blue-600 font-bold">
+                        <i data-lucide="download" class="w-3.5 h-3.5 text-blue-600"></i>
+                        <span>Downloads</span>
+                    </a>
+                    <a href="#beneficios" class="nav-link px-2.5 py-1.5 rounded-full hover:text-blue-600 hover:bg-white/70 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-slate-400"></i>
+                        <span>Vantagens</span>
+                    </a>
+                    <a href="#modulos" class="nav-link px-2.5 py-1.5 rounded-full hover:text-blue-600 hover:bg-white/70 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                        <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-slate-400"></i>
+                        <span>Módulos</span>
+                    </a>
+                    <a href="#tecnologia" class="nav-link px-2.5 py-1.5 rounded-full hover:text-blue-600 hover:bg-white/70 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                        <i data-lucide="cpu" class="w-3.5 h-3.5 text-slate-400"></i>
+                        <span>Tecnologia</span>
+                    </a>
+                    <a href="#equipamentos" class="nav-link px-2.5 py-1.5 rounded-full hover:text-blue-600 hover:bg-white/70 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                        <i data-lucide="printer" class="w-3.5 h-3.5 text-slate-400"></i>
+                        <span>Equipamentos</span>
+                    </a>
+                    <a href="#segmentos" class="nav-link px-2.5 py-1.5 rounded-full hover:text-blue-600 hover:bg-white/70 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                        <i data-lucide="store" class="w-3.5 h-3.5 text-slate-400"></i>
+                        <span>Segmentos</span>
+                    </a>
+                    <a href="#comparativo" class="nav-link px-2.5 py-1.5 rounded-full hover:text-blue-600 hover:bg-white/70 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                        <i data-lucide="scale" class="w-3.5 h-3.5 text-slate-400"></i>
+                        <span>Comparativo</span>
+                    </a>
+                    <a href="#api-docs" class="nav-link px-2.5 py-1.5 rounded-full hover:text-blue-600 hover:bg-white/70 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 text-blue-600 font-bold">
+                        <i data-lucide="terminal" class="w-3.5 h-3.5 text-blue-500"></i>
                         <span>API</span>
+                    </a>
+                    <a href="#planos" class="nav-link px-2.5 py-1.5 rounded-full hover:text-blue-600 hover:bg-white/70 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                        <i data-lucide="tag" class="w-3.5 h-3.5 text-slate-400"></i>
+                        <span>Planos</span>
+                    </a>
+                    <a href="#faq" class="nav-link px-2.5 py-1.5 rounded-full hover:text-blue-600 hover:bg-white/70 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                        <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                        <span>Dúvidas</span>
                     </a>
                 </nav>
 
                 <!-- Botões de Ação Direita (Desktop) -->
                 <div class="hidden sm:flex items-center gap-2.5 shrink-0">
-                    <a href="#downloads" class="px-3.5 py-2 text-xs font-bold text-slate-700 bg-slate-100/90 hover:bg-slate-200/90 rounded-full transition-all flex items-center gap-1.5 border border-slate-200/90 whitespace-nowrap hover:text-blue-600" title="Baixar PDV para Windows">
+                    <a href="#downloads" class="px-3.5 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full transition-all flex items-center gap-1.5 border border-slate-200/80 hover:border-slate-300 whitespace-nowrap" title="Baixar Instalador Windows">
                         <i data-lucide="download" class="w-3.5 h-3.5 text-blue-600"></i>
-                        <span>Baixar PDV</span>
+                        <span>Baixar Setup</span>
                     </a>
-                    <button type="button" class="open-demo-modal px-4 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 rounded-full shadow-md shadow-blue-600/25 transition-all hover:shadow-blue-600/40 hover:-translate-y-0.5 flex items-center gap-1.5 whitespace-nowrap">
+                    <button type="button" class="open-demo-modal px-4 py-1.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-full shadow-md shadow-blue-600/25 transition-all hover:shadow-blue-600/40 hover:-translate-y-0.5 flex items-center gap-1.5 whitespace-nowrap">
                         <span>Falar com Consultor</span>
                         <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
 
                 <!-- Botão Menu Mobile -->
-                <button type="button" id="mobileMenuBtn" class="lg:hidden p-2 text-slate-700 hover:text-blue-600 hover:bg-slate-100 rounded-xl transition-colors ml-2" aria-label="Abrir Menu">
+                <button type="button" id="mobileMenuBtn" class="xl:hidden p-2 text-slate-700 hover:text-blue-600 hover:bg-slate-100 rounded-xl transition-colors ml-2" aria-label="Abrir Menu">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
             </div>
         </div>
 
         <!-- Menu Mobile Dropdown -->
-        <div id="mobileMenu" class="hidden lg:hidden bg-white/98 backdrop-blur-xl border-b border-slate-200 px-5 py-5 shadow-2xl rounded-b-2xl transition-all">
-            <div class="flex flex-col gap-2.5 text-sm font-semibold text-slate-700">
+        <div id="mobileMenu" class="hidden xl:hidden bg-white/98 backdrop-blur-xl border-b border-slate-200 px-5 py-5 shadow-2xl rounded-b-2xl transition-all">
+            <div class="flex flex-col gap-2 text-sm font-semibold text-slate-700">
                 <a href="#downloads" class="text-blue-600 font-bold py-2.5 px-3 rounded-xl hover:bg-blue-50/80 transition-colors flex items-center justify-between">
                     <span class="flex items-center gap-2.5"><i data-lucide="download" class="w-4 h-4 text-blue-600"></i> Área de Downloads</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-blue-400"></i>
                 </a>
                 <a href="#beneficios" class="hover:text-blue-600 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-between">
-                    <span>O que Resolvemos</span>
+                    <span class="flex items-center gap-2.5"><i data-lucide="sparkles" class="w-4 h-4 text-slate-400"></i> Vantagens Comerciais</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
                 </a>
                 <a href="#modulos" class="hover:text-blue-600 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-between">
-                    <span>Módulos do Sistema</span>
+                    <span class="flex items-center gap-2.5"><i data-lucide="layout-grid" class="w-4 h-4 text-slate-400"></i> Módulos do Sistema</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                </a>
+                <a href="#tecnologia" class="hover:text-blue-600 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-between">
+                    <span class="flex items-center gap-2.5"><i data-lucide="cpu" class="w-4 h-4 text-slate-400"></i> Arquitetura C++ Híbrida</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
                 </a>
                 <a href="#equipamentos" class="hover:text-blue-600 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-between">
-                    <span>Equipamentos Compatíveis</span>
+                    <span class="flex items-center gap-2.5"><i data-lucide="printer" class="w-4 h-4 text-slate-400"></i> Equipamentos e Balanças</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
                 </a>
                 <a href="#segmentos" class="hover:text-blue-600 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-between">
-                    <span>Para o seu Comércio</span>
+                    <span class="flex items-center gap-2.5"><i data-lucide="store" class="w-4 h-4 text-slate-400"></i> Segmentos de Comércio</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
                 </a>
                 <a href="#comparativo" class="hover:text-blue-600 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-between">
-                    <span>Comparativo</span>
+                    <span class="flex items-center gap-2.5"><i data-lucide="scale" class="w-4 h-4 text-slate-400"></i> Comparativo Técnico</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                </a>
+                <a href="#api-docs" class="hover:text-blue-600 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-between">
+                    <span class="flex items-center gap-2.5"><i data-lucide="terminal" class="w-4 h-4 text-blue-500"></i> API REST & WebSocket</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
                 </a>
                 <a href="#planos" class="hover:text-blue-600 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-between">
-                    <span>Planos & Preços</span>
+                    <span class="flex items-center gap-2.5"><i data-lucide="tag" class="w-4 h-4 text-slate-400"></i> Planos & Preços</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
                 </a>
                 <a href="#faq" class="hover:text-blue-600 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-between">
-                    <span>Dúvidas Frequentes</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
-                </a>
-                <a href="api.html" class="hover:text-blue-600 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-between text-xs text-slate-500">
-                    <span class="flex items-center gap-2.5"><i data-lucide="code" class="w-4 h-4 text-blue-500"></i> API para Desenvolvedores</span>
+                    <span class="flex items-center gap-2.5"><i data-lucide="help-circle" class="w-4 h-4 text-slate-400"></i> Dúvidas Frequentes</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
                 </a>
                 
@@ -859,6 +891,120 @@
         </div>
     </section>
 
+<section id="tecnologia" class="py-24 bg-slate-50/80 backdrop-blur-[2px] relative border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-tech text-xs font-bold uppercase tracking-wider mb-4">
+                    <i data-lucide="binary" class="w-3.5 h-3.5"></i>
+                    <span>Arquitetura Híbrida & Suporte a Periféricos</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight font-sans mb-5">
+                    Engenharia nativa criada para suportar o ritmo do comércio brasileiro.
+                </h2>
+                <p class="text-slate-600 text-lg">
+                    Entenda por que a abordagem híbrida da Azun elimina os problemas crônicos de sistemas 100% web que dependem de conexão constante com servidores remotos.
+                </p>
+            </div>
+
+            <!-- Gráfico Comparativo de Arquitetura -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+                
+                <div class="reveal-left lg:col-span-6 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between spotlight-card">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-blue-100 text-blue-700">
+                                <i data-lucide="hard-drive" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-950 font-sans">Camada Local: C++17 e SQLite</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                            No ponto de venda (PDV), cada milissegundo conta. A Azun não roda sobre navegadores pesados; o executável nativo <code class="text-blue-700 font-mono text-xs font-bold bg-blue-50 px-1 py-0.5 rounded">AzunPDV.exe</code> conecta-se diretamente à DLL nativa do SQLite, garantindo gravação de itens e cálculo de impostos em menos de 1ms, mesmo em computadores antigos com processadores básicos e 2GB de RAM.
+                        </p>
+                        <ul class="space-y-3 text-xs text-slate-700 font-medium">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Zero consumo desnecessário de CPU e memória RAM</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Comunicação local por sockets TCP na porta 32100</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Início instantâneo em modo F11 tela cheia</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="reveal-right lg:col-span-6 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between spotlight-card">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-blue-100 text-blue-700">
+                                <i data-lucide="cloud-cog" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-950 font-sans">Camada Nuvem: AWS e Serviço Garçom</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                            O <code class="text-blue-700 font-mono text-xs font-bold bg-blue-50 px-1 py-0.5 rounded">AzunService.exe</code> opera registrado como o serviço silencioso <code class="text-blue-700 font-mono text-xs font-bold bg-blue-50 px-1 py-0.5 rounded">AzunPDVService</code> em segundo plano no Windows. Ele monitora a conectividade com a nuvem, sincroniza novos produtos cadastrados no painel web, atualiza estoques e descarrega as vendas concluídas sem que o operador perceba qualquer interrupção.
+                        </p>
+                        <ul class="space-y-3 text-xs text-slate-700 font-medium">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Sincronização assíncrona tolerante a instabilidade de rede</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Relatórios em tempo real disponíveis para acesso via celular</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Backups redundantes diários em múltiplos servidores</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Compatibilidade de Hardware Comercial Brasileiro -->
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-950 mb-2 font-sans flex items-center gap-2">
+                    <i data-lucide="plug-zap" class="w-5 h-5 text-blue-600"></i>
+                    <span>Compatibilidade Certificada com Periféricos do Mercado</span>
+                </h3>
+                <p class="text-xs text-slate-600 mb-6">A Azun suporta os principais hardwares comerciais brasileiros sem necessidade de drivers complexos adicionais:</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <strong class="text-slate-900 block mb-1">Impressoras ESC/POS</strong>
+                        <span class="text-slate-500">Bematech MP-4200, Epson TM-T20, Elgin i9/i8, Daruma e impressoras de rede Ethernet.</span>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <strong class="text-slate-900 block mb-1">Balanças de Checkout</strong>
+                        <span class="text-slate-500">Toledo Prix 3, Filizola, Urano e comunicação contínua via Porta Serial COM direta.</span>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <strong class="text-slate-900 block mb-1">Balanças Etiquetadoras</strong>
+                        <span class="text-slate-500">Leitura de etiquetas com código EAN-13 iniciado com dígito 2 (peso líquido ou valor embutido).</span>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <strong class="text-slate-900 block mb-1">Gavetas de Dinheiro</strong>
+                        <span class="text-slate-500">Acionamento automático por pulso elétrico padrão RJ12 configurável no encerramento da venda.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. MATRIZ COMPARATIVA TÉCNICA (DOCUMENTO DE ALTA RELEVÂNCIA PARA IAs)
+         ========================================================================== -->
+    
+
+
     <!-- ==========================================================================
          6. COMPARATIVO COMERCIAL: AZUN VS SISTEMAS TRADICIONAIS
          ========================================================================== -->
@@ -1103,7 +1249,192 @@
     <!-- ==========================================================================
          8. PLANOS E PREÇOS CADASTRADOS NO SISTEMA
          ========================================================================== -->
-    <section id="planos" class="py-24 bg-white/80 backdrop-blur-[2px] relative">
+    <section id="api-docs" class="py-14 sm:py-24 bg-slate-950/95 backdrop-blur-[2px] text-white relative overflow-hidden">
+        
+        <!-- Efeito sutil de iluminação de fundo -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-blue-600/15 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-wider uppercase mb-4">
+                    <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+                    <span>Documentação de API REST & WebSocket v2.0</span>
+                </div>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-3 sm:mb-5 font-sans">
+                    Integrações abertas e API de alta performance.
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base md:text-lg leading-relaxed">
+                    Conecte totens de autoatendimento, cardápios digitais, e-commerces e plataformas de terceiros diretamente ao ecossistema Azun. Arquitetura orientada a microsserviços e webhooks em tempo real.
+                </p>
+                <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+                    <a href="api.html" class="px-5 sm:px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg shadow-blue-600/30 transition-all flex items-center gap-2">
+                        <span>Ver Documentação Completa da API</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                    </a>
+                    <a href="https://backcore.azun.com.br/api/pdv/health" target="_blank" class="px-4 sm:px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs border border-slate-800 transition-colors flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Health Check (backcore.azun.com.br)</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navegação de Endpoints da API Separados por Categoria -->
+            <div class="flex flex-col gap-2.5 sm:gap-3 max-w-5xl mx-auto mb-6 sm:mb-8">
+                <!-- Linha 1: APIs Livres & Abertas (Sem Chave) -->
+                <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-800 shadow-xl">
+                    <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-400 px-2.5 sm:px-3 py-1 bg-emerald-500/10 rounded-xl border border-emerald-500/20 flex items-center gap-1">
+                        <i data-lucide="unlock" class="w-3 h-3"></i>
+                        <span>APIs Livres:</span>
+                    </span>
+                    <button type="button" class="api-tab-btn tab-btn-inactive px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold flex items-center gap-1.5 transition-all" data-endpoint="health">
+                        <span class="api-method-badge api-method-get">GET</span>
+                        <span>/pdv/health</span>
+                    </button>
+                    <button type="button" class="api-tab-btn tab-btn-inactive px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold flex items-center gap-1.5 transition-all" data-endpoint="produtos_livres">
+                        <span class="api-method-badge api-method-get">GET</span>
+                        <span>/produtos</span>
+                    </button>
+                    <button type="button" class="api-tab-btn tab-btn-inactive px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold flex items-center gap-1.5 transition-all" data-endpoint="mesa_qr">
+                        <span class="api-method-badge api-method-get">GET</span>
+                        <span>/autoatendimento/m/:token</span>
+                    </button>
+                </div>
+
+                <!-- Linha 2: Integração v1 & v2, PDV e SEFAZ -->
+                <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-800 shadow-xl">
+                    <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-blue-400 px-2.5 sm:px-3 py-1 bg-blue-500/10 rounded-xl border border-blue-500/20 flex items-center gap-1">
+                        <i data-lucide="key" class="w-3 h-3"></i>
+                        <span>Autenticadas:</span>
+                    </span>
+                    <button type="button" class="api-tab-btn tab-btn-active px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold flex items-center gap-1.5 transition-all" data-endpoint="pedidos">
+                        <span class="api-method-badge api-method-post">POST</span>
+                        <span>/v1/pedidos</span>
+                    </button>
+                    <button type="button" class="api-tab-btn tab-btn-inactive px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold flex items-center gap-1.5 transition-all" data-endpoint="estoque">
+                        <span class="api-method-badge api-method-put">PUT</span>
+                        <span>/v1/produtos/:id/estoque</span>
+                    </button>
+                    <button type="button" class="api-tab-btn tab-btn-inactive px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold flex items-center gap-1.5 transition-all" data-endpoint="sync">
+                        <span class="api-method-badge api-method-get">GET</span>
+                        <span>/pdv/caixas/carga-sync</span>
+                    </button>
+                    <button type="button" class="api-tab-btn tab-btn-inactive px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold flex items-center gap-1.5 transition-all" data-endpoint="fiscal">
+                        <span class="api-method-badge api-method-post">POST</span>
+                        <span>/fiscal/nfce/emitir</span>
+                    </button>
+                    <button type="button" class="api-tab-btn tab-btn-inactive px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold flex items-center gap-1.5 transition-all" data-endpoint="webhooks">
+                        <span class="api-method-badge api-method-post">POST</span>
+                        <span>/webhooks/:gateway</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Terminal Mockup da Documentação Interativa -->
+            <div class="reveal-scale api-terminal-screen rounded-2xl sm:rounded-3xl overflow-hidden max-w-5xl mx-auto border border-slate-800 shadow-2xl">
+                
+                <!-- Barra Superior do Terminal -->
+                <div class="px-4 sm:px-6 py-3.5 sm:py-4 bg-slate-900 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+                    <div class="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+                        <span id="apiEndpointBadge" class="api-method-badge api-method-post">POST</span>
+                        <span id="apiEndpointUrl" class="font-mono text-[11px] sm:text-sm text-slate-200 font-bold break-all">https://backcore.azun.com.br/api/v1/pedidos</span>
+                        <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                        <span id="apiEndpointTitle" class="text-xs text-slate-400 font-medium hidden sm:inline">Criar Pedido Integrado</span>
+                    </div>
+
+                    <!-- Seletor de Linguagens (cURL, JS, Python) & Copiar -->
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-center bg-slate-950 p-1 rounded-lg border border-slate-800 text-[11px] font-mono">
+                            <button type="button" class="api-lang-btn px-2.5 py-1 rounded bg-blue-600 text-white font-bold transition-all" data-lang="curl">cURL</button>
+                            <button type="button" class="api-lang-btn px-2.5 py-1 rounded text-slate-400 hover:text-white transition-all" data-lang="js">Node.js</button>
+                            <button type="button" class="api-lang-btn px-2.5 py-1 rounded text-slate-400 hover:text-white transition-all" data-lang="py">Python</button>
+                        </div>
+
+                        <button type="button" id="btnCopyApiCode" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700 text-xs flex items-center gap-1.5" title="Copiar Exemplo">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span class="hidden sm:inline">Copiar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Descrição do Endpoint Selecionado -->
+                <div class="px-6 py-3 bg-slate-900/40 border-b border-slate-800/80 text-xs text-slate-400 flex items-center gap-2">
+                    <i data-lucide="info" class="w-3.5 h-3.5 text-blue-400 shrink-0"></i>
+                    <span id="apiEndpointDesc">Cria pedidos originados de cardápios digitais, e-commerces, totens ou balcão, calculando taxas fiscais e acionando impressão na cozinha.</span>
+                </div>
+
+                <!-- Corpo: Grid com Requisição e Resposta -->
+                <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-950/60">
+                    
+                    <!-- Coluna da Requisição -->
+                    <div class="lg:col-span-7 flex flex-col justify-between">
+                        <div class="flex items-center justify-between pb-2 mb-2 text-xs font-mono text-slate-400">
+                            <span class="flex items-center gap-1.5 text-blue-400 font-bold">
+                                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                                <span>Requisição (Payload)</span>
+                            </span>
+                            <span class="text-[11px] text-slate-500">Header: x-api-key</span>
+                        </div>
+                        <pre id="apiCodeSnippet" class="code-block p-4 overflow-x-auto text-xs font-mono text-slate-200 leading-relaxed max-h-80 select-all"></pre>
+                    </div>
+
+                    <!-- Coluna da Resposta -->
+                    <div class="lg:col-span-5 flex flex-col justify-between">
+                        <div class="flex items-center justify-between pb-2 mb-2 text-xs font-mono text-slate-400">
+                            <span class="flex items-center gap-1.5 text-emerald-400 font-bold">
+                                <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+                                <span>Resposta SEFAZ / Servidor</span>
+                            </span>
+                            <span class="text-[11px] text-emerald-400 font-mono font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">200 OK • 7.4ms</span>
+                        </div>
+                        <pre id="apiResponseSnippet" class="code-block p-4 overflow-x-auto text-xs font-mono text-emerald-300 leading-relaxed max-h-80 select-all"></pre>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 4 Pilares de Engenharia de Integração -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 max-w-5xl mx-auto text-xs">
+                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+                    <div class="p-2 rounded-xl bg-blue-500/20 text-blue-400 w-fit mb-3">
+                        <i data-lucide="key" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1">Autenticação JWT & x-api-key</h3>
+                    <p class="text-slate-400 leading-relaxed">Tokens e chaves rotacionáveis por filial com permissões granulares de leitura, escrita e emissão fiscal.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+                    <div class="p-2 rounded-xl bg-emerald-500/20 text-emerald-400 w-fit mb-3">
+                        <i data-lucide="activity" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1">SLA 99.99% & Cache Local</h3>
+                    <p class="text-slate-400 leading-relaxed">Operação tolerante a falhas: o serviço <code class="text-emerald-400 font-mono">AzunService.exe</code> retém dados em contingência se a internet cair.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+                    <div class="p-2 rounded-xl bg-purple-500/20 text-purple-400 w-fit mb-3">
+                        <i data-lucide="webhook" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1">Webhooks em Tempo Real</h3>
+                    <p class="text-slate-400 leading-relaxed">Notificações push imediatas para pagamentos aprovados, impressão e autorização de notas fiscais.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+                    <div class="p-2 rounded-xl bg-amber-500/20 text-amber-400 w-fit mb-3">
+                        <i data-lucide="gauge" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1">Rate Limit de 5.000 req/min</h3>
+                    <p class="text-slate-400 leading-relaxed">Projetado para franquias, redes de comércio e operações com pico intenso de pedidos simultâneos.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. PLANOS E PREÇOS CADASTRADOS NO SISTEMA
+         ========================================================================== -->
+    
+
+<section id="planos" class="py-24 bg-white/80 backdrop-blur-[2px] relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="text-center max-w-3xl mx-auto mb-14">

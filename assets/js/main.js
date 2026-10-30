@@ -3,16 +3,31 @@
 // REGRA ABSOLUTA: ZERO EMOJIS! SOMENTE ÍCONES VETORIAIS E DESIGN DE PRECISÃO.
 // ==========================================================================
 
+import { createIcons, icons } from 'lucide';
 import './antigravity/MainParticlesComponent.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 0. Inicialização de Ícones Lucide
-    if (window.lucide) {
-        window.lucide.createIcons();
+function renderAllLucideIcons() {
+    try {
+        createIcons({ icons });
+    } catch (e) {
+        if (typeof window !== 'undefined' && window.lucide && window.lucide.createIcons) {
+            window.lucide.createIcons();
+        }
     }
+}
 
-    // 1. Efeito Oficial Google Antigravity (Inicializado via WebGL em MainParticlesComponent.js)
-    // initAntigravityCanvas();
+// Renderiza ícones imediatamente para não ter atraso visual
+if (typeof document !== 'undefined') {
+    renderAllLucideIcons();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 0. Inicialização Robusta de Ícones Lucide
+    renderAllLucideIcons();
+    setTimeout(renderAllLucideIcons, 200);
+
+    // 1. Efeitos de Cursor e Canvas Fluido Antigravity (Aura de luz, Shockwaves e Físicas)
+    initAntigravityCanvas();
 
     // 2. Sistema Completo de Animações de Scroll (Progress Bar, Reveal, Counters, Nav Spy)
     initScrollAnimations();
@@ -839,10 +854,10 @@ function initApiExplorer() {
             navigator.clipboard.writeText(textToCopy).then(() => {
                 const originalHtml = copyBtn.innerHTML;
                 copyBtn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span class="text-emerald-400 font-bold hidden sm:inline">Copiado!</span>`;
-                if (window.lucide) window.lucide.createIcons();
+                renderAllLucideIcons();
                 setTimeout(() => {
                     copyBtn.innerHTML = originalHtml;
-                    if (window.lucide) window.lucide.createIcons();
+                    renderAllLucideIcons();
                 }, 2000);
             });
         });
@@ -1003,7 +1018,7 @@ function renderPlans(isAnnual) {
         plansContainer.appendChild(card);
     });
 
-    if (window.lucide) window.lucide.createIcons();
+    renderAllLucideIcons();
     initSpotlightAndTilt();
     bindModalButtons();
 
@@ -1174,7 +1189,7 @@ function initMobileMenu() {
                 mobileMenu.classList.add('hidden');
                 mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
             }
-            if (window.lucide) window.lucide.createIcons();
+            renderAllLucideIcons();
         });
 
         // Fecha ao clicar em qualquer link ou botão dentro do menu
@@ -1182,7 +1197,7 @@ function initMobileMenu() {
             item.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
                 mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-                if (window.lucide) window.lucide.createIcons();
+                renderAllLucideIcons();
             });
         });
 
@@ -1191,7 +1206,7 @@ function initMobileMenu() {
             if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
                 mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-                if (window.lucide) window.lucide.createIcons();
+                renderAllLucideIcons();
             }
         });
     }
