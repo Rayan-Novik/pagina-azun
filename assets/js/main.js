@@ -401,16 +401,26 @@ function initScrollAnimations() {
         });
     }
 
-    // 2.3. IntersectionObserver BIDIRECIONAL:
-    // Anima a revelação ao entrar em foco (tanto descendo quanto subindo a página)
+    // 2.3. IntersectionObserver Suave e Confiável:
+    // Garante que o conteúdo comercial SEMPRE apareça e NUNCA fique invisível ou em branco
     const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-scale, .reveal-left, .reveal-right');
+
+    // Revela imediatamente elementos que já estão no campo de visão inicial
+    revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 100) {
+            el.classList.add('is-revealed');
+            const counters = el.querySelectorAll('[data-counter-target]');
+            counters.forEach(c => animateCounter(c));
+        }
+    });
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-revealed');
 
-                // Se possui contadores de métricas, dispara a animação numérica
+                // Dispara animação de contadores numéricos
                 const counters = entry.target.querySelectorAll('[data-counter-target]');
                 counters.forEach(counter => {
                     animateCounter(counter);
@@ -419,28 +429,26 @@ function initScrollAnimations() {
                 if (entry.target.hasAttribute('data-counter-target')) {
                     animateCounter(entry.target);
                 }
-            } else {
-                // Ao sair da tela (seja rolando para cima ou para baixo), desarma para permitir a reanimação suave
-                const rect = entry.target.getBoundingClientRect();
-                if (rect.top > window.innerHeight || rect.bottom < 0) {
-                    entry.target.classList.remove('is-revealed');
-                    
-                    const counters = entry.target.querySelectorAll('[data-counter-target]');
-                    counters.forEach(counter => {
-                        counter.dataset.counterDone = 'false';
-                    });
-                    if (entry.target.hasAttribute('data-counter-target')) {
-                        entry.target.dataset.counterDone = 'false';
-                    }
-                }
             }
+            // OBSERVAÇÃO CRÍTICA: Uma vez revelado, o elemento NUNCA mais é escondido!
+            // Isso previne que seções comerciais fiquem "em branco" ao rolar a página.
         });
     }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.05,
+        rootMargin: '60px 0px 60px 0px'
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
+
+    // Fallback de Segurança Absoluta:
+    // Garante que, mesmo em dispositivos com navegadores antigos ou conexões lentas, nenhum card fique invisível
+    setTimeout(() => {
+        revealElements.forEach(el => {
+            if (!el.classList.contains('is-revealed')) {
+                el.classList.add('is-revealed');
+            }
+        });
+    }, 1200);
 }
 
 // Animação Numérica Suave (Roll-up Counter)
