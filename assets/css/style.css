@@ -36,18 +36,31 @@ body {
 }
 
 /* ==========================================================================
-   ANTIGRAVITY FLUID CANVAS (NÍTIDO, VÍVIDO, EM SEGUNDO PLANO ATRÁS DO TEXTO)
+   OFICIAL GOOGLE ANTIGRAVITY PARTICLE VORTEX (NÍTIDO, RADIAL, EM SEGUNDO PLANO ATRÁS DO TEXTO)
    ========================================================================== */
-#antigravityCanvas {
-  position: fixed;
+.main-particles-component-section {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  overflow: hidden;
+  z-index: 1; /* Em segundo plano: fica estritamente atrás do conteúdo e textos (z-10) */
+}
+
+.main-particles-component-section .main-particles-container,
+.main-particles-component-section .main-particles-container canvas {
   pointer-events: none;
-  z-index: 0; /* Em segundo plano: fica estritamente ATRÁS de todos os textos e cards */
-  opacity: 0.9;
-  transition: opacity 0.4s ease;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#antigravityCanvas {
+  display: none; /* Desativa a antiga constelação com linhas em favor do anel vortex oficial Google Antigravity */
 }
 
 /* Cursor Glow Antigravity (Aura de luz suave que segue o cursor em segundo plano) */

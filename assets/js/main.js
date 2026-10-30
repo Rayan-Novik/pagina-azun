@@ -3,14 +3,16 @@
 // REGRA ABSOLUTA: ZERO EMOJIS! SOMENTE ÍCONES VETORIAIS E DESIGN DE PRECISÃO.
 // ==========================================================================
 
+import './antigravity/MainParticlesComponent.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     // 0. Inicialização de Ícones Lucide
     if (window.lucide) {
         window.lucide.createIcons();
     }
 
-    // 1. Canvas Fluido de Física Antigravity (Partículas Vívidas, Nítidas e Reativas ao Scroll)
-    initAntigravityCanvas();
+    // 1. Efeito Oficial Google Antigravity (Inicializado via WebGL em MainParticlesComponent.js)
+    // initAntigravityCanvas();
 
     // 2. Sistema Completo de Animações de Scroll (Progress Bar, Reveal, Counters, Nav Spy)
     initScrollAnimations();
