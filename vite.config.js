@@ -40,6 +40,14 @@ export default defineConfig({
           fs.cpSync(src, dest, { recursive: true });
           console.log('[VITE] Pasta downloads copiada para dist/downloads com sucesso.');
         }
+
+        // Garante que dist/downloads/index.html exista para Vercel / Nginx / Apache
+        const htmlSrc = resolve(__dirname, 'dist/downloads.html');
+        const htmlDest = resolve(__dirname, 'dist/downloads/index.html');
+        if (fs.existsSync(htmlSrc)) {
+          fs.copyFileSync(htmlSrc, htmlDest);
+          console.log('[VITE] dist/downloads.html copiado para dist/downloads/index.html');
+        }
       }
     }
   ]
