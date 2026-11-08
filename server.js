@@ -56,6 +56,7 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2',
   '.ttf': 'font/ttf',
   '.exe': 'application/vnd.microsoft.portable-executable',
+  '.apk': 'application/vnd.android.package-archive',
   '.zip': 'application/zip',
   '.pdf': 'application/pdf'
 };
@@ -316,6 +317,9 @@ const server = http.createServer((req, res) => {
   if (cleanUrl === '/api' || cleanUrl === '/docs' || cleanUrl === '/api-docs' || cleanUrl === '/desenvolvedores') {
     requestFile = '/api.html';
   }
+  if (cleanUrl === '/downloads' || cleanUrl === '/download' || cleanUrl === '/baixar' || cleanUrl === '/app') {
+    requestFile = '/downloads.html';
+  }
   const filePath = path.join(__dirname, requestFile);
 
   fs.stat(filePath, (err, stats) => {
@@ -340,10 +344,10 @@ const server = http.createServer((req, res) => {
     const headers = {
       'Content-Type': contentType,
       'Content-Length': stats.size,
-      'Cache-Control': ext === '.exe' ? 'public, max-age=3600' : 'no-cache'
+      'Cache-Control': (ext === '.exe' || ext === '.apk') ? 'public, max-age=3600' : 'no-cache'
     };
 
-    if (ext === '.exe') {
+    if (ext === '.exe' || ext === '.apk') {
       headers['Content-Disposition'] = `attachment; filename="${path.basename(filePath)}"`;
     }
 

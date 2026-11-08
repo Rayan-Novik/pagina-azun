@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Oficial de Downloads - Azun Tecnologia | PDV Windows e App do Entregador Android</title>
+    
+    <!-- Meta Tags SEO & Otimização -->
+    <meta name="description" content="Central oficial de downloads da Azun Tecnologia. Baixe o instalador do Frente de Caixa PDV Offline em C++ para Windows e o Aplicativo oficial do Entregador Android com GPS em tempo real.">
+    <meta name="keywords" content="download pdv windows, baixar azun pdv, app entregador apk, aplicativo motoboy android, instalador caixa offline, sistema pdv exe, baixar app delivery">
+    <meta name="author" content="Azun Tecnologia">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://azuntecnologia.com.br/downloads">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Downloads Oficiais - Azun PDV Caixa e App Entregador Android">
+    <meta property="og:description" content="Baixe os softwares oficiais da Azun Tecnologia: Frente de Caixa Desktop Windows e Aplicativo do Entregador Android.">
+    <meta property="og:image" content="assets/images/logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        azun: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#0b1329'
+                        },
+                        ararinha: {
+                            blue: '#0084fb',
+                            darkBlue: '#0066d6',
+                            light: '#f0f7ff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Consolas', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        function triggerLucide() {
+            if (typeof window !== 'undefined' && window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons();
+            }
+        }
+        document.addEventListener('DOMContentLoaded', triggerLucide);
+        window.addEventListener('load', triggerLucide);
+        var _lucideInterval = setInterval(function() {
+            triggerLucide();
+            if (document.querySelectorAll('svg.lucide').length >= 40) {
+                clearInterval(_lucideInterval);
+            }
+        }, 150);
+        setTimeout(function() { clearInterval(_lucideInterval); }, 5000);
+    </script>
+
+    <!-- QRCode Generator via CDN para download direto no smartphone -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        .glow-card:hover {
+            box-shadow: 0 20px 40px -15px rgba(0, 132, 251, 0.25);
+            border-color: rgba(0, 132, 251, 0.4);
+        }
+        .badge-verified {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.25));
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: #10b981;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- ==========================================================================
+         NAVBAR SUPERIOR GLASSMORPHIC
+         ========================================================================== -->
+    <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-18">
+                
+                <!-- Logo Azun -->
+                <a href="/" class="flex items-center gap-3 group shrink-0" title="Azun Tecnologia - Página Inicial">
+                    <img src="assets/images/logo.png" alt="Azun Tecnologia Logo" class="w-8 h-8 sm:w-9 sm:h-9 object-contain rounded-xl shadow-xs group-hover:scale-105 transition-transform">
+                    <div class="flex flex-col text-left">
+                        <span class="text-base sm:text-lg font-black tracking-tight text-white font-sans flex items-center gap-1.5 leading-none">
+                            AZUN <span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span>
+                        </span>
+                        <span class="text-[8.5px] uppercase font-bold tracking-widest text-slate-400 leading-none mt-1">Downloads Oficiais</span>
+                    </div>
+                </a>
+
+                <!-- Navegação Central -->
+                <nav class="hidden md:flex items-center gap-1.5 p-1 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300">
+                    <a href="/" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-slate-800 transition-all flex items-center gap-1.5">
+                        <i data-lucide="home" class="w-3.5 h-3.5 text-slate-400"></i>
+                        <span>Início</span>
+                    </a>
+                    <a href="/#modulos" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-slate-800 transition-all flex items-center gap-1.5">
+                        <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-slate-400"></i>
+                        <span>Módulos</span>
+                    </a>
+                    <a href="/api.html" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-slate-800 transition-all flex items-center gap-1.5">
+                        <i data-lucide="terminal" class="w-3.5 h-3.5 text-blue-400"></i>
+                        <span>API Docs</span>
+                    </a>
+                    <a href="/downloads" class="px-3.5 py-1.5 rounded-full text-white bg-blue-600 shadow-sm flex items-center gap-1.5 font-bold">
+                        <i data-lucide="download" class="w-3.5 h-3.5 text-white"></i>
+                        <span>Downloads</span>
+                    </a>
+                </nav>
+
+                <!-- Botão Voltar / Suporte -->
+                <div class="flex items-center gap-3">
+                    <a href="https://wa.me/5592988389730?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20para%20instalar%20o%20sistema%20da%20Azun." target="_blank" rel="noopener" class="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold hover:bg-emerald-500/20 transition-all">
+                        <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                        <span>Suporte WhatsApp</span>
+                    </a>
+                    <a href="/" class="px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs font-bold hover:text-white hover:border-slate-700 transition-all flex items-center gap-1">
+                        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                        <span class="hidden sm:inline">Voltar ao</span> Site
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <main class="flex-grow">
+        <section class="relative pt-12 pb-16 sm:pt-16 sm:pb-20 overflow-hidden">
+            <!-- Background Glows -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute top-1/3 left-1/4 w-[300px] h-[300px] bg-sky-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-wider uppercase mb-5">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                    <span>Repositório Oficial & Certificado Azun</span>
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight font-sans max-w-4xl mx-auto leading-tight sm:leading-none mb-4">
+                    Softwares Oficiais para <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-400">Windows e Android</span>
+                </h1>
+
+                <p class="text-slate-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Instale a Frente de Caixa offline para computadores e o aplicativo de logística e rotas GPS para os entregadores da sua loja.
+                </p>
+
+                <!-- ==================================================================
+                     CARDS DE DOWNLOAD PRINCIPAIS (GRID COM O .EXE E O .APK)
+                     ================================================================== -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto text-left">
+
+                    <!-- ==========================================================
+                         CARD 1: INSTALADOR WINDOWS (.EXE) - PDV CAIXA OFFLINE
+                         ========================================================== -->
+                    <div class="glow-card bg-slate-900/90 rounded-3xl p-6 sm:p-8 border border-slate-800 transition-all duration-300 relative flex flex-col justify-between overflow-hidden">
+                        
+                        <div class="absolute -right-8 -top-8 w-32 h-32 bg-blue-600/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <div>
+                            <!-- Header do Card -->
+                            <div class="flex items-center justify-between mb-5">
+                                <div class="flex items-center gap-3.5">
+                                    <div class="w-14 h-14 rounded-2xl bg-white p-2 flex items-center justify-center shadow-lg shadow-blue-600/25 border border-slate-700/60 overflow-hidden shrink-0">
+                                        <img src="assets/images/logologin.png" alt="Azun PDV Caixa" class="w-full h-full object-contain">
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <h2 class="text-xl sm:text-2xl font-bold text-white font-sans">Azun PDV Caixa</h2>
+                                            <span class="badge-verified px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                                                <i data-lucide="check" class="w-3 h-3"></i> Windows
+                                            </span>
+                                        </div>
+                                        <div class="text-xs text-slate-400 font-mono mt-0.5">Versão Oficial de Produção (x64)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+                                Frente de caixa completa compilada em <strong>C++17 com SQLite embarcado</strong>. Opera 100% offline sem travar nas quedas de internet, emite NFC-e 65 e NF-e 55 pela SEFAZ e sincroniza automaticamente com o ERP em nuvem.
+                            </p>
+
+                            <!-- Tags e Recursos -->
+                            <div class="space-y-2.5 mb-6 text-xs text-slate-300">
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                    <span><strong>100% Offline-First:</strong> Venda mesmo sem sinal de internet com 0ms de latência.</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                    <span><strong>Periféricos Comerciais:</strong> Balanças Toledo/Filizola e impressoras térmicas ESC/POS.</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                    <span><strong>Emissão Fiscal Automática:</strong> Cupons fiscais assinados com Certificado A1.</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                    <span><strong>Sincronizador Silencioso:</strong> Serviço em segundo plano que sincroniza estoque e vendas.</span>
+                                </div>
+                            </div>
+
+                            <!-- Ficha Técnica -->
+                            <div class="grid grid-cols-3 gap-2.5 p-3 rounded-2xl bg-slate-950/80 border border-slate-800 text-center mb-6">
+                                <div>
+                                    <span class="block text-[10px] uppercase font-bold text-slate-500">Formato</span>
+                                    <span class="text-xs sm:text-sm font-bold text-white font-mono">.EXE (Setup)</span>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] uppercase font-bold text-slate-500">Tamanho</span>
+                                    <span class="text-xs sm:text-sm font-bold text-white font-mono">4.8 MB</span>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] uppercase font-bold text-slate-500">Sistema</span>
+                                    <span class="text-xs sm:text-sm font-bold text-emerald-400 font-mono">Windows 10/11</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botão de Download Principal do EXE -->
+                        <div>
+                            <a href="/downloads/Instalador_AzunPDV_Setup.exe" download="Instalador_AzunPDV_Setup.exe" class="w-full py-4 px-6 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-3 shadow-xl shadow-blue-600/30 transition-all hover:scale-[1.02] active:scale-[0.98] group">
+                                <i data-lucide="download" class="w-5 h-5 group-hover:-translate-y-0.5 transition-transform"></i>
+                                <span>Baixar Instalador Windows (.exe)</span>
+                            </a>
+                            <div class="flex items-center justify-between text-[11px] text-slate-400 mt-3 px-1">
+                                <span class="font-mono text-slate-500">Instalador_AzunPDV_Setup.exe</span>
+                                <span class="text-emerald-400 flex items-center gap-1 font-semibold">
+                                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Verificado & Seguro
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ==========================================================
+                         CARD 2: APLICATIVO ANDROID (.APK) - APP DO ENTREGADOR
+                         ========================================================== -->
+                    <div class="glow-card bg-slate-900/90 rounded-3xl p-6 sm:p-8 border border-slate-800 transition-all duration-300 relative flex flex-col justify-between overflow-hidden">
+                        
+                        <div class="absolute -right-8 -top-8 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <div>
+                            <!-- Header do Card -->
+                            <div class="flex items-center justify-between mb-5">
+                                <div class="flex items-center gap-3.5">
+                                    <div class="w-14 h-14 rounded-2xl bg-[#0084fb] p-0.5 flex items-center justify-center shadow-lg shadow-blue-500/30 overflow-hidden shrink-0 border border-blue-400/40">
+                                        <img src="assets/images/logo-entregador.png" alt="Ararinha Entregador" class="w-full h-full object-cover rounded-xl">
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <h2 class="text-xl sm:text-2xl font-bold text-white font-sans">App do Entregador</h2>
+                                            <span class="badge-verified px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                                                <i data-lucide="smartphone" class="w-3 h-3"></i> Android
+                                            </span>
+                                        </div>
+                                        <div class="text-xs text-slate-400 font-mono mt-0.5">Ararinha Entregador Logística v1.0.0</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+                                Aplicativo mobile exclusivo para <strong>motoboys e entregadores credenciados</strong>. Conecta ao painel da loja com transmissão de GPS em tempo real, rotas pelas ruas (coleta na loja e entrega no cliente), conferência de segurança via PIN e extrato de repasses.
+                            </p>
+
+                            <!-- Tags e Recursos -->
+                            <div class="space-y-2.5 mb-6 text-xs text-slate-300">
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0"></i>
+                                    <span><strong>GPS em Tempo Real:</strong> Transmissão suave da localização para o painel de entregas do lojista.</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0"></i>
+                                    <span><strong>Rotas Inteligentes (OSRM):</strong> Traçado pelas ruas da posição atual até a loja e destino.</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0"></i>
+                                    <span><strong>Segurança Anti-Fraude:</strong> Finalização de entrega validada pelo PIN de 4 dígitos do cliente.</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0"></i>
+                                    <span><strong>Controle de Ganhos:</strong> Visualização instantânea do repasse por entrega e quilometragem.</span>
+                                </div>
+                            </div>
+
+                            <!-- Ficha Técnica -->
+                            <div class="grid grid-cols-3 gap-2.5 p-3 rounded-2xl bg-slate-950/80 border border-slate-800 text-center mb-6">
+                                <div>
+                                    <span class="block text-[10px] uppercase font-bold text-slate-500">Formato</span>
+                                    <span class="text-xs sm:text-sm font-bold text-white font-mono">.APK Nativo</span>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] uppercase font-bold text-slate-500">Tamanho</span>
+                                    <span class="text-xs sm:text-sm font-bold text-white font-mono">~4.5 MB</span>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] uppercase font-bold text-slate-500">Compatível</span>
+                                    <span class="text-xs sm:text-sm font-bold text-sky-400 font-mono">Android 8.0+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botão de Download Principal do APK + QR Code -->
+                        <div>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="/downloads/ArarinhaEntregador.apk" download="ArarinhaEntregador.apk" class="flex-grow py-4 px-6 rounded-2xl bg-gradient-to-r from-[#0084fb] to-[#0066d6] hover:from-[#0074db] hover:to-[#0056b6] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-3 shadow-xl shadow-blue-500/25 transition-all hover:scale-[1.02] active:scale-[0.98] group">
+                                    <i data-lucide="download" class="w-5 h-5 group-hover:-translate-y-0.5 transition-transform"></i>
+                                    <span>Baixar App Android (.apk)</span>
+                                </a>
+
+                                <button type="button" onclick="openQrModal()" class="py-4 px-4 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all flex items-center justify-center gap-2 text-xs font-bold shrink-0" title="Escanear com o Celular">
+                                    <i data-lucide="qr-code" class="w-5 h-5 text-sky-400"></i>
+                                    <span class="hidden sm:inline">QR Code</span>
+                                </button>
+                            </div>
+
+                            <div class="flex items-center justify-between text-[11px] text-slate-400 mt-3 px-1">
+                                <span class="font-mono text-slate-500">ArarinhaEntregador.apk</span>
+                                <span class="text-sky-400 flex items-center gap-1 font-semibold">
+                                    <i data-lucide="smartphone" class="w-3.5 h-3.5"></i> Instalação Direta no Celular
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             PASSO A PASSO DE INSTALAÇÃO GUIADO (WINDOWS & ANDROID)
+             ====================================================================== -->
+        <section class="py-14 sm:py-20 bg-slate-900/60 border-t border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-sans tracking-tight mb-3">
+                        Como instalar em menos de 2 minutos
+                    </h2>
+                    <p class="text-slate-400 text-xs sm:text-sm">
+                        Siga o passo a passo simplificado para configurar seu caixa ou seu celular de entregas.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    
+                    <!-- Guia Windows -->
+                    <div class="bg-slate-950 p-6 sm:p-8 rounded-3xl border border-slate-800">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center">
+                                <i data-lucide="monitor" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base sm:text-lg font-bold text-white">Instalando no Windows (PDV)</h3>
+                                <span class="text-xs text-slate-500">Computador do Caixa / Vendas</span>
+                            </div>
+                        </div>
+
+                        <ol class="space-y-4 text-xs sm:text-sm text-slate-300">
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-blue-600/30 text-blue-400 font-bold flex items-center justify-center shrink-0 font-mono text-xs">1</span>
+                                <div>
+                                    <strong class="text-white block mb-0.5">Baixe o Instalador</strong>
+                                    Clique no botão de download acima e aguarde o download de <code>Instalador_AzunPDV_Setup.exe</code>.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-blue-600/30 text-blue-400 font-bold flex items-center justify-center shrink-0 font-mono text-xs">2</span>
+                                <div>
+                                    <strong class="text-white block mb-0.5">Execute o Assistente</strong>
+                                    Dê dois cliques no instalador. Caso apareça o aviso do Windows SmartScreen, clique em <em>"Mais informações"</em> e depois em <em>"Executar assim mesmo"</em>.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-blue-600/30 text-blue-400 font-bold flex items-center justify-center shrink-0 font-mono text-xs">3</span>
+                                <div>
+                                    <strong class="text-white block mb-0.5">Conecte e Venda</strong>
+                                    Abra o atalho do PDV na sua Área de Trabalho, digite o código da sua loja e comece a passar vendas com ou sem internet!
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <!-- Guia Android -->
+                    <div class="bg-slate-950 p-6 sm:p-8 rounded-3xl border border-slate-800">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center">
+                                <i data-lucide="smartphone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base sm:text-lg font-bold text-white">Instalando no Android (Entregador)</h3>
+                                <span class="text-xs text-slate-500">Smartphone ou SmartPOS</span>
+                            </div>
+                        </div>
+
+                        <ol class="space-y-4 text-xs sm:text-sm text-slate-300">
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-sky-600/30 text-sky-400 font-bold flex items-center justify-center shrink-0 font-mono text-xs">1</span>
+                                <div>
+                                    <strong class="text-white block mb-0.5">Baixe o Arquivo APK</strong>
+                                    No navegador do seu celular ou apontando a câmera para o QR Code, baixe o <code>ArarinhaEntregador.apk</code>.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-sky-600/30 text-sky-400 font-bold flex items-center justify-center shrink-0 font-mono text-xs">2</span>
+                                <div>
+                                    <strong class="text-white block mb-0.5">Autorize Fontes Desconhecidas</strong>
+                                    Toque na notificação de download concluído. Se solicitado pelo Android, marque <em>"Permitir desta fonte"</em> para autorizar a instalação do pacote corporativo.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-sky-600/30 text-sky-400 font-bold flex items-center justify-center shrink-0 font-mono text-xs">3</span>
+                                <div>
+                                    <strong class="text-white block mb-0.5">Faça o Login do Entregador</strong>
+                                    Abra o app, conceda permissão de Localização (GPS) e acesse com o e-mail e senha de colaborador autorizados com a permissão <code>DRIVER_APP_ACCESS</code>.
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             PERGUNTAS FREQUENTES (FAQ DOWNLOADS)
+             ====================================================================== -->
+        <section class="py-14 sm:py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white font-sans tracking-tight mb-2">
+                        Perguntas Frequentes sobre os Downloads
+                    </h2>
+                    <p class="text-slate-400 text-xs sm:text-sm">Tire suas dúvidas técnicas sobre compatibilidade e requisitos.</p>
+                </div>
+
+                <div class="space-y-3.5">
+                    
+                    <details class="bg-slate-900/80 rounded-2xl p-5 border border-slate-800 group">
+                        <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+                            <span>Quem pode fazer login no Aplicativo Android do Entregador?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+                            O acesso é protegido. Somente colaboradores ativos cujo cargo cadastrado na loja tenha a permissão <strong>"Aplicativo do Entregador (DRIVER_APP_ACCESS)"</strong> ou administradores conseguem autenticar. Caso um cargo sem essa permissão tente entrar, o app exibe uma mensagem de bloqueio por segurança.
+                        </p>
+                    </details>
+
+                    <details class="bg-slate-900/80 rounded-2xl p-5 border border-slate-800 group">
+                        <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+                            <span>O Frente de Caixa Windows realmente funciona sem internet?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+                            Sim! Todo o catálogo de produtos, clientes, tabelas de preço e formas de pagamento ficam armazenados no banco local SQLite no próprio computador. Durante quedas de internet, as vendas continuam normais em modo de contingência. Assim que a conexão for restabelecida, o Serviço Sincronizador envia tudo automaticamente para a nuvem.
+                        </p>
+                    </details>
+
+                    <details class="bg-slate-900/80 rounded-2xl p-5 border border-slate-800 group">
+                        <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+                            <span>Por que o Android exibe aviso ao instalar o APK?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+                            Todo aplicativo distribuído diretamente pela empresa fora da Play Store é classificado pelo Android como fonte desconhecida. Nosso instalador é 100% seguro, verificado contra malwares e assinado digitalmente para o ecossistema Azun. Basta permitir a instalação no prompt do sistema operacional.
+                        </p>
+                    </details>
+
+                    <details class="bg-slate-900/80 rounded-2xl p-5 border border-slate-800 group">
+                        <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+                            <span>Como funciona o cálculo de repasse no App do Entregador?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+                            O app obedece a configuração da sua loja definida no Mapa de Entregas do painel: sem repasse, taxa fixa por entrega, repasse por quilômetro rodado ou modelo híbrido (taxa base + km). O entregador vê o valor exato que receberá antes e depois de concluir o trajeto.
+                        </p>
+                    </details>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             CTA SUPORTE / CONSULTOR
+             ====================================================================== -->
+        <section class="py-12 bg-gradient-to-r from-blue-900/30 via-slate-900 to-indigo-900/30 border-t border-slate-800">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 font-sans">Precisa de auxílio na instalação ou configuração de equipamentos?</h3>
+                <p class="text-slate-400 text-xs sm:text-sm mb-6 max-w-2xl mx-auto">Nossa equipe técnica auxilia você a configurar balanças, impressoras térmicas e a cadastrar seus primeiros entregadores.</p>
+                <a href="https://wa.me/5592988389730?text=Ol%C3%A1!%20Baixei%20o%20software%20da%20Azun%20e%20gostaria%20de%20ajuda%20para%20configurar." target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-xl shadow-emerald-600/25 transition-all">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    <span>Falar com Suporte Técnico no WhatsApp</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         MODAL DE QR CODE PARA DOWNLOAD DIRETO NO SMARTPHONE
+         ========================================================================== -->
+    <div id="qrModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center relative shadow-2xl">
+            <button type="button" onclick="closeQrModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="smartphone" class="w-6 h-6"></i>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mb-1">Baixar no Celular</h3>
+            <p class="text-xs text-slate-400 mb-5">Abra a câmera do seu smartphone e aponte para o código abaixo para baixar o APK direto:</p>
+
+            <div class="bg-white p-4 rounded-2xl inline-block mx-auto mb-4 shadow-lg">
+                <div id="qrcode"></div>
+            </div>
+
+            <div class="text-[11px] text-slate-400 font-mono break-all mb-4 bg-slate-950 p-2 rounded-xl border border-slate-800" id="apkDownloadUrlText">
+                Carregando link...
+            </div>
+
+            <button type="button" onclick="closeQrModal()" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-colors">
+                Fechar
+            </button>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-8 text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <img src="assets/images/logo.png" alt="Azun" class="w-5 h-5 object-contain">
+                <span>&copy; 2026 Azun Tecnologia. Todos os direitos reservados.</span>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="/" class="hover:text-slate-300 transition-colors">Início</a>
+                <a href="/#modulos" class="hover:text-slate-300 transition-colors">Módulos</a>
+                <a href="/api.html" class="hover:text-slate-300 transition-colors">API Docs</a>
+                <a href="/downloads" class="text-blue-400 font-bold hover:underline">Downloads</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Inicialização do QR Code e Modais -->
+    <script>
+        function getApkUrl() {
+            var origin = window.location.origin;
+            return origin + '/downloads/ArarinhaEntregador.apk';
+        }
+
+        function openQrModal() {
+            var modal = document.getElementById('qrModal');
+            var qrContainer = document.getElementById('qrcode');
+            var urlText = document.getElementById('apkDownloadUrlText');
+            
+            var apkUrl = getApkUrl();
+            urlText.innerText = apkUrl;
+            
+            qrContainer.innerHTML = '';
+            new QRCode(qrContainer, {
+                text: apkUrl,
+                width: 180,
+                height: 180,
+                colorDark : "#0f172a",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.M
+            });
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            triggerLucide();
+        }
+
+        function closeQrModal() {
+            var modal = document.getElementById('qrModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Fechar ao clicar fora
+        document.getElementById('qrModal').addEventListener('click', function(e) {
+            if (e.target === this) closeQrModal();
+        });
+    </script>
+
+</body>
+</html>

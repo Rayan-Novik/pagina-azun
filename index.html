@@ -254,9 +254,9 @@
 
                 <!-- Botões de Ação Direita (Desktop) -->
                 <div class="hidden sm:flex items-center gap-2.5 shrink-0">
-                    <a href="#downloads" class="px-3.5 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full transition-all flex items-center gap-1.5 border border-slate-200/80 hover:border-slate-300 whitespace-nowrap" title="Baixar Instalador Windows">
+                    <a href="/downloads" class="px-3.5 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full transition-all flex items-center gap-1.5 border border-slate-200/80 hover:border-slate-300 whitespace-nowrap" title="Central de Downloads (Windows & Android)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download w-3.5 h-3.5 text-blue-600" data-lucide="download"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>
-                        <span>Baixar Setup</span>
+                        <span>Downloads</span>
                     </a>
                     <button type="button" class="open-demo-modal px-4 py-1.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-full shadow-md shadow-blue-600/25 transition-all hover:shadow-blue-600/40 hover:-translate-y-0.5 flex items-center gap-1.5 whitespace-nowrap">
                         <span>Falar com Consultor</span>
@@ -454,8 +454,8 @@
                     
                     <div class="md:col-span-7 space-y-3.5 sm:space-y-4">
                         <div class="flex items-center gap-3">
-                            <div class="p-2.5 sm:p-3 bg-blue-600 rounded-2xl text-white shadow-lg shadow-blue-600/30">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor w-6 h-6 sm:w-8 sm:h-8" data-lucide="monitor"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white p-1.5 flex items-center justify-center shadow-lg shadow-blue-600/30 border border-slate-700/60 overflow-hidden shrink-0">
+                                <img src="assets/images/logologin.png" alt="Azun PDV Caixa" class="w-full h-full object-contain">
                             </div>
                             <div>
                                 <h3 class="text-lg sm:text-xl font-bold text-white font-sans">Azun PDV Caixa & Sincronizador</h3>
@@ -524,6 +524,24 @@
                             Passe produtos no leitor de código de barras ou balança e emita cupons na hora.
                         </div>
                     </div>
+                </div>
+
+                <!-- Banner Aplicativo do Entregador Android -->
+                <div class="mt-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-blue-950/70 via-slate-900 to-sky-950/60 border border-blue-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3.5 text-left">
+                        <div class="w-12 h-12 rounded-2xl bg-[#0084fb] p-0.5 flex items-center justify-center shrink-0 border border-blue-400/40 shadow-md shadow-blue-500/30 overflow-hidden">
+                            <img src="assets/images/logo-entregador.png" alt="Ararinha Entregador" class="w-full h-full object-cover rounded-xl">
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-sky-400 uppercase tracking-wider">Novo Aplicativo Mobile</div>
+                            <div class="text-sm sm:text-base font-bold text-white">App do Entregador com GPS em Tempo Real</div>
+                            <div class="text-[11px] text-slate-400">Rotas inteligentes, confirmação por PIN e acompanhamento ao vivo.</div>
+                        </div>
+                    </div>
+                    <a href="/downloads" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#0084fb] to-[#0066d6] hover:from-[#0074db] hover:to-[#0056b6] text-white font-bold text-xs shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone w-3.5 h-3.5" data-lucide="smartphone"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
+                        <span>Baixar APK do Entregador</span>
+                    </a>
                 </div>
 
             </div>

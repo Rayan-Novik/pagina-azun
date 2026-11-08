@@ -12,11 +12,24 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        api: resolve(__dirname, 'api.html')
+        api: resolve(__dirname, 'api.html'),
+        downloads: resolve(__dirname, 'downloads.html')
       }
     }
   },
   plugins: [
+    {
+      name: 'apk-mime',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url && req.url.endsWith('.apk')) {
+            res.setHeader('Content-Type', 'application/vnd.android.package-archive');
+            res.setHeader('Content-Disposition', `attachment; filename="${req.url.split('?')[0].split('/').pop()}"`);
+          }
+          next();
+        });
+      }
+    },
     {
       name: 'copy-downloads',
       closeBundle() {
